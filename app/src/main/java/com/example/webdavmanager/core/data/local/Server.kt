@@ -1,0 +1,13 @@
+package com.example.webdavmanager.core.data.local
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class Server(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val name: String,
+    val url: String,
+    val user: String,
+    val password: String
+)
