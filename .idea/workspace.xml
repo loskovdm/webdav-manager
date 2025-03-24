@@ -9,11 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add Room database dependencies with KSP processor&#10;&#10;- Add Room runtime, ktx, and compiler dependencies&#10;- Configure KSP for annotation processing&#10;- Set up database infrastructure for server data storage">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/data/local/Server.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/data/local/ServerDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add Room database infrastructure&#10;&#10;- Create Server entity model&#10;- Implement ServerDao interface&#10;- Set up ServerDatabase configuration" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,8 +44,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -74,6 +70,9 @@
     &quot;accountId&quot;: &quot;d4b4ec59-b017-4e53-a80c-ea452abd3a70&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -198,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742834236884</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add Room database infrastructure&#10;&#10;- Create Server entity model&#10;- Implement ServerDao interface&#10;- Set up ServerDatabase configuration">
+      <option name="closed" value="true" />
+      <created>1742835235748</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742835235748</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,7 +223,8 @@
     <option name="RELOAD_CONTEXT" value="false" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Add Room database dependencies with KSP processor&#10;&#10;- Add Room runtime, ktx, and compiler dependencies&#10;- Configure KSP for annotation processing&#10;- Set up database infrastructure for server data storage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Room database dependencies with KSP processor&#10;&#10;- Add Room runtime, ktx, and compiler dependencies&#10;- Configure KSP for annotation processing&#10;- Set up database infrastructure for server data storage" />
+    <MESSAGE value="Add Room database infrastructure&#10;&#10;- Create Server entity model&#10;- Implement ServerDao interface&#10;- Set up ServerDatabase configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Room database infrastructure&#10;&#10;- Create Server entity model&#10;- Implement ServerDao interface&#10;- Set up ServerDatabase configuration" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
