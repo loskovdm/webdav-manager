@@ -4,4 +4,5 @@ import com.example.webdavmanager.server_list.domain.model.ServerItem
 
 interface ServerRepository {
     suspend fun getServers(): List<ServerItem>
+    suspend fun deleteServer(id: Int)
 }
