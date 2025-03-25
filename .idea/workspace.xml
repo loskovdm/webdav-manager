@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add password encryption functionality&#10;&#10;- Implement PasswordEncryptor using Android KeyStore&#10;- Add AES/GCM encryption for secure password storage&#10;- Create methods for encrypting and decrypting credentials">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/domain/model/ServerItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add ServerItem domain model for server listing&#10;&#10;- Create ServerItem data class in domain layer&#10;- Define essential server properties (id, name, user)">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/domain/repository/ServerRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,9 +47,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -218,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742835535677</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add ServerItem domain model for server listing&#10;&#10;- Create ServerItem data class in domain layer&#10;- Define essential server properties (id, name, user)">
+      <option name="closed" value="true" />
+      <created>1742878026290</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1742878026290</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -232,7 +239,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dev" />
+                        <option value="feature/server-list-domain" />
                       </list>
                     </value>
                   </entry>
@@ -250,7 +257,8 @@
     <MESSAGE value="Add Room database dependencies with KSP processor&#10;&#10;- Add Room runtime, ktx, and compiler dependencies&#10;- Configure KSP for annotation processing&#10;- Set up database infrastructure for server data storage" />
     <MESSAGE value="Add Room database infrastructure&#10;&#10;- Create Server entity model&#10;- Implement ServerDao interface&#10;- Set up ServerDatabase configuration" />
     <MESSAGE value="Add password encryption functionality&#10;&#10;- Implement PasswordEncryptor using Android KeyStore&#10;- Add AES/GCM encryption for secure password storage&#10;- Create methods for encrypting and decrypting credentials" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add password encryption functionality&#10;&#10;- Implement PasswordEncryptor using Android KeyStore&#10;- Add AES/GCM encryption for secure password storage&#10;- Create methods for encrypting and decrypting credentials" />
+    <MESSAGE value="Add ServerItem domain model for server listing&#10;&#10;- Create ServerItem data class in domain layer&#10;- Define essential server properties (id, name, user)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ServerItem domain model for server listing&#10;&#10;- Create ServerItem data class in domain layer&#10;- Define essential server properties (id, name, user)" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
