@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add ServerRepository interface in domain layer&#10;&#10;- Create repository interface for server list functionality &#10;- Define getServers method to retrieve server items">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
-    </list>
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add Hilt dependencies for dependency injection" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +18,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Dmitry Loskov\.android\avd\Medium_Phone.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Dmitry Loskov\.android\avd\Pixel_6_API_34.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -49,9 +44,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -94,12 +89,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Android App.app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "feature/add-di",
@@ -238,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742882137620</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add Hilt dependencies for dependency injection">
+      <option name="closed" value="true" />
+      <created>1742920749678</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742920749678</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,7 +255,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dev" />
+                        <option value="feature/add-di" />
                       </list>
                     </value>
                   </entry>
@@ -273,19 +276,20 @@
     <MESSAGE value="Add ServerItem domain model for server listing&#10;&#10;- Create ServerItem data class in domain layer&#10;- Define essential server properties (id, name, user)" />
     <MESSAGE value="Add ServerRepository interface in domain layer&#10;&#10;- Create repository interface for server list functionality &#10;- Define getServers method to retrieve server items" />
     <MESSAGE value="Add domain use cases&#10;&#10;- Implement GetServersUseCase for retrieving server items&#10;- Implement DeleteServerUseCase for delete server by id" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add domain use cases&#10;&#10;- Implement GetServersUseCase for retrieving server items&#10;- Implement DeleteServerUseCase for delete server by id" />
+    <MESSAGE value="Add Hilt dependencies for dependency injection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Hilt dependencies for dependency injection" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.webdavmanager">
           <value>
-            <CheckInfo lastCheckTimestamp="1742831962097" />
+            <CheckInfo lastCheckTimestamp="1742923737192" />
           </value>
         </entry>
         <entry key="com.example.webdavmanager.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1742831962099" />
+            <CheckInfo lastCheckTimestamp="1742923737205" />
           </value>
         </entry>
       </map>
