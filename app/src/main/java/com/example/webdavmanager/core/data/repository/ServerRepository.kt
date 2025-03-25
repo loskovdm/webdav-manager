@@ -4,7 +4,7 @@ import com.example.webdavmanager.core.data.local.ServerDao
 import com.example.webdavmanager.core.data.local.Server
 import com.example.webdavmanager.core.data.security.PasswordEncryptor
 
-class ServerRepository(
+class ServerRepositoryImpl(
     private val serverDao: ServerDao,
     private val encryptor: PasswordEncryptor
 ) {
