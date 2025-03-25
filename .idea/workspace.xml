@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add ServerRepository interface in domain layer&#10;&#10;- Create repository interface for server list functionality &#10;- Define getServers method to retrieve server items">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/domain/repository/ServerRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/domain/repository/ServerRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +62,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -96,9 +99,11 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "feature/server-list-domain",
+    "git-widget-placeholder": "feature/add-di",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager"
   }
 }]]></component>
@@ -247,7 +252,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/server-list-domain" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -267,7 +272,8 @@
     <MESSAGE value="Add password encryption functionality&#10;&#10;- Implement PasswordEncryptor using Android KeyStore&#10;- Add AES/GCM encryption for secure password storage&#10;- Create methods for encrypting and decrypting credentials" />
     <MESSAGE value="Add ServerItem domain model for server listing&#10;&#10;- Create ServerItem data class in domain layer&#10;- Define essential server properties (id, name, user)" />
     <MESSAGE value="Add ServerRepository interface in domain layer&#10;&#10;- Create repository interface for server list functionality &#10;- Define getServers method to retrieve server items" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ServerRepository interface in domain layer&#10;&#10;- Create repository interface for server list functionality &#10;- Define getServers method to retrieve server items" />
+    <MESSAGE value="Add domain use cases&#10;&#10;- Implement GetServersUseCase for retrieving server items&#10;- Implement DeleteServerUseCase for delete server by id" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add domain use cases&#10;&#10;- Implement GetServersUseCase for retrieving server items&#10;- Implement DeleteServerUseCase for delete server by id" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
