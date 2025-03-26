@@ -5,8 +5,9 @@ import com.example.webdavmanager.core.data.local.Server
 import com.example.webdavmanager.core.data.security.PasswordEncryptor
 import com.example.webdavmanager.server_list.domain.model.ServerItem
 import com.example.webdavmanager.server_list.domain.repository.ServerListRepository
+import javax.inject.Inject
 
-class ServerRepositoryImpl(
+class ServerRepositoryImpl @Inject constructor(
     private val serverDao: ServerDao,
     private val encryptor: PasswordEncryptor
 ) : ServerListRepository {
