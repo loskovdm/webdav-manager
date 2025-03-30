@@ -20,7 +20,7 @@ class ServerRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getServers(): List<ServerItem>? {
+    override suspend fun getServers(): List<ServerItem> {
         return serverDao.getAll().map { server ->
             ServerItem(
                 id = server.id,
