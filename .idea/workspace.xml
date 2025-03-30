@@ -9,16 +9,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add reusable UI components for loading and error states&#10;&#10;- Create LoadingContent for displaying loading indicators&#10;- Create ErrorContent for displaying error messages">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/ServerListScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListEmpty.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add ServerListScreen component&#10;&#10;- Create main UI container for server list feature&#10;- Implement state handling with LoadingContent, ServerListEmpty, ServerList and ErrorContent">
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Theme.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/ui/theme/Type.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Type.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +116,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="com.example.webdavmanager.core.ui.theme" />
       <recent name="com.example.webdavmanager.server_list.di" />
     </key>
   </component>
@@ -347,7 +347,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743357654936</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add UI components for server list and empty server list&#10;&#10;- Create ServerList to display a list of servers&#10;- Create ServerListEmpty to display an empty list of servers">
+      <option name="closed" value="true" />
+      <created>1743357870055</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1743357870055</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add ServerListScreen component&#10;&#10;- Create main UI container for server list feature&#10;- Implement state handling with LoadingContent, ServerListEmpty, ServerList and ErrorContent">
+      <option name="closed" value="true" />
+      <created>1743358015596</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1743358015596</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -395,7 +411,9 @@
     <MESSAGE value="Implement DI with Hilt&#10;&#10;- Add ServerListUseCaseModule to provide use cases&#10;- Configure ViewModel with @HiltViewModel annotation" />
     <MESSAGE value="Add Hilt ViewModel dependencies for DI support&#10;&#10;- Added hilt-navigation-compose dependency for hiltViewModel() functionality&#10;- Enables dependency injection in ViewModels with @HiltViewModel annotation" />
     <MESSAGE value="Add reusable UI components for loading and error states&#10;&#10;- Create LoadingContent for displaying loading indicators&#10;- Create ErrorContent for displaying error messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add reusable UI components for loading and error states&#10;&#10;- Create LoadingContent for displaying loading indicators&#10;- Create ErrorContent for displaying error messages" />
+    <MESSAGE value="Add UI components for server list and empty server list&#10;&#10;- Create ServerList to display a list of servers&#10;- Create ServerListEmpty to display an empty list of servers" />
+    <MESSAGE value="Add ServerListScreen component&#10;&#10;- Create main UI container for server list feature&#10;- Implement state handling with LoadingContent, ServerListEmpty, ServerList and ErrorContent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ServerListScreen component&#10;&#10;- Create main UI container for server list feature&#10;- Implement state handling with LoadingContent, ServerListEmpty, ServerList and ErrorContent" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
