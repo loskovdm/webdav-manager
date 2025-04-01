@@ -17,12 +17,12 @@ interface ServerDao {
     @Delete
     suspend fun deleteServer(server: ServerEntity)
 
-    @Query("select * from server")
+    @Query("select * from serverentity")
     suspend fun getAll(): List<ServerEntity>
 
-    @Query("delete from server")
+    @Query("delete from serverentity")
     suspend fun deleteAll()
 
-    @Query("select * from server where id = :id")
+    @Query("select * from serverentity where id = :id")
     suspend fun getServerById(id: Int): ServerEntity?
 }
