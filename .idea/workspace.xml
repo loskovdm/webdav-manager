@@ -9,11 +9,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add default Modifier parameter to ServerItem component">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListTopAppBar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add consistent 16dp corner radius to server cards&#10;&#10;- Set explicit RoundedCornerShape(16dp) for server cards&#10;- Matches corner radius used in FloatingActionButton">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +53,9 @@
       <list>
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Object" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -383,7 +385,39 @@
       <option name="project" value="LOCAL" />
       <updated>1743478813544</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Add ServerListTopAppBar component&#10;&#10;- Create TopAppBar with app name and add server button&#10;- Implement Material3 theming with primary/onPrimary colors&#10;- Use ExperimentalMaterial3Api annotation as required by Material3">
+      <option name="closed" value="true" />
+      <created>1743479920607</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1743479920607</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Remove the add server button from top app bar">
+      <option name="closed" value="true" />
+      <created>1743494771813</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1743494771813</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Add FloatingActionButton for server creation">
+      <option name="closed" value="true" />
+      <created>1743494883300</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743494883300</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Add consistent 16dp corner radius to server cards&#10;&#10;- Set explicit RoundedCornerShape(16dp) for server cards&#10;- Matches corner radius used in FloatingActionButton">
+      <option name="closed" value="true" />
+      <created>1743495025057</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1743495025057</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -411,10 +445,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Initial commit" />
-    <MESSAGE value="Add Room database dependencies with KSP processor&#10;&#10;- Add Room runtime, ktx, and compiler dependencies&#10;- Configure KSP for annotation processing&#10;- Set up database infrastructure for server data storage" />
-    <MESSAGE value="Add Room database infrastructure&#10;&#10;- Create Server entity model&#10;- Implement ServerDao interface&#10;- Set up ServerDatabase configuration" />
-    <MESSAGE value="Add password encryption functionality&#10;&#10;- Implement PasswordEncryptor using Android KeyStore&#10;- Add AES/GCM encryption for secure password storage&#10;- Create methods for encrypting and decrypting credentials" />
     <MESSAGE value="Add ServerItem domain model for server listing&#10;&#10;- Create ServerItem data class in domain layer&#10;- Define essential server properties (id, name, user)" />
     <MESSAGE value="Add ServerRepository interface in domain layer&#10;&#10;- Create repository interface for server list functionality &#10;- Define getServers method to retrieve server items" />
     <MESSAGE value="Add domain use cases&#10;&#10;- Implement GetServersUseCase for retrieving server items&#10;- Implement DeleteServerUseCase for delete server by id" />
@@ -436,7 +466,11 @@
     <MESSAGE value="Move theme components to core module&#10;&#10;- Relocate Color, Theme, and Typography definitions to core.ui.theme" />
     <MESSAGE value="Rename DI models to modules for correct terminology" />
     <MESSAGE value="Add default Modifier parameter to ServerItem component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add default Modifier parameter to ServerItem component" />
+    <MESSAGE value="Add ServerListTopAppBar component&#10;&#10;- Create TopAppBar with app name and add server button&#10;- Implement Material3 theming with primary/onPrimary colors&#10;- Use ExperimentalMaterial3Api annotation as required by Material3" />
+    <MESSAGE value="Remove the add server button from top app bar" />
+    <MESSAGE value="Add FloatingActionButton for server creation" />
+    <MESSAGE value="Add consistent 16dp corner radius to server cards&#10;&#10;- Set explicit RoundedCornerShape(16dp) for server cards&#10;- Matches corner radius used in FloatingActionButton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add consistent 16dp corner radius to server cards&#10;&#10;- Set explicit RoundedCornerShape(16dp) for server cards&#10;- Matches corner radius used in FloatingActionButton" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
