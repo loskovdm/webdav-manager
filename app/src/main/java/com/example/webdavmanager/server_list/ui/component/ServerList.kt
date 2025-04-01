@@ -25,7 +25,10 @@ fun ServerList(
             ServerListTopAppBar()
         },
         floatingActionButton = {
-            ServerListFloatingActionButton(onClick = { onNavigateToAddServer })
+            ServerListFloatingActionButton(
+                onClick = { onNavigateToAddServer },
+                modifier = Modifier.padding(bottom = 24.dp, end = 24.dp)
+            )
         }
     ) { paddingValues ->
         LazyColumn(
