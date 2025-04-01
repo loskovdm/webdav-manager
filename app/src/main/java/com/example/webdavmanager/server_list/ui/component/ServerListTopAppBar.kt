@@ -1,10 +1,6 @@
 package com.example.webdavmanager.server_list.ui.component
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -19,7 +15,6 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ServerListTopAppBar(
-    onAddClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
@@ -28,16 +23,6 @@ fun ServerListTopAppBar(
                 text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.titleLarge
             )
-        },
-        actions = {
-            IconButton(
-                onClick = onAddClick
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = stringResource(R.string.add_server)
-                )
-            }
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
@@ -52,6 +37,6 @@ fun ServerListTopAppBar(
 @Composable
 fun PreviewServerListTopAppBar() {
     WebdavManagerTheme {
-        ServerListTopAppBar(onAddClick = {})
+        ServerListTopAppBar()
     }
 }
