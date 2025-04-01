@@ -9,15 +9,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Implement error UI for ErrorContent component">
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Update queries in ServerDao to reflect ServerEntity renaming">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/domain/model/ServerConfig.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/domain/repository/ServerConfigRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/ServerListScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/ServerListScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +52,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Data Class" />
-        <option value="Kotlin Interface" />
         <option value="Kotlin Object" />
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -101,6 +100,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Android App.app.executor": "Run",
+    "PROJECT_TRUSTED_KEY": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -109,7 +109,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "feature/server-list-ui",
+    "git-widget-placeholder": "feature/server-config-domain",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager",
     "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable"
@@ -460,7 +460,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743500355320</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Rename Server class to ServerEntity and update references in DAO and repository">
+      <option name="closed" value="true" />
+      <created>1743509314079</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1743509314079</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Update queries in ServerDao to reflect ServerEntity renaming">
+      <option name="closed" value="true" />
+      <created>1743509393032</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1743509393032</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -488,8 +504,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Add Hilt Application class for dependency injection&#10;&#10;- Create WebDavApplication class with @HiltAndroidApp annotation&#10;- Update AndroidManifest.xml to use the custom Application class" />
-    <MESSAGE value="Add Hilt dependency injection modules&#10;&#10;- Create DatabaseModel to provide ServerDatabase and ServerDao&#10;- Create SecurityModel to provide Password Encryption&#10;- Create RepositoryModel to bind repository implementation" />
     <MESSAGE value="Add @Inject annotation to enable dependency injection" />
     <MESSAGE value="Update Android Gradle Plugin from 8.9.0 to 8.9.1" />
     <MESSAGE value="Update Compose BOM to 8.9.1" />
@@ -513,7 +527,9 @@
     <MESSAGE value="Implement empty state UI for ServerList component&#10;&#10;- Add ServerListEmpty composable with a Scaffold layout&#10;- Include an icon and descriptive text for no servers state&#10;- Update strings.xml with titles and descriptions for empty state" />
     <MESSAGE value="Implement loading indicator for LoadingContent component" />
     <MESSAGE value="Implement error UI for ErrorContent component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement error UI for ErrorContent component" />
+    <MESSAGE value="Rename Server class to ServerEntity and update references in DAO and repository" />
+    <MESSAGE value="Update queries in ServerDao to reflect ServerEntity renaming" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update queries in ServerDao to reflect ServerEntity renaming" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
