@@ -38,16 +38,16 @@ import com.example.webdavmanager.server_list.domain.model.ServerItem
 @Composable
 fun ServerItem(
     server: ServerItem,
-    onClick: () -> Unit,
+    onServerClick: () -> Unit,
     onDeleteClick: () -> Unit,
-    onChangeClick: () -> Unit,
+    onEditClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var showMenu by remember { mutableStateOf(false) }
 
     Card(
         modifier = modifier.fillMaxWidth(),
-        onClick = onClick,
+        onClick = onServerClick,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -113,7 +113,7 @@ fun ServerItem(
                             )
                         },
                         onClick = {
-                            onChangeClick()
+                            onEditClick()
                             showMenu = false
                         }
                     )
@@ -147,9 +147,9 @@ fun ServerItemPreview() {
     WebdavManagerTheme {
         ServerItem(server =
             ServerItem(id = 1, name = "Server", user = "User"),
-            onClick = {},
+            onServerClick = {},
             onDeleteClick = {},
-            onChangeClick = {},
+            onEditClick = {},
             modifier = Modifier
         )
     }
