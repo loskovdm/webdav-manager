@@ -9,15 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Rename DI models to modules for correct terminology">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add default Modifier parameter to ServerItem component">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListTopAppBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -380,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743358625369</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Add default Modifier parameter to ServerItem component">
+      <option name="closed" value="true" />
+      <created>1743478813544</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1743478813544</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -432,7 +435,8 @@
     <MESSAGE value="Add ServerListScreen component&#10;&#10;- Create main UI container for server list feature&#10;- Implement state handling with LoadingContent, ServerListEmpty, ServerList and ErrorContent" />
     <MESSAGE value="Move theme components to core module&#10;&#10;- Relocate Color, Theme, and Typography definitions to core.ui.theme" />
     <MESSAGE value="Rename DI models to modules for correct terminology" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename DI models to modules for correct terminology" />
+    <MESSAGE value="Add default Modifier parameter to ServerItem component" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add default Modifier parameter to ServerItem component" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
