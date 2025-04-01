@@ -9,20 +9,20 @@ import androidx.room.Update
 @Dao
 interface ServerDao {
     @Insert
-    suspend fun insertServer(server: Server)
+    suspend fun insertServer(server: ServerEntity)
 
     @Update
-    suspend fun updateServer(server: Server)
+    suspend fun updateServer(server: ServerEntity)
 
     @Delete
-    suspend fun deleteServer(server: Server)
+    suspend fun deleteServer(server: ServerEntity)
 
     @Query("select * from server")
-    suspend fun getAll(): List<Server>
+    suspend fun getAll(): List<ServerEntity>
 
     @Query("delete from server")
     suspend fun deleteAll()
 
     @Query("select * from server where id = :id")
-    suspend fun getServerById(id: Int): Server?
+    suspend fun getServerById(id: Int): ServerEntity?
 }

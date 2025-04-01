@@ -1,7 +1,7 @@
 package com.example.webdavmanager.core.data.repository
 
 import com.example.webdavmanager.core.data.local.ServerDao
-import com.example.webdavmanager.core.data.local.Server
+import com.example.webdavmanager.core.data.local.ServerEntity
 import com.example.webdavmanager.core.data.security.PasswordEncryptor
 import com.example.webdavmanager.server_list.domain.model.ServerItem
 import com.example.webdavmanager.server_list.domain.repository.ServerListRepository
@@ -12,7 +12,7 @@ class ServerRepositoryImpl @Inject constructor(
     private val encryptor: PasswordEncryptor
 ) : ServerListRepository {
 
-    suspend fun getServer(id: Int): Server? {
+    suspend fun getServer(id: Int): ServerEntity? {
         val server = serverDao.getServerById(id)
         return server?.let {
             val decryptedPassword = encryptor.decrypt(it.password)
@@ -30,7 +30,7 @@ class ServerRepositoryImpl @Inject constructor(
         }
     }
 
-    suspend fun insertServer(server: Server) {
+    suspend fun insertServer(server: ServerEntity) {
         val encryptedPassword = encryptor.encrypt(server.password)
         val serverToInsert =  server.copy(password = encryptedPassword)
         serverDao.insertServer(serverToInsert)
