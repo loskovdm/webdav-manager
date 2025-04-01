@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Webdav Manager</string>
+    <string name="user_label">User: %1$s</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="more_options">More options</string>
 </resources>
