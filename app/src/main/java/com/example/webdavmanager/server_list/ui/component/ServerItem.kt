@@ -40,7 +40,7 @@ fun ServerItem(
     onClick: () -> Unit,
     onDeleteClick: () -> Unit,
     onChangeClick: () -> Unit,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     var showMenu by remember { mutableStateOf(false) }
 
