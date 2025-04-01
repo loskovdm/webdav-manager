@@ -19,7 +19,10 @@ fun ServerListScreen(
     when (uiState) {
         is ServerListState.Loading -> LoadingContent()
         is ServerListState.Empty -> ServerListEmpty()
-        is ServerListState.Success -> ServerList((uiState as ServerListState.Success).servers)
+        is ServerListState.Success -> ServerList(
+            (uiState as ServerListState.Success).servers,
+            onDeleteServer = { id -> viewModel.deleteServer(id) }
+        )
         is ServerListState.Error -> ErrorContent((uiState as ServerListState.Error).message)
     }
 }

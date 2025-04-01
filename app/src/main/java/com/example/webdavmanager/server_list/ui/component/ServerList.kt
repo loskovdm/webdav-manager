@@ -13,13 +13,19 @@ import androidx.compose.ui.unit.dp
 import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 
 @Composable
-fun ServerList(servers: List<ServerItem>) {
+fun ServerList(
+    servers: List<ServerItem>,
+    onDeleteServer: (Int) -> Unit = {},
+    onNavigateToServerFileManager: (Int) -> Unit = {},
+    onNavigateToEditServer: (Int) -> Unit = {},
+    onNavigateToAddServer: () -> Unit = {}
+) {
     Scaffold(
         topBar = {
             ServerListTopAppBar()
         },
         floatingActionButton = {
-            ServerListFloatingActionButton(onClick = {})
+            ServerListFloatingActionButton(onClick = { onNavigateToAddServer })
         }
     ) { paddingValues ->
         LazyColumn(
@@ -30,9 +36,9 @@ fun ServerList(servers: List<ServerItem>) {
             items(servers) { server ->
                 ServerItem(
                     server = server,
-                    onClick = {},
-                    onDeleteClick = {},
-                    onChangeClick = {},
+                    onServerClick = { onNavigateToServerFileManager(server.id) },
+                    onDeleteClick = { onDeleteServer(server.id) },
+                    onEditClick = { onNavigateToEditServer(server.id) },
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                 )
             }
