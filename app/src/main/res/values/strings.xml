@@ -7,4 +7,11 @@
     <string name="add_server">Add server</string>
     <string name="no_servers_title">No servers added yet</string>
     <string name="no_servers_description">Tap the + button to add your first WebDAV server</string>
+    <string name="save_configuration">Save configuration</string>
+    <string name="create_server">Create server</string>
+    <string name="edit_server">Edit server</string>
+    <string name="name">Name</string>
+    <string name="url">URL</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
 </resources>
