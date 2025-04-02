@@ -3,7 +3,7 @@ package com.example.webdavmanager.server_list.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.webdavmanager.server_list.domain.use_cases.DeleteServerUseCase
-import com.example.webdavmanager.server_list.domain.use_cases.GetServersUseCase
+import com.example.webdavmanager.server_list.domain.use_cases.GetServerListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ServerListViewModel @Inject constructor(
-    private val getServersUseCase: GetServersUseCase,
+    private val getServersUseCase: GetServerListUseCase,
     private val deleteServerUseCase: DeleteServerUseCase
 ) : ViewModel() {
     private val _state = MutableStateFlow<ServerListState>(ServerListState.Loading)

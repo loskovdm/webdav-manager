@@ -2,7 +2,7 @@ package com.example.webdavmanager.server_list.di
 
 import com.example.webdavmanager.server_list.domain.repository.ServerListRepository
 import com.example.webdavmanager.server_list.domain.use_cases.DeleteServerUseCase
-import com.example.webdavmanager.server_list.domain.use_cases.GetServersUseCase
+import com.example.webdavmanager.server_list.domain.use_cases.GetServerListUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,8 +13,8 @@ import dagger.hilt.android.components.ViewModelComponent
 object ServerListUseCaseModule {
 
     @Provides
-    fun provideGetServersUseCase(repository: ServerListRepository): GetServersUseCase {
-        return GetServersUseCase(repository)
+    fun provideGetServersUseCase(repository: ServerListRepository): GetServerListUseCase {
+        return GetServerListUseCase(repository)
     }
 
     @Provides
