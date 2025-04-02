@@ -9,12 +9,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Improve repository method naming and add mappers&#10;&#10;- Rename repository methods for clarity (getServer -&gt; getServerConfigById, &#10;  getServers -&gt; getServerItemList, etc.)&#10;- Add mappers to repository implementations for clear separation between&#10;  domain models and database entities&#10;- Update use cases to work with renamed repository methods">
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Rename GetServersUseCase to GetServerListUseCase and update references">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/domain/use_cases/GetServerConfigUseCase.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/di/ServerRepositoryModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/di/ServerRepositoryModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,9 +53,9 @@
       <list>
         <option value="Kotlin Interface" />
         <option value="Kotlin Data Class" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Object" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -506,7 +507,31 @@
       <option name="project" value="LOCAL" />
       <updated>1743578425621</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Add binding for ServerConfigRepository in ServerRepositoryModule">
+      <option name="closed" value="true" />
+      <created>1743579160704</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1743579160704</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Update getServerConfigById to return nullable ServerConfig">
+      <option name="closed" value="true" />
+      <created>1743580037586</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1743580037586</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Rename GetServersUseCase to GetServerListUseCase and update references">
+      <option name="closed" value="true" />
+      <created>1743580169720</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1743580169720</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,9 +559,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Remove null return mentions from repository methods" />
-    <MESSAGE value="Add ServerListViewModel&#10;&#10;- Implement loadServers method to fetch server data&#10;- Implement deleteServer method to remove servers&#10;- Handle loading, empty, success and error states" />
-    <MESSAGE value="Implement DI with Hilt&#10;&#10;- Add ServerListUseCaseModule to provide use cases&#10;- Configure ViewModel with @HiltViewModel annotation" />
     <MESSAGE value="Add Hilt ViewModel dependencies for DI support&#10;&#10;- Added hilt-navigation-compose dependency for hiltViewModel() functionality&#10;- Enables dependency injection in ViewModels with @HiltViewModel annotation" />
     <MESSAGE value="Add reusable UI components for loading and error states&#10;&#10;- Create LoadingContent for displaying loading indicators&#10;- Create ErrorContent for displaying error messages" />
     <MESSAGE value="Add UI components for server list and empty server list&#10;&#10;- Create ServerList to display a list of servers&#10;- Create ServerListEmpty to display an empty list of servers" />
@@ -559,7 +581,10 @@
     <MESSAGE value="Add ServerConfigRepository interface for server configuration management" />
     <MESSAGE value="Add ServerMapper for converting between ServerEntity, ServerConfig, and ServerItem" />
     <MESSAGE value="Improve repository method naming and add mappers&#10;&#10;- Rename repository methods for clarity (getServer -&gt; getServerConfigById, &#10;  getServers -&gt; getServerItemList, etc.)&#10;- Add mappers to repository implementations for clear separation between&#10;  domain models and database entities&#10;- Update use cases to work with renamed repository methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve repository method naming and add mappers&#10;&#10;- Rename repository methods for clarity (getServer -&gt; getServerConfigById, &#10;  getServers -&gt; getServerItemList, etc.)&#10;- Add mappers to repository implementations for clear separation between&#10;  domain models and database entities&#10;- Update use cases to work with renamed repository methods" />
+    <MESSAGE value="Add binding for ServerConfigRepository in ServerRepositoryModule" />
+    <MESSAGE value="Update getServerConfigById to return nullable ServerConfig" />
+    <MESSAGE value="Rename GetServersUseCase to GetServerListUseCase and update references" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename GetServersUseCase to GetServerListUseCase and update references" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
