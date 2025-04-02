@@ -1,7 +1,6 @@
 package com.example.webdavmanager.core.data.repository
 
 import com.example.webdavmanager.core.data.local.ServerDao
-import com.example.webdavmanager.core.data.local.ServerEntity
 import com.example.webdavmanager.core.data.mapper.toServerConfig
 import com.example.webdavmanager.core.data.mapper.toServerEntity
 import com.example.webdavmanager.core.data.mapper.toServerItem
@@ -28,18 +27,12 @@ class ServerRepositoryImpl @Inject constructor(
         return serverDao.getAll().map { it.toServerItem() }
     }
 
-    override suspend fun getServerConfigById(id: Int): ServerConfig {
+    override suspend fun getServerConfigById(id: Int): ServerConfig? {
         return serverDao.getServerById(id)?.let { serverEntity ->
             serverEntity.toServerConfig().copy(
                 password = encryptor.decrypt(serverEntity.password)
             )
-        } ?: ServerConfig(
-            id = 0,
-            name = "",
-            url = "",
-            user = "",
-            password = ""
-        )
+        }
     }
 
     override suspend fun insertServerConfig(serverConfig: ServerConfig) {
