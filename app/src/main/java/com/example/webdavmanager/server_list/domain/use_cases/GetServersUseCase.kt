@@ -7,5 +7,5 @@ import javax.inject.Inject
 class GetServersUseCase @Inject constructor(
     private val repository: ServerListRepository
 ) {
-    suspend operator fun invoke(): List<ServerItem> = repository.getServers()
+    suspend operator fun invoke(): List<ServerItem> = repository.getServerItemList()
 }
