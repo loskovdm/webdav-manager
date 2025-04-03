@@ -2,6 +2,7 @@ package com.example.webdavmanager.server_config.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.webdavmanager.server_config.domain.model.ServerConfig
 import com.example.webdavmanager.server_config.domain.use_cases.GetServerConfigUseCase
 import com.example.webdavmanager.server_config.domain.use_cases.SaveServerConfigUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,39 +17,68 @@ class ServerConfigViewModel @Inject constructor(
     private val getServerConfigUseCase: GetServerConfigUseCase,
     private val saveServerConfigUseCase: SaveServerConfigUseCase
 ) : ViewModel() {
-    private val _state = MutableStateFlow<ServerConfigState>(ServerConfigState.Loading)
+    private val _state = MutableStateFlow(ServerConfigState())
     val state: StateFlow<ServerConfigState> = _state.asStateFlow()
 
-    private val serverId: Int = 1 // TODO: Implement navigation
-    private val isNewServer: Boolean = (serverId == 0)
+    val serverId = 1
 
     init {
-        loadServerConfig()
+        loadConfig()
     }
 
-    fun loadServerConfig() {
+    fun loadConfig() {
         viewModelScope.launch {
-            _state.value = ServerConfigState.Loading
-
             try {
-                val serverConfig = getServerConfigUseCase(serverId)
-                _state.value = ServerConfigState.Editing(serverConfig, isNewServer)
+                val config = getServerConfigUseCase(serverId)
+                _state.value = ServerConfigState(
+                    name = config.name,
+                    url = config.url,
+                    user = config.user,
+                    password = config.password,
+                    isNewConfig = config.id == 0
+                )
             } catch (e: Exception) {
-                _state.value = ServerConfigState.Error(e.message ?: "Unknown error occurred")
+                _state.value = _state.value.copy(errorMessage = e.message)
             }
         }
     }
 
-    fun saveServerConfig() {
-        val currentState = _state.value
-        if (currentState is ServerConfigState.Editing) {
-            viewModelScope.launch {
-                try {
-                    saveServerConfigUseCase(currentState.serverConfig)
-                } catch (e: Exception) {
-                    _state.value = ServerConfigState.Error(e.message ?: "Unknown error occurred")
-                }
+    fun saveConfig() {
+        viewModelScope.launch {
+            try {
+                val currentState = _state.value
+                val currentConfig = ServerConfig(
+                    id = serverId,
+                    name = currentState.name,
+                    url = currentState.url,
+                    user = currentState.user,
+                    password = currentState.password
+                )
+                saveServerConfigUseCase(currentConfig)
+                _state.value = _state.value.copy(isSaved = true)
+            } catch (e: Exception) {
+                _state.value = _state.value.copy(errorMessage = e.message)
             }
         }
+    }
+
+    fun updateName(newName: String) {
+        _state.value = _state.value.copy(name = newName, isSaved = false)
+    }
+
+    fun updateUrl(newUrl: String) {
+        _state.value = _state.value.copy(url = newUrl, isSaved = false)
+    }
+
+    fun updateUser(newUser: String) {
+        _state.value = _state.value.copy(user = newUser, isSaved = false)
+    }
+
+    fun updatePassword(newPassword: String) {
+        _state.value = _state.value.copy(password = newPassword, isSaved = false)
+    }
+
+    fun clearErrorMessage() {
+        _state.value = _state.value.copy(errorMessage = null)
     }
 }
