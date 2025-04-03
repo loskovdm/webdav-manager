@@ -2,8 +2,10 @@ package com.example.webdavmanager.server_config.ui.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -30,6 +32,8 @@ fun ServerConfigForm(
 ) {
     Column(
         modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp)
     ) {
         OutlinedTextField(
             value = name,

@@ -41,8 +41,6 @@ fun ServerConfigScreen(
             onChangePassword = viewModel::updatePassword,
             modifier = Modifier
                 .padding(paddingValues)
-                .padding(16.dp)
-                .fillMaxSize()
         )
     }
     state.errorMessage?.let { errorMessage ->
