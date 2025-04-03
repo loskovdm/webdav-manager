@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.webdavmanager.server_config.ui.component.ErrorDialog
+import com.example.webdavmanager.core.ui.component.ErrorDialog
 import com.example.webdavmanager.server_config.ui.component.ServerConfigForm
 import com.example.webdavmanager.server_config.ui.component.ServerConfigTopAppBar
 
@@ -44,7 +44,7 @@ fun ServerConfigScreen(
     state.errorMessage?.let { errorMessage ->
         ErrorDialog(
             errorMessage = errorMessage,
-            onClearErrorMessage = viewModel::clearErrorMessage
+            onCloseErrorMessage = viewModel::clearErrorMessage
         )
     }
 }

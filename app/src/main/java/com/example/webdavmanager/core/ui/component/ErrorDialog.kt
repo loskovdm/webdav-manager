@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_config.ui.component
+package com.example.webdavmanager.core.ui.component
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
@@ -17,7 +17,7 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 @Composable
 fun ErrorDialog(
     errorMessage: String,
-    onClearErrorMessage: () -> Unit
+    onCloseErrorMessage: () -> Unit
 ) {
     AlertDialog(
         icon = {
@@ -38,10 +38,10 @@ fun ErrorDialog(
                 style = MaterialTheme.typography.bodyMedium
             )
         },
-        onDismissRequest = { onClearErrorMessage },
+        onDismissRequest = { onCloseErrorMessage },
         confirmButton = {
             TextButton(
-                onClick = { onClearErrorMessage },
+                onClick = { onCloseErrorMessage },
                 colors = ButtonDefaults.textButtonColors(
                     contentColor = MaterialTheme.colorScheme.onSurface
                 )
@@ -65,7 +65,7 @@ fun PreviewErrorDialog() {
     WebdavManagerTheme {
         ErrorDialog(
             errorMessage = "Error message",
-            onClearErrorMessage = {}
+            onCloseErrorMessage = {}
         )
     }
 }
