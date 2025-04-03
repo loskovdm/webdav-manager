@@ -47,7 +47,7 @@ fun ServerItem(
 
     Card(
         modifier = modifier.fillMaxWidth(),
-        onClick = onServerClick,
+        onClick = { onServerClick() },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant

@@ -16,26 +16,20 @@ class ServerListViewModel @Inject constructor(
     private val getServersUseCase: GetServerListUseCase,
     private val deleteServerUseCase: DeleteServerUseCase
 ) : ViewModel() {
-    private val _state = MutableStateFlow<ServerListState>(ServerListState.Loading)
+    private val _state = MutableStateFlow(ServerListState())
     val state: StateFlow<ServerListState> = _state.asStateFlow()
 
     init {
-        loadServers()
+        loadServerList()
     }
 
-    fun loadServers() {
+    fun loadServerList() {
         viewModelScope.launch {
-            _state.value = ServerListState.Loading
-
             try {
-                val servers = getServersUseCase()
-                _state.value = if (servers.isEmpty()) {
-                    ServerListState.Empty
-                } else{
-                    ServerListState.Success(servers)
-                }
+                val serverList = getServersUseCase()
+                _state.value = _state.value.copy(serverList = serverList)
             } catch (e: Exception) {
-                _state.value = ServerListState.Error(e.message ?: "Unknown error occurred")
+                _state.value = _state.value.copy(errorMessage = e.message)
             }
         }
     }
@@ -44,10 +38,14 @@ class ServerListViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 deleteServerUseCase(id)
-                loadServers()
+                loadServerList()
             } catch (e: Exception) {
-                _state.value = ServerListState.Error(e.message ?: "Unknown error occurred")
+                _state.value = _state.value.copy(errorMessage = e.message)
             }
         }
+    }
+
+    fun clearErrorMessage() {
+        _state.value = _state.value.copy(errorMessage = null)
     }
 }

@@ -16,35 +16,22 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 fun ServerList(
     servers: List<ServerItem>,
     onDeleteServer: (Int) -> Unit = {},
-    onNavigateToServerFileManager: (Int) -> Unit = {},
-    onNavigateToEditServer: (Int) -> Unit = {},
-    onNavigateToAddServer: () -> Unit = {}
+//    onNavigateToServerFileManager: (Int) -> Unit = {},
+//    onNavigateToEditServer: (Int) -> Unit = {},
+//    onNavigateToAddServer: () -> Unit = {},
+    modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        topBar = {
-            ServerListTopAppBar()
-        },
-        floatingActionButton = {
-            ServerListFloatingActionButton(
-                onClick = { onNavigateToAddServer },
-                modifier = Modifier.padding(bottom = 24.dp, end = 24.dp)
+    LazyColumn(
+        modifier = modifier.fillMaxSize()
+    ) {
+        items(servers) { server ->
+            ServerItem(
+                server = server,
+                onServerClick = {  }, // TODO: Implement navigation
+                onDeleteClick = { onDeleteServer(server.id) },
+                onEditClick = {  }, // TODO: Implement navigation
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
             )
-        }
-    ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {
-            items(servers) { server ->
-                ServerItem(
-                    server = server,
-                    onServerClick = { onNavigateToServerFileManager(server.id) },
-                    onDeleteClick = { onDeleteServer(server.id) },
-                    onEditClick = { onNavigateToEditServer(server.id) },
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-                )
-            }
         }
     }
 }
