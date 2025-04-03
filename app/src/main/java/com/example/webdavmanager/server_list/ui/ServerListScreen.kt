@@ -30,7 +30,7 @@ fun ServerListScreen(
             )
         }
     ) { paddingValues ->
-        if (state.serverList.isEmpty()) {
+        if (state.serverList.isEmpty() && state.isLoaded) {
             ServerListEmpty(
                 modifier = Modifier.padding(paddingValues)
             )

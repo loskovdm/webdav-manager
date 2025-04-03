@@ -27,7 +27,7 @@ class ServerListViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val serverList = getServersUseCase()
-                _state.value = _state.value.copy(serverList = serverList)
+                _state.value = _state.value.copy(serverList = serverList, isLoaded = true)
             } catch (e: Exception) {
                 _state.value = _state.value.copy(errorMessage = e.message)
             }
