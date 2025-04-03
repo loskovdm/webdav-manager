@@ -97,7 +97,8 @@ fun ServerItem(
 
                 DropdownMenu(
                     expanded = showMenu,
-                    onDismissRequest = { showMenu = false }
+                    onDismissRequest = { showMenu = false },
+                    shape = RoundedCornerShape(16.dp)
                 ) {
                     DropdownMenuItem(
                         leadingIcon = {
