@@ -10,6 +10,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.webdavmanager.core.ui.component.ErrorDialog
 import com.example.webdavmanager.server_list.ui.component.ServerList
 import com.example.webdavmanager.server_list.ui.component.ServerListEmpty
+import com.example.webdavmanager.server_list.ui.component.ServerListFloatingActionButton
 import com.example.webdavmanager.server_list.ui.component.ServerListTopAppBar
 
 
@@ -22,6 +23,11 @@ fun ServerListScreen(
     Scaffold(
         topBar = {
             ServerListTopAppBar()
+        },
+        floatingActionButton = {
+            ServerListFloatingActionButton(
+                onClick = {} // TODO: Implement navigation
+            )
         }
     ) { paddingValues ->
         if (state.serverList.isEmpty()) {
