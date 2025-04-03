@@ -11,7 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.webdavmanager.R
@@ -20,35 +21,57 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ServerConfigTopAppBar(
-    isNewServer: Boolean,
-    onSaveClick: () -> Unit,
-    onNavigateUp: () -> Unit,
-    modifier: Modifier = Modifier
+    isNewConfig: Boolean,
+    isSaved: Boolean,
+    onSaveConfig: () -> Unit
 ) {
+
+    var showConfirmationDialog = remember { mutableStateOf(false) }
+    if (showConfirmationDialog.value) {
+        ConfirmationDialog(
+            onConfirm = {
+                // TODO: Implement navigation
+            },
+            onDismiss = {
+                showConfirmationDialog.value = false
+            }
+        )
+    }
+
     TopAppBar(
-        title =  {
+        title = {
             Text(
-                text = if (isNewServer) stringResource(R.string.create_server) else stringResource(R.string.edit_server),
+                text = if (isNewConfig) {
+                    stringResource(R.string.create_server)
+                } else {
+                    stringResource(R.string.edit_server)
+                },
                 style = MaterialTheme.typography.titleLarge
             )
         },
+        navigationIcon = {
+            IconButton(
+                onClick = {
+                    if (!isSaved) {
+                        showConfirmationDialog.value = true
+                    } else {
+                        // TODO: Implement navigation
+                    }
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = stringResource(R.string.navigate_back)
+                )
+            }
+        },
         actions = {
             IconButton(
-                onClick = onSaveClick
+                onClick = { onSaveConfig }
             ) {
                 Icon(
                     imageVector = Icons.Filled.Save,
                     contentDescription = stringResource(R.string.save_configuration)
-                )
-            }
-        },
-        navigationIcon = {
-            IconButton(
-                onClick = onNavigateUp
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = ""
                 )
             }
         },
@@ -57,19 +80,30 @@ fun ServerConfigTopAppBar(
             titleContentColor = MaterialTheme.colorScheme.onPrimary,
             actionIconContentColor = MaterialTheme.colorScheme.onPrimary,
             navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
-        ),
-        modifier = modifier
+        )
     )
 }
 
 @Preview
 @Composable
-fun PreviewServerConfigTopAppBar() {
+fun FirstPreviewServerConfigTopAppBar() {
     WebdavManagerTheme {
         ServerConfigTopAppBar(
-            isNewServer = false,
-            onSaveClick = {},
-            onNavigateUp = {}
+            isNewConfig = true,
+            isSaved = true,
+            onSaveConfig = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+fun SecondPreviewServerConfigTopAppBar() {
+    WebdavManagerTheme {
+        ServerConfigTopAppBar(
+            isNewConfig = false,
+            isSaved = true,
+            onSaveConfig = {}
         )
     }
 }

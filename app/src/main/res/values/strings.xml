@@ -14,4 +14,10 @@
     <string name="url">URL</string>
     <string name="user">User</string>
     <string name="password">Password</string>
+    <string name="navigate_back">Navigate back</string>
+    <string name="error">Error</string>
+    <string name="ok">OK</string>
+    <string name="unsaved_changes">Unsaved changes</string>
+    <string name="unsaved_changes_confirmation_question">You have unsaved changes. Do you want to exit without saving?</string>
+    <string name="cancel">Cancel</string>
 </resources>
