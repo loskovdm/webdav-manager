@@ -67,7 +67,7 @@ fun ServerConfigTopAppBar(
         },
         actions = {
             IconButton(
-                onClick = { onSaveConfig }
+                onClick = { onSaveConfig() }
             ) {
                 Icon(
                     imageVector = Icons.Filled.Save,
