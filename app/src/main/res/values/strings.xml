@@ -20,4 +20,6 @@
     <string name="unsaved_changes">Unsaved changes</string>
     <string name="unsaved_changes_confirmation_question">You have unsaved changes. Do you want to exit without saving?</string>
     <string name="cancel">Cancel</string>
+    <string name="show_password">Show password</string>
+    <string name="hide_password">Hide password</string>
 </resources>
