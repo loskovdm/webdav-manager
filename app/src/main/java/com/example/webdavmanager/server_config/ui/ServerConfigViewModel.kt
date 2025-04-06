@@ -1,7 +1,10 @@
 package com.example.webdavmanager.server_config.ui
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
+import com.example.webdavmanager.navigation.NavDestination.ServerConfigDestination
 import com.example.webdavmanager.server_config.domain.model.ServerConfig
 import com.example.webdavmanager.server_config.domain.use_cases.GetServerConfigUseCase
 import com.example.webdavmanager.server_config.domain.use_cases.SaveServerConfigUseCase
@@ -15,12 +18,15 @@ import javax.inject.Inject
 @HiltViewModel
 class ServerConfigViewModel @Inject constructor(
     private val getServerConfigUseCase: GetServerConfigUseCase,
-    private val saveServerConfigUseCase: SaveServerConfigUseCase
+    private val saveServerConfigUseCase: SaveServerConfigUseCase,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val _state = MutableStateFlow(ServerConfigState())
     val state: StateFlow<ServerConfigState> = _state.asStateFlow()
 
-    val serverId = 1
+    private val serverId: Int = savedStateHandle
+        .toRoute<ServerConfigDestination>()
+        .serverId
 
     init {
         loadConfig()

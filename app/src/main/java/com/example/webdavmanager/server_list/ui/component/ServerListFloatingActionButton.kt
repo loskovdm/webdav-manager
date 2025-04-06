@@ -16,11 +16,11 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 
 @Composable
 fun ServerListFloatingActionButton(
-    onClick: () -> Unit,
+    onClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     FloatingActionButton(
-        onClick = onClick,
+        onClick = { onClick(0) },
         containerColor = MaterialTheme.colorScheme.primary,
         contentColor = MaterialTheme.colorScheme.onPrimary,
         shape = RoundedCornerShape(16.dp),

@@ -16,7 +16,8 @@ import com.example.webdavmanager.server_list.ui.component.ServerListTopAppBar
 
 @Composable
 fun ServerListScreen(
-    viewModel: ServerListViewModel = hiltViewModel()
+    viewModel: ServerListViewModel = hiltViewModel(),
+    onNavigateToServerConfig: (Int) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -26,7 +27,9 @@ fun ServerListScreen(
         },
         floatingActionButton = {
             ServerListFloatingActionButton(
-                onClick = {} // TODO: Implement navigation
+                onClick = { serverId ->
+                    onNavigateToServerConfig(serverId)
+                }
             )
         }
     ) { paddingValues ->
@@ -38,6 +41,9 @@ fun ServerListScreen(
             ServerList(
                 servers = state.serverList,
                 onDeleteServer = viewModel::deleteServer,
+                onNavigateToServerConfig = { serverId ->
+                    onNavigateToServerConfig(serverId)
+                },
                 modifier = Modifier.padding(paddingValues)
             )
         }

@@ -23,14 +23,16 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 fun ServerConfigTopAppBar(
     isNewConfig: Boolean,
     isSaved: Boolean,
-    onSaveConfig: () -> Unit
+    onSaveConfig: () -> Unit,
+    onNavigateBack: () -> Unit,
+    onNavigateBackWithChanges: () -> Unit
 ) {
 
     var showConfirmationDialog = remember { mutableStateOf(false) }
     if (showConfirmationDialog.value) {
         ConfirmationDialog(
             onConfirm = {
-                // TODO: Implement navigation
+                onNavigateBack()
             },
             onDismiss = {
                 showConfirmationDialog.value = false
@@ -55,7 +57,7 @@ fun ServerConfigTopAppBar(
                     if (!isSaved) {
                         showConfirmationDialog.value = true
                     } else {
-                        // TODO: Implement navigation
+                        onNavigateBack()
                     }
                 }
             ) {
@@ -67,7 +69,10 @@ fun ServerConfigTopAppBar(
         },
         actions = {
             IconButton(
-                onClick = { onSaveConfig() }
+                onClick = {
+                    onSaveConfig()
+                    onNavigateBackWithChanges()
+                }
             ) {
                 Icon(
                     imageVector = Icons.Filled.Save,
@@ -91,7 +96,9 @@ fun FirstPreviewServerConfigTopAppBar() {
         ServerConfigTopAppBar(
             isNewConfig = true,
             isSaved = true,
-            onSaveConfig = {}
+            onSaveConfig = {},
+            onNavigateBack = {},
+            onNavigateBackWithChanges = {}
         )
     }
 }
@@ -103,7 +110,9 @@ fun SecondPreviewServerConfigTopAppBar() {
         ServerConfigTopAppBar(
             isNewConfig = false,
             isSaved = true,
-            onSaveConfig = {}
+            onSaveConfig = {},
+            onNavigateBack = {},
+            onNavigateBackWithChanges = {}
         )
     }
 }

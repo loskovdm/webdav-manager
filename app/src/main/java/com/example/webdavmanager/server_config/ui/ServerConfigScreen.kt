@@ -15,7 +15,9 @@ import com.example.webdavmanager.server_config.ui.component.ServerConfigTopAppBa
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ServerConfigScreen(
-    viewModel: ServerConfigViewModel = hiltViewModel()
+    viewModel: ServerConfigViewModel = hiltViewModel(),
+    onNavigateBack: () -> Unit,
+    onNavigateBackWithChanges:() -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -24,7 +26,9 @@ fun ServerConfigScreen(
             ServerConfigTopAppBar(
                 isNewConfig = state.isNewConfig,
                 isSaved = state.isSaved,
-                onSaveConfig = viewModel::saveConfig
+                onSaveConfig = viewModel::saveConfig,
+                onNavigateBack = { onNavigateBack() },
+                onNavigateBackWithChanges = { onNavigateBackWithChanges() }
             )
         }
     ) { paddingValues ->

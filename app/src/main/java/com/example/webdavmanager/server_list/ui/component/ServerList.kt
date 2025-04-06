@@ -3,7 +3,6 @@ package com.example.webdavmanager.server_list.ui.component
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.webdavmanager.server_list.domain.model.ServerItem
@@ -15,10 +14,9 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 @Composable
 fun ServerList(
     servers: List<ServerItem>,
-    onDeleteServer: (Int) -> Unit = {},
-//    onNavigateToServerFileManager: (Int) -> Unit = {},
-//    onNavigateToEditServer: (Int) -> Unit = {},
-//    onNavigateToAddServer: () -> Unit = {},
+    onDeleteServer: (Int) -> Unit,
+    onNavigateToServerConfig: (Int) -> Unit,
+//    onNavigateToServerFileManager: (Int) -> Unit, todo: Implement navigation
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -29,7 +27,9 @@ fun ServerList(
                 server = server,
                 onServerClick = {  }, // TODO: Implement navigation
                 onDeleteClick = { onDeleteServer(server.id) },
-                onEditClick = {  }, // TODO: Implement navigation
+                onEditClick = { serverId ->
+                    onNavigateToServerConfig(serverId)
+                },
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
             )
         }
@@ -40,10 +40,14 @@ fun ServerList(
 @Composable
 fun PreviewServerList() {
     WebdavManagerTheme {
-        ServerList(listOf(
-            ServerItem(id = 1, name = "Home Server", user = "admin"),
-            ServerItem(id = 2, name = "Work WebDAV", user = "user123"),
-            ServerItem(id = 3, name = "Cloud Storage", user = "clouduser")
-        ))
+        ServerList(
+            servers =  listOf(
+                ServerItem(id = 1, name = "Home Server", user = "admin"),
+                ServerItem(id = 2, name = "Work WebDAV", user = "user123"),
+                ServerItem(id = 3, name = "Cloud Storage", user = "clouduser")
+            ),
+            onDeleteServer = {},
+            onNavigateToServerConfig = {}
+        )
     }
 }
