@@ -9,10 +9,24 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Move ErrorDialog to core components&#10;&#10;- Extracted ErrorDialog from server config to core.ui.component package&#10;- Updated references in ServerConfigScreen to use the new component path&#10;- Rename argument to onCloseErrorMessage&#10;- Improves reusability across different screens">
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add Kotlin serialization and navigation dependencies">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/navigation/Destination.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/navigation/WebDavNavHost.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ServerConfigTopAppBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ServerConfigTopAppBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/ServerListScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/ServerListScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListFloatingActionButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListFloatingActionButton.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +36,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Dmitry Loskov\.android\avd\Medium_Phone.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=9TZLCUBA69WWAMYH)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -93,26 +107,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "feature/add-navigation",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager",
-    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/add-navigation&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="com.example.webdavmanager.navigation" />
+      <recent name="com.example.webdavmanager" />
       <recent name="com.example.webdavmanager.core.ui.component" />
       <recent name="com.example.webdavmanager.core.ui.theme" />
       <recent name="com.example.webdavmanager.server_list.di" />
@@ -200,14 +216,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Add Room database dependencies with KSP processor&#10;&#10;- Add Room runtime, ktx, and compiler dependencies&#10;- Configure KSP for annotation processing&#10;- Set up database infrastructure for server data storage">
-      <option name="closed" value="true" />
-      <created>1742834236884</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1742834236884</updated>
     </task>
     <task id="LOCAL-00003" summary="Add Room database infrastructure&#10;&#10;- Create Server entity model&#10;- Implement ServerDao interface&#10;- Set up ServerDatabase configuration">
       <option name="closed" value="true" />
@@ -593,7 +601,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743704926178</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Add Kotlin serialization and navigation dependencies">
+      <option name="closed" value="true" />
+      <created>1743744063441</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1743744063441</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -607,7 +623,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/server-config-ui" />
+                        <option value="feature/add-navigation" />
                       </list>
                     </value>
                   </entry>
@@ -621,7 +637,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Add consistent 16dp corner radius to server cards&#10;&#10;- Set explicit RoundedCornerShape(16dp) for server cards&#10;- Matches corner radius used in FloatingActionButton" />
     <MESSAGE value="Implement ServerList component&#10;&#10;- Created ServerList component with Scaffold layout pattern&#10;- Integrated ServerListTopAppBar and ServerListFloatingActionButton&#10;- Implemented scrollable server list using LazyColumn&#10;- Added proper padding and layout structure" />
     <MESSAGE value="Add Material Icons Extended dependency" />
     <MESSAGE value="Implement empty state UI for ServerList component&#10;&#10;- Add ServerListEmpty composable with a Scaffold layout&#10;- Include an icon and descriptive text for no servers state&#10;- Update strings.xml with titles and descriptions for empty state" />
@@ -646,7 +661,8 @@
     <MESSAGE value="Remove unused imports in ServerConfigScreen for cleaner code" />
     <MESSAGE value="Move ErrorDialog to core components&#10;&#10;- Extracted ErrorDialog from server config to core.ui.component package&#10;- Updated references in ServerConfigScreen to use the new component path&#10;- Improves reusability across different screens" />
     <MESSAGE value="Move ErrorDialog to core components&#10;&#10;- Extracted ErrorDialog from server config to core.ui.component package&#10;- Updated references in ServerConfigScreen to use the new component path&#10;- Rename argument to onCloseErrorMessage&#10;- Improves reusability across different screens" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move ErrorDialog to core components&#10;&#10;- Extracted ErrorDialog from server config to core.ui.component package&#10;- Updated references in ServerConfigScreen to use the new component path&#10;- Rename argument to onCloseErrorMessage&#10;- Improves reusability across different screens" />
+    <MESSAGE value="Add Kotlin serialization and navigation dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Kotlin serialization and navigation dependencies" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
