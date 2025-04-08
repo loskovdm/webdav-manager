@@ -1,5 +1,6 @@
 package com.example.webdavmanager.server_config.ui.component
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Save
@@ -38,6 +39,14 @@ fun ServerConfigTopAppBar(
                 showConfirmationDialog.value = false
             }
         )
+    }
+
+    BackHandler(enabled = true) {
+        if (!isSaved) {
+            showConfirmationDialog.value = true
+        } else {
+            onNavigateBack()
+        }
     }
 
     TopAppBar(
