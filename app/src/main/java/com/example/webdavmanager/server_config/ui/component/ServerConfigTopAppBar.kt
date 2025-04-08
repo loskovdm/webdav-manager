@@ -1,6 +1,5 @@
 package com.example.webdavmanager.server_config.ui.component
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Save
@@ -12,8 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.webdavmanager.R
@@ -23,32 +20,10 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 @Composable
 fun ServerConfigTopAppBar(
     isNewConfig: Boolean,
-    isSaved: Boolean,
-    onSaveConfig: () -> Unit,
+    onSaveConfig: () -> Boolean,
     onNavigateBack: () -> Unit,
     onNavigateBackWithChanges: () -> Unit
 ) {
-
-    var showConfirmationDialog = remember { mutableStateOf(false) }
-    if (showConfirmationDialog.value) {
-        ConfirmationDialog(
-            onConfirm = {
-                onNavigateBack()
-            },
-            onDismiss = {
-                showConfirmationDialog.value = false
-            }
-        )
-    }
-
-    BackHandler(enabled = true) {
-        if (!isSaved) {
-            showConfirmationDialog.value = true
-        } else {
-            onNavigateBack()
-        }
-    }
-
     TopAppBar(
         title = {
             Text(
@@ -62,13 +37,7 @@ fun ServerConfigTopAppBar(
         },
         navigationIcon = {
             IconButton(
-                onClick = {
-                    if (!isSaved) {
-                        showConfirmationDialog.value = true
-                    } else {
-                        onNavigateBack()
-                    }
-                }
+                onClick = { onNavigateBack() }
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -79,8 +48,7 @@ fun ServerConfigTopAppBar(
         actions = {
             IconButton(
                 onClick = {
-                    onSaveConfig()
-                    onNavigateBackWithChanges()
+                    if (onSaveConfig()) onNavigateBackWithChanges()
                 }
             ) {
                 Icon(
@@ -104,8 +72,7 @@ fun FirstPreviewServerConfigTopAppBar() {
     WebdavManagerTheme {
         ServerConfigTopAppBar(
             isNewConfig = true,
-            isSaved = true,
-            onSaveConfig = {},
+            onSaveConfig = { true },
             onNavigateBack = {},
             onNavigateBackWithChanges = {}
         )
@@ -118,8 +85,7 @@ fun SecondPreviewServerConfigTopAppBar() {
     WebdavManagerTheme {
         ServerConfigTopAppBar(
             isNewConfig = false,
-            isSaved = true,
-            onSaveConfig = {},
+            onSaveConfig = { true },
             onNavigateBack = {},
             onNavigateBackWithChanges = {}
         )

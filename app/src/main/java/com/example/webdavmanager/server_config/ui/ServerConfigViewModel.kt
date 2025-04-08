@@ -49,22 +49,33 @@ class ServerConfigViewModel @Inject constructor(
         }
     }
 
-    fun saveConfig() {
-        viewModelScope.launch {
-            try {
-                val currentState = _state.value
-                val currentConfig = ServerConfig(
-                    id = serverId,
-                    name = currentState.name,
-                    url = currentState.url,
-                    user = currentState.user,
-                    password = currentState.password
-                )
-                saveServerConfigUseCase(currentConfig)
-                _state.value = _state.value.copy(isSaved = true)
-            } catch (e: Exception) {
-                _state.value = _state.value.copy(errorMessage = e.message)
+    fun saveConfig(): Boolean {
+        val errorName = validateInput(_state.value.name)
+        val errorUrl = validateInput(_state.value.url)
+        val errorUser = validateInput(_state.value.user)
+        val errorPassword = validateInput(_state.value.password)
+
+        if (errorName == null && errorUrl == null && errorUser == null && errorPassword == null) {
+            viewModelScope.launch {
+                try {
+                    val currentState = _state.value
+                    val currentConfig = ServerConfig(
+                        id = serverId,
+                        name = currentState.name,
+                        url = currentState.url,
+                        user = currentState.user,
+                        password = currentState.password
+                    )
+                    saveServerConfigUseCase(currentConfig)
+                    _state.value = _state.value.copy(isSaved = true)
+                } catch (e: Exception) {
+                    _state.value = _state.value.copy(errorMessage = e.message)
+                }
             }
+            return true
+        } else {
+            _state.value = _state.value.copy(errorMessage = "The input is incorrect. Please correct the entered data.")
+            return false
         }
     }
 
@@ -88,40 +99,10 @@ class ServerConfigViewModel @Inject constructor(
         _state.value = _state.value.copy(errorMessage = null)
     }
 
-    fun validateName(name: String): String? {
+    fun validateInput(input: String): String? {
         return when {
-            name.isEmpty() -> "Cannot be empty"
-            name.length < 3 -> "At least 3 characters required"
-            name.length > 30 -> "Maximum 30 characters allowed"
-            !name.matches(Regex("^[a-zA-Z0-9 ._\\-\\p{IsCyrillic}]+$")) -> "Contains invalid characters"
-            else -> null
-        }
-    }
-
-    fun validateUrl(url: String): String? {
-        val protocolPattern = "^https?://.*$"
-        val urlPattern = "^https?://[\\w\\.-]+(:\\d+)?(/[\\w\\.-]*)*/?$"
-
-        return when {
-            url.isEmpty() -> "Cannot be empty"
-            !url.matches(Regex(protocolPattern)) -> "URL must start with http:// or https://"
-            !url.matches(Regex(urlPattern)) -> "Invalid URL format"
-            else -> null
-        }
-    }
-
-    fun validateUser(user: String): String? {
-        return when {
-            user.isEmpty() -> "Cannot be empty"
-            user.length > 50 -> "Maximum 50 characters allowed"
-            !user.matches(Regex("^[a-zA-Z0-9._@]+$")) -> "Contains invalid characters"
-            else -> null
-        }
-    }
-
-    fun validatePassword(password: String): String? {
-        return when {
-            password.length > 30 -> "Maximum 30 characters allowed"
+            input.length > 100 -> "Too long"
+            input.contains(Regex("[\\u0000-\\u001F<>\"'`$;|&/\\\\:*?]")) -> "Contains invalid characters"
             else -> null
         }
     }

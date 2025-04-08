@@ -39,17 +39,9 @@ fun ServerConfigForm(
     onChangeUrl: (String) -> Unit,
     onChangeUser: (String) -> Unit,
     onChangePassword: (String) -> Unit,
-    validateName: (String) -> String?,
-    validateUrl: (String) -> String?,
-    validateUser: (String) -> String?,
-    validatePassword: (String) -> String?,
+    validateInput: (String) -> String?,
     modifier: Modifier = Modifier
 ) {
-    var nameFieldTouched by remember { mutableStateOf(false) }
-    var urlFieldTouched by remember { mutableStateOf(false) }
-    var userFieldTouched by remember { mutableStateOf(false) }
-    var passwordFieldTouched by remember { mutableStateOf(false) }
-
     var passwordVisible by remember { mutableStateOf(false) }
 
     Column(
@@ -60,7 +52,6 @@ fun ServerConfigForm(
         OutlinedTextField(
             value = name,
             onValueChange = {
-                if (!nameFieldTouched) nameFieldTouched = true
                 onChangeName(it)
             },
             label = {
@@ -72,14 +63,12 @@ fun ServerConfigForm(
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next
             ),
-            isError = nameFieldTouched && validateName(name) != null,
+            isError = validateInput(name) != null,
             supportingText = {
-                if (nameFieldTouched) {
-                    validateName(name)?.let { errorMessage ->
-                        Text(
-                            text = errorMessage
-                        )
-                    }
+                validateInput(name)?.let { errorMessage ->
+                    Text(
+                        text = errorMessage
+                    )
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -90,7 +79,6 @@ fun ServerConfigForm(
         OutlinedTextField(
             value = url,
             onValueChange = {
-                if (!urlFieldTouched) urlFieldTouched = true
                 onChangeUrl(it)
             },
             label = {
@@ -102,14 +90,12 @@ fun ServerConfigForm(
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next
             ),
-            isError = urlFieldTouched && validateUrl(url) != null,
+            isError = validateInput(url) != null,
             supportingText = {
-                if (urlFieldTouched) {
-                    validateUrl(url)?.let { errorMessage ->
-                        Text(
-                            text = errorMessage
-                        )
-                    }
+                validateInput(url)?.let { errorMessage ->
+                    Text(
+                        text = errorMessage
+                    )
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -120,7 +106,6 @@ fun ServerConfigForm(
         OutlinedTextField(
             value = user,
             onValueChange = {
-                if (!userFieldTouched) userFieldTouched = true
                 onChangeUser(it)
             },
             label = {
@@ -132,14 +117,12 @@ fun ServerConfigForm(
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next
             ),
-            isError = userFieldTouched && validateUser(user) != null,
+            isError = validateInput(user) != null,
             supportingText = {
-                if (userFieldTouched) {
-                    validateUser(user)?.let { errorMessage ->
-                        Text(
-                            text = errorMessage
-                        )
-                    }
+                validateInput(user)?.let { errorMessage ->
+                    Text(
+                        text = errorMessage
+                    )
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -150,7 +133,6 @@ fun ServerConfigForm(
         OutlinedTextField(
             value = password,
             onValueChange = {
-                if (!passwordFieldTouched) passwordFieldTouched = true
                 onChangePassword(it)
             },
             label = {
@@ -187,14 +169,12 @@ fun ServerConfigForm(
                     )
                 }
             },
-            isError = passwordFieldTouched && validatePassword(user) != null,
+            isError = validateInput(password) != null,
             supportingText = {
-                if (passwordFieldTouched) {
-                    validatePassword(user)?.let { errorMessage ->
-                        Text(
-                            text = errorMessage
-                        )
-                    }
+                validateInput(password)?.let { errorMessage ->
+                    Text(
+                        text = errorMessage
+                    )
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -215,10 +195,7 @@ fun PreviewServerConfigForm() {
             onChangeUrl = {},
             onChangeUser = {},
             onChangePassword = {},
-            validateName = {""},
-            validateUrl = {""},
-            validateUser = {""},
-            validatePassword = {""}
+            validateInput = {""}
         )
     }
 }

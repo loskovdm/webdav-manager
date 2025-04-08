@@ -1,14 +1,18 @@
 package com.example.webdavmanager.server_config.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.webdavmanager.core.ui.component.ErrorDialog
+import com.example.webdavmanager.server_config.ui.component.ConfirmationDialog
 import com.example.webdavmanager.server_config.ui.component.ServerConfigForm
 import com.example.webdavmanager.server_config.ui.component.ServerConfigTopAppBar
 
@@ -20,14 +24,35 @@ fun ServerConfigScreen(
     onNavigateBackWithChanges:() -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    var showConfirmationDialog = remember { mutableStateOf(false) }
+
+    if (showConfirmationDialog.value) {
+        ConfirmationDialog(
+            onConfirm = { onNavigateBack() },
+            onDismiss = { showConfirmationDialog.value = false }
+        )
+    }
+
+    BackHandler(enabled = true) {
+        if (!state.isSaved) {
+            showConfirmationDialog.value = true
+        } else {
+            onNavigateBack()
+        }
+    }
 
     Scaffold(
         topBar = {
             ServerConfigTopAppBar(
                 isNewConfig = state.isNewConfig,
-                isSaved = state.isSaved,
                 onSaveConfig = viewModel::saveConfig,
-                onNavigateBack = { onNavigateBack() },
+                onNavigateBack = {
+                    if (!state.isSaved) {
+                        showConfirmationDialog.value = true
+                    } else {
+                        onNavigateBack()
+                    }
+                },
                 onNavigateBackWithChanges = { onNavigateBackWithChanges() }
             )
         }
@@ -41,10 +66,7 @@ fun ServerConfigScreen(
             onChangeUrl = viewModel::updateUrl,
             onChangeUser = viewModel::updateUser,
             onChangePassword = viewModel::updatePassword,
-            validateName = viewModel::validateName,
-            validateUrl = viewModel::validateUrl,
-            validateUser = viewModel::validateUser,
-            validatePassword = viewModel::validatePassword,
+            validateInput = viewModel::validateInput,
             modifier = Modifier.padding(paddingValues)
         )
     }
