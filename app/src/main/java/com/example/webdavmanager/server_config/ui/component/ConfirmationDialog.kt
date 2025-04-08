@@ -1,10 +1,7 @@
 package com.example.webdavmanager.server_config.ui.component
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -20,22 +17,18 @@ fun ConfirmationDialog(
     onDismiss: () -> Unit
 ) {
     AlertDialog(
-        icon = {
-            Icon(
-                imageVector = Icons.Default.Warning,
-                contentDescription = null
-            )
-        },
         title = {
             Text(
-                text = stringResource(R.string.unsaved_changes),
-                style = MaterialTheme.typography.headlineSmall
+                text = "Exit without saving?",
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onSurface
             )
         },
         text = {
             Text(
-                text = stringResource(R.string.unsaved_changes_confirmation_question),
-                style = MaterialTheme.typography.bodyMedium
+                text = "Changes were not saved. Are you sure you want to exit?",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         },
         onDismissRequest = onDismiss,
@@ -43,7 +36,7 @@ fun ConfirmationDialog(
             TextButton(
                 onClick = onConfirm,
                 colors = ButtonDefaults.textButtonColors(
-                    contentColor = MaterialTheme.colorScheme.onSurface
+                    contentColor = MaterialTheme.colorScheme.primary
                 )
             ) {
                 Text(
@@ -56,7 +49,7 @@ fun ConfirmationDialog(
             TextButton(
                 onClick = onDismiss,
                 colors = ButtonDefaults.textButtonColors(
-                    contentColor = MaterialTheme.colorScheme.onSurface
+                    contentColor = MaterialTheme.colorScheme.primary
                 )
             ) {
                 Text(
