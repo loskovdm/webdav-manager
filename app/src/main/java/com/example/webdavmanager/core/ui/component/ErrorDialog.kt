@@ -29,21 +29,23 @@ fun ErrorDialog(
         title = {
             Text(
                 text = stringResource(R.string.error),
-                style = MaterialTheme.typography.headlineSmall
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onSurface
             )
         },
         text = {
             Text(
                 text = errorMessage,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         },
-        onDismissRequest = { onCloseErrorMessage },
+        onDismissRequest = { onCloseErrorMessage() },
         confirmButton = {
             TextButton(
-                onClick = { onCloseErrorMessage },
+                onClick = { onCloseErrorMessage() },
                 colors = ButtonDefaults.textButtonColors(
-                    contentColor = MaterialTheme.colorScheme.onSurface
+                    contentColor = MaterialTheme.colorScheme.primary
                 )
             ) {
                 Text(
