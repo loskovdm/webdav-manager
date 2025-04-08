@@ -87,4 +87,42 @@ class ServerConfigViewModel @Inject constructor(
     fun clearErrorMessage() {
         _state.value = _state.value.copy(errorMessage = null)
     }
+
+    fun validateName(name: String): String? {
+        return when {
+            name.isEmpty() -> "Cannot be empty"
+            name.length < 3 -> "At least 3 characters required"
+            name.length > 30 -> "Maximum 30 characters allowed"
+            !name.matches(Regex("^[a-zA-Z0-9 ._\\-\\p{IsCyrillic}]+$")) -> "Contains invalid characters"
+            else -> null
+        }
+    }
+
+    fun validateUrl(url: String): String? {
+        val protocolPattern = "^https?://.*$"
+        val urlPattern = "^https?://[\\w\\.-]+(:\\d+)?(/[\\w\\.-]*)*/?$"
+
+        return when {
+            url.isEmpty() -> "Cannot be empty"
+            !url.matches(Regex(protocolPattern)) -> "URL must start with http:// or https://"
+            !url.matches(Regex(urlPattern)) -> "Invalid URL format"
+            else -> null
+        }
+    }
+
+    fun validateUser(user: String): String? {
+        return when {
+            user.isEmpty() -> "Cannot be empty"
+            user.length > 50 -> "Maximum 50 characters allowed"
+            !user.matches(Regex("^[a-zA-Z0-9._@]+$")) -> "Contains invalid characters"
+            else -> null
+        }
+    }
+
+    fun validatePassword(password: String): String? {
+        return when {
+            password.length > 30 -> "Maximum 30 characters allowed"
+            else -> null
+        }
+    }
 }

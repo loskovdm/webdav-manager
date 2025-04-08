@@ -39,8 +39,17 @@ fun ServerConfigForm(
     onChangeUrl: (String) -> Unit,
     onChangeUser: (String) -> Unit,
     onChangePassword: (String) -> Unit,
+    validateName: (String) -> String?,
+    validateUrl: (String) -> String?,
+    validateUser: (String) -> String?,
+    validatePassword: (String) -> String?,
     modifier: Modifier = Modifier
 ) {
+    var nameFieldTouched by remember { mutableStateOf(false) }
+    var urlFieldTouched by remember { mutableStateOf(false) }
+    var userFieldTouched by remember { mutableStateOf(false) }
+    var passwordFieldTouched by remember { mutableStateOf(false) }
+
     var passwordVisible by remember { mutableStateOf(false) }
 
     Column(
@@ -50,7 +59,10 @@ fun ServerConfigForm(
     ) {
         OutlinedTextField(
             value = name,
-            onValueChange = { onChangeName(it) },
+            onValueChange = {
+                if (!nameFieldTouched) nameFieldTouched = true
+                onChangeName(it)
+            },
             label = {
                 Text(
                     text = stringResource(R.string.name)
@@ -60,14 +72,27 @@ fun ServerConfigForm(
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next
             ),
+            isError = nameFieldTouched && validateName(name) != null,
+            supportingText = {
+                if (nameFieldTouched) {
+                    validateName(name)?.let { errorMessage ->
+                        Text(
+                            text = errorMessage
+                        )
+                    }
+                }
+            },
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
             value = url,
-            onValueChange = { onChangeUrl(it) },
+            onValueChange = {
+                if (!urlFieldTouched) urlFieldTouched = true
+                onChangeUrl(it)
+            },
             label = {
                 Text(
                     text = stringResource(R.string.url)
@@ -77,14 +102,27 @@ fun ServerConfigForm(
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next
             ),
+            isError = urlFieldTouched && validateUrl(url) != null,
+            supportingText = {
+                if (urlFieldTouched) {
+                    validateUrl(url)?.let { errorMessage ->
+                        Text(
+                            text = errorMessage
+                        )
+                    }
+                }
+            },
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
         OutlinedTextField(
             value = user,
-            onValueChange = { onChangeUser(it) },
+            onValueChange = {
+                if (!userFieldTouched) userFieldTouched = true
+                onChangeUser(it)
+            },
             label = {
                 Text(
                     text = stringResource(R.string.user)
@@ -94,14 +132,27 @@ fun ServerConfigForm(
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next
             ),
+            isError = userFieldTouched && validateUser(user) != null,
+            supportingText = {
+                if (userFieldTouched) {
+                    validateUser(user)?.let { errorMessage ->
+                        Text(
+                            text = errorMessage
+                        )
+                    }
+                }
+            },
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
         OutlinedTextField(
             value = password,
-            onValueChange = { onChangePassword(it) },
+            onValueChange = {
+                if (!passwordFieldTouched) passwordFieldTouched = true
+                onChangePassword(it)
+            },
             label = {
                 Text(
                     text = stringResource(R.string.password)
@@ -136,6 +187,16 @@ fun ServerConfigForm(
                     )
                 }
             },
+            isError = passwordFieldTouched && validatePassword(user) != null,
+            supportingText = {
+                if (passwordFieldTouched) {
+                    validatePassword(user)?.let { errorMessage ->
+                        Text(
+                            text = errorMessage
+                        )
+                    }
+                }
+            },
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -153,7 +214,11 @@ fun PreviewServerConfigForm() {
             onChangeName = {},
             onChangeUrl = {},
             onChangeUser = {},
-            onChangePassword = {}
+            onChangePassword = {},
+            validateName = {""},
+            validateUrl = {""},
+            validateUser = {""},
+            validatePassword = {""}
         )
     }
 }

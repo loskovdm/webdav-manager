@@ -41,8 +41,11 @@ fun ServerConfigScreen(
             onChangeUrl = viewModel::updateUrl,
             onChangeUser = viewModel::updateUser,
             onChangePassword = viewModel::updatePassword,
-            modifier = Modifier
-                .padding(paddingValues)
+            validateName = viewModel::validateName,
+            validateUrl = viewModel::validateUrl,
+            validateUser = viewModel::validateUser,
+            validatePassword = viewModel::validatePassword,
+            modifier = Modifier.padding(paddingValues)
         )
     }
     state.errorMessage?.let { errorMessage ->
