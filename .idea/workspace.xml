@@ -9,16 +9,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add back navigation confirmation to ServerConfigTopAppBar">
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Refactor input validation method in ServerConfigViewModel for clarity">
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ConfirmationDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ConfirmationDialog.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ServerConfigForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ServerConfigForm.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ServerConfigTopAppBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ServerConfigTopAppBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListEmpty.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListEmpty.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +28,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=9TZLCUBA69WWAMYH)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Dmitry Loskov\.android\avd\Pixel_6_API_34.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -208,30 +208,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Add Hilt dependencies for dependency injection">
-      <option name="closed" value="true" />
-      <created>1742920749678</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1742920749678</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Add Hilt Application class for dependency injection&#10;&#10;- Create WebDavApplication class with @HiltAndroidApp annotation&#10;- Update AndroidManifest.xml to use the custom Application class">
-      <option name="closed" value="true" />
-      <created>1742926547922</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1742926547922</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Add Hilt dependency injection modules&#10;&#10;- Create DatabaseModel to provide ServerDatabase and ServerDao&#10;- Create SecurityModel to provide Password Encryption&#10;- Create RepositoryModel to bind repository implementation">
-      <option name="closed" value="true" />
-      <created>1742987346903</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1742987346903</updated>
     </task>
     <task id="LOCAL-00010" summary="Add @Inject annotation to enable dependency injection">
       <option name="closed" value="true" />
@@ -601,7 +577,31 @@
       <option name="project" value="LOCAL" />
       <updated>1744106168170</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Refactor ServerConfigForm and related components to unify input validation and improve navigation handling">
+      <option name="closed" value="true" />
+      <created>1744136072900</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1744136072900</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Update ErrorDialog styling and improve dismiss behavior">
+      <option name="closed" value="true" />
+      <created>1744136098281</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1744136098282</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Refactor input validation method in ServerConfigViewModel for clarity">
+      <option name="closed" value="true" />
+      <created>1744177775056</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1744177775056</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -629,9 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Implement error UI for ErrorContent component" />
-    <MESSAGE value="Rename Server class to ServerEntity and update references in DAO and repository" />
-    <MESSAGE value="Update queries in ServerDao to reflect ServerEntity renaming" />
     <MESSAGE value="Add ServerConfig data class" />
     <MESSAGE value="Add ServerConfigRepository interface for server configuration management" />
     <MESSAGE value="Add ServerMapper for converting between ServerEntity, ServerConfig, and ServerItem" />
@@ -654,19 +651,22 @@
     <MESSAGE value="Add validation for input fields in ServerConfigForm" />
     <MESSAGE value="Update ConfirmationDialog to improve exit confirmation messaging and styling" />
     <MESSAGE value="Add back navigation confirmation to ServerConfigTopAppBar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add back navigation confirmation to ServerConfigTopAppBar" />
+    <MESSAGE value="Refactor ServerConfigForm and related components to unify input validation and improve navigation handling" />
+    <MESSAGE value="Update ErrorDialog styling and improve dismiss behavior" />
+    <MESSAGE value="Refactor input validation method in ServerConfigViewModel for clarity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor input validation method in ServerConfigViewModel for clarity" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.webdavmanager">
           <value>
-            <CheckInfo lastCheckTimestamp="1743949596438" />
+            <CheckInfo lastCheckTimestamp="1744179679790" />
           </value>
         </entry>
         <entry key="com.example.webdavmanager.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1743949596437" />
+            <CheckInfo lastCheckTimestamp="1744179679788" />
           </value>
         </entry>
       </map>

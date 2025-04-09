@@ -92,7 +92,12 @@ fun ServerConfigForm(
             ),
             isError = validateInput(url) != null,
             supportingText = {
-                validateInput(url)?.let { errorMessage ->
+                val errorMessage = validateInput(url)
+                if (errorMessage == null) {
+                    Text(
+                        text = stringResource(R.string.url_requirement_warning)
+                    )
+                } else {
                     Text(
                         text = errorMessage
                     )

@@ -19,14 +19,14 @@ fun ConfirmationDialog(
     AlertDialog(
         title = {
             Text(
-                text = "Exit without saving?",
+                text = stringResource(R.string.dialog_exit_without_saved_title),
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onSurface
             )
         },
         text = {
             Text(
-                text = "Changes were not saved. Are you sure you want to exit?",
+                text = stringResource(R.string.dialog_exit_without_saving_message),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

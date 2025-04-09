@@ -45,7 +45,7 @@ fun ServerListEmpty(
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = stringResource(R.string.no_servers_description),
+            text = stringResource(R.string.no_servers_message),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant

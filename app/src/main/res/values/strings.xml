@@ -6,7 +6,7 @@
     <string name="more_options">More options</string>
     <string name="add_server">Add server</string>
     <string name="no_servers_title">No servers added yet</string>
-    <string name="no_servers_description">Tap the + button to add your first WebDAV server</string>
+    <string name="no_servers_message">Tap the + button to add your first WebDAV server</string>
     <string name="save_configuration">Save configuration</string>
     <string name="create_server">Create server</string>
     <string name="edit_server">Edit server</string>
@@ -17,9 +17,10 @@
     <string name="navigate_back">Navigate back</string>
     <string name="error">Error</string>
     <string name="ok">OK</string>
-    <string name="unsaved_changes">Unsaved changes</string>
-    <string name="unsaved_changes_confirmation_question">You have unsaved changes. Do you want to exit without saving?</string>
     <string name="cancel">Cancel</string>
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
+    <string name="url_requirement_warning">Must start with http:// or https://</string>
+    <string name="dialog_exit_without_saved_title">Exit without saving?</string>
+    <string name="dialog_exit_without_saving_message">Changes were not saved. Are you sure you want to exit?</string>
 </resources>
