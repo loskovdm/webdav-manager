@@ -99,10 +99,10 @@ class ServerConfigViewModel @Inject constructor(
         _state.value = _state.value.copy(errorMessage = null)
     }
 
-    fun validateInput(input: String): String? {
+    fun validateInput(value: String): String? {
         return when {
-            input.length > 100 -> "Too long"
-            input.contains(Regex("[\\u0000-\\u001F<>\"'`$;|&/\\\\:*?]")) -> "Contains invalid characters"
+            value.length > 100 -> "Too long"
+            value.contains(Regex("[\\u0000-\\u001F<>\"'`$;|&/\\\\:*?]")) -> "Contains invalid characters"
             else -> null
         }
     }
