@@ -9,15 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Refactor input validation method in ServerConfigViewModel for clarity">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="improve string resource naming conventions for better maintainability">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/utils/UiText.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ConfirmationDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ConfirmationDialog.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ServerConfigForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/component/ServerConfigForm.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListEmpty.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ui/component/ServerListEmpty.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ui/ServerConfigViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +23,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Dmitry Loskov\.android\avd\Pixel_6_API_34.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=9TZLCUBA69WWAMYH)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,9 +51,9 @@
       <list>
         <option value="Kotlin Data Class" />
         <option value="Kotlin Object" />
-        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -208,14 +203,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Add @Inject annotation to enable dependency injection">
-      <option name="closed" value="true" />
-      <created>1742987651544</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1742987651544</updated>
     </task>
     <task id="LOCAL-00011" summary="Update Android Gradle Plugin from 8.9.0 to 8.9.1">
       <option name="closed" value="true" />
@@ -601,7 +588,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744177775056</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="improve string resource naming conventions for better maintainability">
+      <option name="closed" value="true" />
+      <created>1744180923057</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1744180923057</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -629,7 +624,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Add ServerConfig data class" />
     <MESSAGE value="Add ServerConfigRepository interface for server configuration management" />
     <MESSAGE value="Add ServerMapper for converting between ServerEntity, ServerConfig, and ServerItem" />
     <MESSAGE value="Improve repository method naming and add mappers&#10;&#10;- Rename repository methods for clarity (getServer -&gt; getServerConfigById, &#10;  getServers -&gt; getServerItemList, etc.)&#10;- Add mappers to repository implementations for clear separation between&#10;  domain models and database entities&#10;- Update use cases to work with renamed repository methods" />
@@ -654,7 +648,8 @@
     <MESSAGE value="Refactor ServerConfigForm and related components to unify input validation and improve navigation handling" />
     <MESSAGE value="Update ErrorDialog styling and improve dismiss behavior" />
     <MESSAGE value="Refactor input validation method in ServerConfigViewModel for clarity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor input validation method in ServerConfigViewModel for clarity" />
+    <MESSAGE value="improve string resource naming conventions for better maintainability" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve string resource naming conventions for better maintainability" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

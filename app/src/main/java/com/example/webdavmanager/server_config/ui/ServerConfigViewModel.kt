@@ -1,14 +1,18 @@
 package com.example.webdavmanager.server_config.ui
 
+import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
+import com.example.webdavmanager.R
 import com.example.webdavmanager.navigation.NavDestination.ServerConfigDestination
 import com.example.webdavmanager.server_config.domain.model.ServerConfig
 import com.example.webdavmanager.server_config.domain.use_cases.GetServerConfigUseCase
 import com.example.webdavmanager.server_config.domain.use_cases.SaveServerConfigUseCase
+import com.example.webdavmanager.server_config.ui.utils.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,6 +23,7 @@ import javax.inject.Inject
 class ServerConfigViewModel @Inject constructor(
     private val getServerConfigUseCase: GetServerConfigUseCase,
     private val saveServerConfigUseCase: SaveServerConfigUseCase,
+    @ApplicationContext private val context: Context,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val _state = MutableStateFlow(ServerConfigState())
@@ -74,7 +79,9 @@ class ServerConfigViewModel @Inject constructor(
             }
             return true
         } else {
-            _state.value = _state.value.copy(errorMessage = "The input is incorrect. Please correct the entered data.")
+            _state.value = _state.value.copy(
+                errorMessage = UiText.StringResource(R.string.error_invalid_input).asString(context)
+            )
             return false
         }
     }
@@ -101,8 +108,10 @@ class ServerConfigViewModel @Inject constructor(
 
     fun validateInput(value: String): String? {
         return when {
-            value.length > 100 -> "Too long"
-            value.contains(Regex("[\\u0000-\\u001F<>\"'`$;|&/\\\\:*?]")) -> "Contains invalid characters"
+            value.length > 100 ->
+                UiText.StringResource(R.string.error_too_long).asString(context)
+            value.contains(Regex("[\\u0000-\\u001F<>\"'`$;|&/\\\\:*?]")) ->
+                UiText.StringResource(R.string.error_invalid_chars).asString(context)
             else -> null
         }
     }

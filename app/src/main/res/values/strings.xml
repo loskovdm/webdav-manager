@@ -23,4 +23,7 @@
     <string name="url_requirement_warning">Must start with http:// or https://</string>
     <string name="dialog_exit_without_saved_title">Exit without saving?</string>
     <string name="dialog_exit_without_saving_message">Changes were not saved. Are you sure you want to exit?</string>
+    <string name="error_too_long">Too long</string>
+    <string name="error_invalid_chars">Contains invalid characters</string>
+    <string name="error_invalid_input">"The input is incorrect. Please correct the entered data."</string>
 </resources>
