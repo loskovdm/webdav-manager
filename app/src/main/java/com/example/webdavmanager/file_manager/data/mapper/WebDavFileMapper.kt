@@ -1,6 +1,6 @@
-package com.example.webdavmanager.file_manager.data.network.mapper
+package com.example.webdavmanager.file_manager.data.mapper
 
-import com.example.webdavmanager.file_manager.data.network.model.WebDavFile
+import com.example.webdavmanager.file_manager.data.remote.WebDavFile
 import com.thegrizzlylabs.sardineandroid.DavResource
 
 fun DavResource.toWebDavFile(): WebDavFile {

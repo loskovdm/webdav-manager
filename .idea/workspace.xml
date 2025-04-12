@@ -10,12 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Refactor input validation in ServerConfigViewModel to use string resources for better localization">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manger/data/network/api/WebdavApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFile.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileApi.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileApiSardineImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileDataSource.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/repository/WebDavFileRepositoryImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/WebDavModule.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/network/mapper/WebDavFileMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/mapper/WebDavFileMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/network/model/WebDavFile.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,11 +121,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
-      <recent name="com.example.webdavmanager.navigation" />
-      <recent name="com.example.webdavmanager" />
-      <recent name="com.example.webdavmanager.core.ui.component" />
-      <recent name="com.example.webdavmanager.core.ui.theme" />
-      <recent name="com.example.webdavmanager.server_list.di" />
+      <recent name="com.example.webdavmanager.file_manager.data.remote" />
+      <recent name="com.example.webdavmanager.file_manager.data" />
+      <recent name="com.example.webdavmanager.file_manager.data.remote.model" />
+      <recent name="com.example.webdavmanager.file_manager.data.mapper" />
+      <recent name="com.example.webdavmanager.file_manager.data.remote.mapper" />
     </key>
   </component>
   <component name="RunManager">
@@ -614,7 +617,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dev" />
+                        <option value="feature/file-manager-data-layer" />
                       </list>
                     </value>
                   </entry>
