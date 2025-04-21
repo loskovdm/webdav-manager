@@ -9,16 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Refactor input validation in ServerConfigViewModel to use string resources for better localization">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFile.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileApi.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileApiSardineImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileDataSource.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/repository/WebDavFileRepositoryImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/WebDavModule.kt" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Remove domain layer from server list feature">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/network/mapper/WebDavFileMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/mapper/WebDavFileMapper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/network/model/WebDavFile.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +52,9 @@
       <list>
         <option value="Kotlin Data Class" />
         <option value="Kotlin Object" />
-        <option value="Kotlin File" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -101,31 +97,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/file-manager-data-layer&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "PROJECT_TRUSTED_KEY": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "remove-domain-layer",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
-      <recent name="com.example.webdavmanager.file_manager.data.remote" />
-      <recent name="com.example.webdavmanager.file_manager.data" />
-      <recent name="com.example.webdavmanager.file_manager.data.remote.model" />
-      <recent name="com.example.webdavmanager.file_manager.data.mapper" />
-      <recent name="com.example.webdavmanager.file_manager.data.remote.mapper" />
+      <recent name="com.example.webdavmanager.server_list" />
+      <recent name="com.example.webdavmanager.server_list.model" />
+      <recent name="com.example.webdavmanager.server_config" />
+      <recent name="com.example.webdavmanager.server_config.ui" />
+      <recent name="com.example.webdavmanager.navigation" />
     </key>
   </component>
   <component name="RunManager">
@@ -210,38 +206,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Update Android Gradle Plugin from 8.9.0 to 8.9.1">
-      <option name="closed" value="true" />
-      <created>1743245556600</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1743245556600</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Update Compose BOM to 8.9.1">
-      <option name="closed" value="true" />
-      <created>1743245747164</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1743245747164</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Add ServerListState sealed interface for UI state management">
-      <option name="closed" value="true" />
-      <created>1743326926678</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1743326926678</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Remove null return mentions from repository methods">
-      <option name="closed" value="true" />
-      <created>1743331026443</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1743331026443</updated>
     </task>
     <task id="LOCAL-00015" summary="Add ServerListViewModel&#10;&#10;- Implement loadServers method to fetch server data&#10;- Implement deleteServer method to remove servers&#10;- Handle loading, empty, success and error states">
       <option name="closed" value="true" />
@@ -603,7 +567,39 @@
       <option name="project" value="LOCAL" />
       <updated>1744180923057</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Rename package for UiText to improve consistency in utility structure">
+      <option name="closed" value="true" />
+      <created>1745234617011</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1745234617011</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Remove domain layer from server configuration feature">
+      <option name="closed" value="true" />
+      <created>1745249104832</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1745249104832</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Remove domain layer from server list feature">
+      <option name="closed" value="true" />
+      <created>1745250071873</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1745250071873</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Remove domain layer from server list feature">
+      <option name="closed" value="true" />
+      <created>1745251067489</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1745251067489</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -617,7 +613,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/file-manager-data-layer" />
+                        <option value="feature/server-config-ui" />
                       </list>
                     </value>
                   </entry>
@@ -631,9 +627,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Add ServerConfigRepository interface for server configuration management" />
-    <MESSAGE value="Add ServerMapper for converting between ServerEntity, ServerConfig, and ServerItem" />
-    <MESSAGE value="Improve repository method naming and add mappers&#10;&#10;- Rename repository methods for clarity (getServer -&gt; getServerConfigById, &#10;  getServers -&gt; getServerItemList, etc.)&#10;- Add mappers to repository implementations for clear separation between&#10;  domain models and database entities&#10;- Update use cases to work with renamed repository methods" />
     <MESSAGE value="Add binding for ServerConfigRepository in ServerRepositoryModule" />
     <MESSAGE value="Update getServerConfigById to return nullable ServerConfig" />
     <MESSAGE value="Rename GetServersUseCase to GetServerListUseCase and update references" />
@@ -656,7 +649,10 @@
     <MESSAGE value="Update ErrorDialog styling and improve dismiss behavior" />
     <MESSAGE value="Refactor input validation method in ServerConfigViewModel for clarity" />
     <MESSAGE value="improve string resource naming conventions for better maintainability" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve string resource naming conventions for better maintainability" />
+    <MESSAGE value="Rename package for UiText to improve consistency in utility structure" />
+    <MESSAGE value="Remove domain layer from server configuration feature" />
+    <MESSAGE value="Remove domain layer from server list feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove domain layer from server list feature" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
