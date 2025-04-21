@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_config.ui.component
+package com.example.webdavmanager.server_config.component
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack

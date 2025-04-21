@@ -1,8 +1,7 @@
-package com.example.webdavmanager.core.data.mapper
+package com.example.webdavmanager.server_config.util
 
 import com.example.webdavmanager.core.data.local.ServerEntity
-import com.example.webdavmanager.server_config.domain.model.ServerConfig
-import com.example.webdavmanager.server_list.domain.model.ServerItem
+import com.example.webdavmanager.server_config.model.ServerConfig
 
 fun ServerEntity.toServerConfig(): ServerConfig {
     return ServerConfig(
@@ -21,13 +20,5 @@ fun ServerConfig.toServerEntity(): ServerEntity {
         url = url,
         user = user,
         password = password
-    )
-}
-
-fun ServerEntity.toServerItem(): ServerItem {
-    return ServerItem(
-        id = id,
-        name = name,
-        user = user
     )
 }

@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_config.domain.model
+package com.example.webdavmanager.server_config.model
 
 data class ServerConfig(
     val id: Int = 0,

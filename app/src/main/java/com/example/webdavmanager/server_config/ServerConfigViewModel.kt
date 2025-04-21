@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_config.ui
+package com.example.webdavmanager.server_config
 
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
@@ -6,11 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.example.webdavmanager.R
+import com.example.webdavmanager.core.data.repository.ServerRepository
 import com.example.webdavmanager.navigation.NavDestination.ServerConfigDestination
-import com.example.webdavmanager.server_config.domain.model.ServerConfig
-import com.example.webdavmanager.server_config.domain.use_cases.GetServerConfigUseCase
-import com.example.webdavmanager.server_config.domain.use_cases.SaveServerConfigUseCase
-import com.example.webdavmanager.server_config.ui.utils.UiText
+import com.example.webdavmanager.server_config.model.ServerConfig
+import com.example.webdavmanager.server_config.util.UiText
+import com.example.webdavmanager.server_config.util.toServerConfig
+import com.example.webdavmanager.server_config.util.toServerEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,8 +22,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ServerConfigViewModel @Inject constructor(
-    private val getServerConfigUseCase: GetServerConfigUseCase,
-    private val saveServerConfigUseCase: SaveServerConfigUseCase,
+    private val repository: ServerRepository,
     @ApplicationContext private val context: Context,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -40,7 +40,13 @@ class ServerConfigViewModel @Inject constructor(
     fun loadConfig() {
         viewModelScope.launch {
             try {
-                val config = getServerConfigUseCase(serverId)
+                val config = if (serverId == 0) {
+                    ServerConfig(0, "", "", "", "")
+                } else {
+                    repository.getServerConfigById(serverId)
+                        ?.toServerConfig() ?: ServerConfig(0, "", "", "", "")
+                }
+
                 _state.value = ServerConfigState(
                     name = config.name,
                     url = config.url,
@@ -71,7 +77,13 @@ class ServerConfigViewModel @Inject constructor(
                         user = currentState.user,
                         password = currentState.password
                     )
-                    saveServerConfigUseCase(currentConfig)
+
+                    if (currentConfig.id == 0) {
+                        repository.insertServerConfig(currentConfig.toServerEntity())
+                    } else {
+                        repository.updateServerConfig(currentConfig.toServerEntity())
+                    }
+
                     _state.value = _state.value.copy(isSaved = true)
                 } catch (e: Exception) {
                     _state.value = _state.value.copy(errorMessage = e.message)

@@ -10,7 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.webdavmanager.navigation.NavDestination.ServerConfigDestination
 import com.example.webdavmanager.navigation.NavDestination.ServerListDestination
-import com.example.webdavmanager.server_config.ui.ServerConfigScreen
+import com.example.webdavmanager.server_config.ServerConfigScreen
 import com.example.webdavmanager.server_list.ui.ServerListScreen
 
 @Composable

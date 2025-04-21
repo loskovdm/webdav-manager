@@ -1,7 +1,6 @@
 package com.example.webdavmanager.core.di
 
-import com.example.webdavmanager.core.data.repository.ServerRepositoryImpl
-import com.example.webdavmanager.server_config.domain.repository.ServerConfigRepository
+import com.example.webdavmanager.core.data.repository.ServerRepository
 import com.example.webdavmanager.server_list.domain.repository.ServerListRepository
 import dagger.Binds
 import dagger.Module
@@ -16,13 +15,7 @@ abstract class ServerRepositoryModule {
     @Binds
     @Singleton
     abstract fun bindServerListRepository(
-        serverRepositoryImpl: ServerRepositoryImpl
+        serverRepository: ServerRepository
     ): ServerListRepository
-
-    @Binds
-    @Singleton
-    abstract fun bindServerConfigRepository(
-        serverRepositoryImpl: ServerRepositoryImpl
-    ): ServerConfigRepository
 
 }

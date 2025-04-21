@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_config.ui.component
+package com.example.webdavmanager.server_config.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

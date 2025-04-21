@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_config.ui
+package com.example.webdavmanager.server_config
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
@@ -12,9 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.webdavmanager.core.ui.component.ErrorDialog
-import com.example.webdavmanager.server_config.ui.component.ConfirmationDialog
-import com.example.webdavmanager.server_config.ui.component.ServerConfigForm
-import com.example.webdavmanager.server_config.ui.component.ServerConfigTopAppBar
+import com.example.webdavmanager.server_config.component.ConfirmationDialog
+import com.example.webdavmanager.server_config.component.ServerConfigForm
+import com.example.webdavmanager.server_config.component.ServerConfigTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

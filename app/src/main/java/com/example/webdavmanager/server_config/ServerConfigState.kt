@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_config.ui
+package com.example.webdavmanager.server_config
 
 data class ServerConfigState(
     val name: String = "",
