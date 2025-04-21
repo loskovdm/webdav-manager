@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_list.ui.component
+package com.example.webdavmanager.server_list.component
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons

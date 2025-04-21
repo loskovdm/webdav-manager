@@ -11,7 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.webdavmanager.navigation.NavDestination.ServerConfigDestination
 import com.example.webdavmanager.navigation.NavDestination.ServerListDestination
 import com.example.webdavmanager.server_config.ServerConfigScreen
-import com.example.webdavmanager.server_list.ui.ServerListScreen
+import com.example.webdavmanager.server_list.ServerListScreen
 
 @Composable
 fun WebDavNavHost(

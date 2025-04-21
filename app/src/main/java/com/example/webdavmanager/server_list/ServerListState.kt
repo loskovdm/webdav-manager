@@ -1,6 +1,6 @@
-package com.example.webdavmanager.server_list.ui
+package com.example.webdavmanager.server_list
 
-import com.example.webdavmanager.server_list.domain.model.ServerItem
+import com.example.webdavmanager.server_list.model.ServerItem
 
 data class ServerListState(
     val serverList: List<ServerItem> = emptyList<ServerItem>(),

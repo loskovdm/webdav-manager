@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_list.ui.component
+package com.example.webdavmanager.server_list.component
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme

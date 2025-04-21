@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_list.ui
+package com.example.webdavmanager.server_list
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -8,10 +8,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.webdavmanager.core.ui.component.ErrorDialog
-import com.example.webdavmanager.server_list.ui.component.ServerList
-import com.example.webdavmanager.server_list.ui.component.ServerListEmpty
-import com.example.webdavmanager.server_list.ui.component.ServerListFloatingActionButton
-import com.example.webdavmanager.server_list.ui.component.ServerListTopAppBar
+import com.example.webdavmanager.server_list.component.ServerList
+import com.example.webdavmanager.server_list.component.ServerListEmpty
+import com.example.webdavmanager.server_list.component.ServerListFloatingActionButton
+import com.example.webdavmanager.server_list.component.ServerListTopAppBar
 
 
 @Composable
