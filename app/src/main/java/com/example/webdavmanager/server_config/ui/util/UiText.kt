@@ -1,4 +1,4 @@
-package com.example.webdavmanager.server_config.ui.utils
+package com.example.webdavmanager.server_config.ui.util
 
 import android.content.Context
 import androidx.annotation.StringRes
