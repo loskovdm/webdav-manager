@@ -1,4 +1,4 @@
-package com.example.webdavmanager.file_manager.data.remote
+package com.example.webdavmanager.file_manager.data.model
 
 import java.util.Date
 
