@@ -12,15 +12,15 @@ interface WebDavFileApi {
 
     suspend fun uploadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        localFilePath: String,
+        fileName: String,
+        fileContent: ByteArray,
         remoteDirectoryPath: String
     ): Result<Unit>
 
     suspend fun downloadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        remoteFilePath: String,
-        localDirectoryPath: String
-    ): Result<Unit>
+        remoteFilePath: String
+    ): Result<ByteArray>
 
     suspend fun moveFile(
         serverConnectionInfo: WebDavConnectionInfo,
@@ -47,7 +47,8 @@ interface WebDavFileApi {
 
     suspend fun createDirectory(
         serverConnectionInfo: WebDavConnectionInfo,
-        directoryPath: String
+        destinationDirectoryPath: String,
+        directoryName: String
     ): Result<Unit>
 
 }
