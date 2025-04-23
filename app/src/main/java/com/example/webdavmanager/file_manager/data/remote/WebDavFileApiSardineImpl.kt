@@ -11,6 +11,8 @@ class WebDavFileApiSardineImpl @Inject constructor(
 ) : WebDavFileApi {
     private var currentServerConnectionInfo: WebDavConnectionInfo? = null
 
+    // TODO: Implement your own class for errors
+
     override suspend fun getFileList(
         serverConnectionInfo: WebDavConnectionInfo,
         directoryPath: String
