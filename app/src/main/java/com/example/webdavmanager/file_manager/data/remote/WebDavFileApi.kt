@@ -2,6 +2,8 @@ package com.example.webdavmanager.file_manager.data.remote
 
 import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
 import com.example.webdavmanager.file_manager.data.model.WebDavFile
+import java.io.File
+import java.io.InputStream
 
 interface WebDavFileApi {
 
@@ -12,26 +14,25 @@ interface WebDavFileApi {
 
     suspend fun uploadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        fileName: String,
-        fileContent: ByteArray,
-        remoteDirectoryPath: String
+        file: File,
+        filePath: String
     ): Result<Unit>
 
     suspend fun downloadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        remoteFilePath: String
-    ): Result<ByteArray>
+        filePath: String
+    ): Result<InputStream>
 
     suspend fun moveFile(
         serverConnectionInfo: WebDavConnectionInfo,
         currentFilePath: String,
-        destinationDirectoryPath: String
+        destinationFilePath: String
     ): Result<Unit>
 
     suspend fun copyFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        filePath: String,
-        destinationDirectoryPath: String
+        currentFilePath: String,
+        destinationFilePath: String
     ): Result<Unit>
 
     suspend fun deleteFile(
@@ -39,16 +40,9 @@ interface WebDavFileApi {
         filePath: String
     ): Result<Unit>
 
-    suspend fun renameFile(
-        serverConnectionInfo: WebDavConnectionInfo,
-        filePath: String,
-        newName: String
-    ): Result<Unit>
-
     suspend fun createDirectory(
         serverConnectionInfo: WebDavConnectionInfo,
-        destinationDirectoryPath: String,
-        directoryName: String
+        directoryPath: String,
     ): Result<Unit>
 
 }
