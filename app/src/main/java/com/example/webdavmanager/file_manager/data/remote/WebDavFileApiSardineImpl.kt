@@ -4,6 +4,8 @@ import com.example.webdavmanager.file_manager.data.mapper.toWebDavFile
 import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
 import com.example.webdavmanager.file_manager.data.model.WebDavFile
 import com.thegrizzlylabs.sardineandroid.impl.OkHttpSardine
+import java.io.File
+import java.io.InputStream
 import javax.inject.Inject
 
 class WebDavFileApiSardineImpl @Inject constructor(
@@ -24,75 +26,52 @@ class WebDavFileApiSardineImpl @Inject constructor(
 
     override suspend fun uploadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        fileName: String,
-        fileContent: ByteArray,
-        remoteDirectoryPath: String
+        file: File,
+        filePath: String
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.put(remoteDirectoryPath + fileName, fileContent)
+        sardine.put(filePath, file, "application/octet-stream")
     }
 
     override suspend fun downloadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        remoteFilePath: String
-    ): Result<ByteArray> = runCatching {
+        filePath: String
+    ): Result<InputStream> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        val inputStream = sardine.get(remoteFilePath)
-        inputStream.use { it.readBytes() }
+        sardine.get(filePath)
     }
 
     override suspend fun moveFile(
         serverConnectionInfo: WebDavConnectionInfo,
         currentFilePath: String,
-        destinationDirectoryPath: String
+        destinationFilePath: String
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.move(currentFilePath, destinationDirectoryPath + currentFilePath.substringAfterLast('/'))
+        sardine.move(currentFilePath, destinationFilePath)
     }
 
     override suspend fun copyFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        filePath: String,
-        destinationDirectoryPath: String
+        currentFilePath: String,
+        destinationFilePath: String
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.copy(filePath, destinationDirectoryPath + filePath.substringAfterLast('/'))
+        sardine.copy(currentFilePath, destinationFilePath)
     }
 
     override suspend fun deleteFile(
         serverConnectionInfo: WebDavConnectionInfo,
         filePath: String
-    ): Result<Unit> =runCatching {
+    ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
         sardine.delete(filePath)
     }
 
-    override suspend fun renameFile(
-        serverConnectionInfo: WebDavConnectionInfo,
-        filePath: String,
-        newName: String
-    ): Result<Unit> = runCatching {
-        ensureCorrectCredentials(serverConnectionInfo)
-        val directoryPath: String
-        val fileName: String
-        if (filePath.endsWith('/')) {
-            directoryPath = filePath.dropLast(1).substringBeforeLast('/') + "/"
-            fileName = "$newName/"
-        } else {
-            directoryPath = filePath.substringBeforeLast('/') + "/"
-            fileName = newName
-        }
-        val newPath = "$directoryPath$fileName"
-        sardine.move(filePath, newPath)
-    }
-
     override suspend fun createDirectory(
         serverConnectionInfo: WebDavConnectionInfo,
-        destinationDirectoryPath: String,
-        directoryName: String
+        directoryPath: String,
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        val directoryPath = "$destinationDirectoryPath$directoryName/"
         sardine.createDirectory(directoryPath)
     }
 
