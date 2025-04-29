@@ -2,7 +2,6 @@ package com.example.webdavmanager.file_manager.data.remote
 
 import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
 import com.example.webdavmanager.file_manager.data.model.WebDavFile
-import java.io.File
 import java.io.InputStream
 
 interface WebDavFileApi {
@@ -14,7 +13,7 @@ interface WebDavFileApi {
 
     suspend fun uploadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        file: File,
+        fileStreamProvider: () -> InputStream,
         filePath: String
     ): Result<Unit>
 

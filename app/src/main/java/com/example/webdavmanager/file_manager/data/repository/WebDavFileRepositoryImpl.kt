@@ -3,7 +3,6 @@ package com.example.webdavmanager.file_manager.data.repository
 import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
 import com.example.webdavmanager.file_manager.data.model.WebDavFile
 import com.example.webdavmanager.file_manager.data.remote.WebDavFileDataSource
-import java.io.File
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -19,11 +18,11 @@ class WebDavFileRepositoryImpl @Inject constructor(
 
     override suspend fun uploadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        file: File,
+        fileStreamProvider: () -> InputStream,
         directoryPath: String,
         nameFile: String
     ): Result<Unit> {
-        return webDavFileDataSource.uploadFile(serverConnectionInfo, file, directoryPath + nameFile)
+        return webDavFileDataSource.uploadFile(serverConnectionInfo, fileStreamProvider, directoryPath + nameFile)
     }
 
     override suspend fun downloadFile(

@@ -3,8 +3,10 @@ package com.example.webdavmanager.file_manager.data.remote
 import com.example.webdavmanager.file_manager.data.mapper.toWebDavFile
 import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
 import com.example.webdavmanager.file_manager.data.model.WebDavFile
+import com.thegrizzlylabs.sardineandroid.InputStreamProvider
 import com.thegrizzlylabs.sardineandroid.impl.OkHttpSardine
-import java.io.File
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -26,11 +28,22 @@ class WebDavFileApiSardineImpl @Inject constructor(
 
     override suspend fun uploadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        file: File,
+        fileStreamProvier: () -> InputStream,
         filePath: String
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.put(filePath, file, "application/octet-stream")
+
+        val inputStreamProvider = object : InputStreamProvider {
+            override fun getInputStream(): InputStream? {
+                return fileStreamProvier()
+            }
+
+            override fun getContentType(): MediaType? {
+                return "application/octet-stream".toMediaTypeOrNull()
+            }
+        }
+
+        sardine.put(filePath, inputStreamProvider)
     }
 
     override suspend fun downloadFile(
