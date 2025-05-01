@@ -5,7 +5,7 @@ import java.util.Date
 data class WebDavFile(
     val name: String,
     val uri: String,
-    val contentType: String?,
+    val mimeType: String?,
     val isDirectory: Boolean,
     val size: Long?,
     val creationDate: Date?,

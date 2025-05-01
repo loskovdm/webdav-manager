@@ -13,7 +13,7 @@ fun DavResource.toWebDavFile(): WebDavFile {
     return WebDavFile(
         name = this.name ?: "",
         uri = this.path,
-        contentType = normalizedContentType,
+        mimeType = normalizedContentType,
         isDirectory = this.isDirectory,
         size = this.contentLength,
         creationDate = this.creation,
