@@ -8,40 +8,40 @@ interface WebDavFileApi {
 
     suspend fun getFileList(
         serverConnectionInfo: WebDavConnectionInfo,
-        directoryPath: String
+        directoryUri: String
     ): Result<List<WebDavFile>>
 
     suspend fun uploadFile(
         serverConnectionInfo: WebDavConnectionInfo,
         fileStreamProvider: () -> InputStream,
-        filePath: String
+        fileUri: String
     ): Result<Unit>
 
     suspend fun downloadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        filePath: String
+        fileUri: String
     ): Result<InputStream>
 
     suspend fun moveFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        currentFilePath: String,
-        destinationFilePath: String
+        currentFileUri: String,
+        destinationFileUri: String
     ): Result<Unit>
 
     suspend fun copyFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        currentFilePath: String,
-        destinationFilePath: String
+        currentFileUri: String,
+        destinationFileUri: String
     ): Result<Unit>
 
     suspend fun deleteFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        filePath: String
+        fileUri: String
     ): Result<Unit>
 
     suspend fun createDirectory(
         serverConnectionInfo: WebDavConnectionInfo,
-        directoryPath: String,
+        directoryUri: String,
     ): Result<Unit>
 
 }

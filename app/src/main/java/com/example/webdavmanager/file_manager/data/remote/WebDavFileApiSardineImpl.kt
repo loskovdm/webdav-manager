@@ -19,17 +19,17 @@ class WebDavFileApiSardineImpl @Inject constructor(
 
     override suspend fun getFileList(
         serverConnectionInfo: WebDavConnectionInfo,
-        directoryPath: String
+        directoryUri: String
     ): Result<List<WebDavFile>> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        val resources = sardine.list(directoryPath)
+        val resources = sardine.list(directoryUri)
         resources.map { it.toWebDavFile() }
     }
 
     override suspend fun uploadFile(
         serverConnectionInfo: WebDavConnectionInfo,
         fileStreamProvier: () -> InputStream,
-        filePath: String
+        fileUri: String
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
 
@@ -43,49 +43,49 @@ class WebDavFileApiSardineImpl @Inject constructor(
             }
         }
 
-        sardine.put(filePath, inputStreamProvider)
+        sardine.put(fileUri, inputStreamProvider)
     }
 
     override suspend fun downloadFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        filePath: String
+        fileUri: String
     ): Result<InputStream> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.get(filePath)
+        sardine.get(fileUri)
     }
 
     override suspend fun moveFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        currentFilePath: String,
-        destinationFilePath: String
+        currentFileUri: String,
+        destinationFileUri: String
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.move(currentFilePath, destinationFilePath)
+        sardine.move(currentFileUri, destinationFileUri)
     }
 
     override suspend fun copyFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        currentFilePath: String,
-        destinationFilePath: String
+        currentFileUri: String,
+        destinationFileUri: String
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.copy(currentFilePath, destinationFilePath)
+        sardine.copy(currentFileUri, destinationFileUri)
     }
 
     override suspend fun deleteFile(
         serverConnectionInfo: WebDavConnectionInfo,
-        filePath: String
+        fileUri: String
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.delete(filePath)
+        sardine.delete(fileUri)
     }
 
     override suspend fun createDirectory(
         serverConnectionInfo: WebDavConnectionInfo,
-        directoryPath: String,
+        directoryUri: String,
     ): Result<Unit> = runCatching {
         ensureCorrectCredentials(serverConnectionInfo)
-        sardine.createDirectory(directoryPath)
+        sardine.createDirectory(directoryUri)
     }
 
     private fun ensureCorrectCredentials(serverConnectionInfo: WebDavConnectionInfo) {
