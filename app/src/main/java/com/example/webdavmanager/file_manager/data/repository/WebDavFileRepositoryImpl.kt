@@ -17,70 +17,70 @@ class WebDavFileRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getFileList(
-        directoryPath: String
+        directoryUri: String
     ): Result<List<WebDavFile>> {
-        return dataSource.getFileList(directoryPath)
+        return dataSource.getFileList(directoryUri)
     }
 
     override suspend fun uploadFile(
         fileStreamProvider: () -> InputStream,
-        directoryPath: String,
+        directoryUri: String,
         nameFile: String
     ): Result<Unit> {
-        return dataSource.uploadFile(fileStreamProvider, directoryPath + nameFile)
+        return dataSource.uploadFile(fileStreamProvider, directoryUri + nameFile)
     }
 
     override suspend fun downloadFile(
-        filePath: String
+        fileUri: String
     ): Result<InputStream> {
-        return dataSource.downloadFile(filePath)
+        return dataSource.downloadFile(fileUri)
     }
 
     override suspend fun moveFile(
-        filePath: String,
-        destinationDirectoryPath: String
+        fileUri: String,
+        destinationDirectoryUri: String
     ): Result<Unit> {
-        val destinationFilePath = destinationDirectoryPath + filePath.substringAfterLast('/')
-        return dataSource.moveFile(filePath, destinationFilePath)
+        val destinationFileUri = destinationDirectoryUri + fileUri.substringAfterLast('/')
+        return dataSource.moveFile(fileUri, destinationFileUri)
     }
 
     override suspend fun copyFile(
-        filePath: String,
-        destinationDirectoryPath: String
+        fileUri: String,
+        destinationDirectoryUri: String
     ): Result<Unit> {
-        val destinationFilePath = destinationDirectoryPath + filePath.substringAfterLast('/')
-        return dataSource.copyFile(filePath, destinationFilePath)
+        val destinationFileUri = destinationDirectoryUri + fileUri.substringAfterLast('/')
+        return dataSource.copyFile(fileUri, destinationFileUri)
     }
 
     override suspend fun deleteFile(
-        filePath: String
+        fileUri: String
     ): Result<Unit> {
-        return dataSource.deleteFile(filePath)
+        return dataSource.deleteFile(fileUri)
     }
 
     override suspend fun createDirectory(
-        destinationDirectoryPath: String,
+        destinationDirectoryUri: String,
         name: String
     ): Result<Unit> {
-        val directoryPath = destinationDirectoryPath + name
-        return dataSource.createDirectory(directoryPath)
+        val directoryUri = destinationDirectoryUri + name
+        return dataSource.createDirectory(directoryUri)
     }
 
     override suspend fun renameFile(
-        filePath: String,
+        fileUri: String,
         newName: String
     ): Result<Unit> {
-        val directoryPath: String
+        val directoryUri: String
         val fileName: String
-        if (filePath.endsWith('/')) {
-            directoryPath = filePath.dropLast(1).substringBeforeLast('/') + "/"
+        if (fileUri.endsWith('/')) {
+            directoryUri = fileUri.dropLast(1).substringBeforeLast('/') + "/"
             fileName = "$newName/"
         } else {
-            directoryPath = filePath.substringBeforeLast('/') + "/"
+            directoryUri = fileUri.substringBeforeLast('/') + "/"
             fileName = newName
         }
-        val newPath = "$directoryPath$fileName"
-        return dataSource.moveFile(filePath, newPath)
+        val newUri = "$directoryUri$fileName"
+        return dataSource.moveFile(fileUri, newUri)
     }
 
 }

@@ -10,35 +10,35 @@ interface WebDavFileRepository {
     ): Result<Unit>
 
     suspend fun getFileList(
-        directoryPath: String
+        directoryUri: String
     ): Result<List<WebDavFile>>
 
     suspend fun uploadFile(
         fileStreamProvider: () -> InputStream,
-        directoryPath: String,
+        directoryUri: String,
         nameFile: String
     ): Result<Unit>
 
     suspend fun downloadFile(
-        filePath: String
+        fileUri: String
     ): Result<InputStream>
 
     suspend fun moveFile(
-        filePath: String,
-        destinationDirectoryPath: String
+        fileUri: String,
+        destinationDirectoryUri: String
     ): Result<Unit>
 
     suspend fun copyFile(
-        filePath: String,
-        destinationDirectoryPath: String
+        fileUri: String,
+        destinationDirectoryUri: String
     ): Result<Unit>
 
     suspend fun deleteFile(
-        filePath: String
+        fileUri: String
     ): Result<Unit>
 
     suspend fun createDirectory(
-        destinationDirectoryPath: String,
+        destinationDirectoryUri: String,
         name: String
     ): Result<Unit>
 
