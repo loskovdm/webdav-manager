@@ -25,9 +25,10 @@ class WebDavFileRepositoryImpl @Inject constructor(
     override suspend fun uploadFile(
         fileStreamProvider: () -> InputStream,
         directoryUri: String,
-        nameFile: String
+        nameFile: String,
+        mimeType: String
     ): Result<Unit> {
-        return dataSource.uploadFile(fileStreamProvider, directoryUri + nameFile)
+        return dataSource.uploadFile(fileStreamProvider, directoryUri + nameFile, mimeType)
     }
 
     override suspend fun downloadFile(

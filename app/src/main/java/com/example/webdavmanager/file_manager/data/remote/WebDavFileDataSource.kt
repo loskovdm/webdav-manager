@@ -12,8 +12,8 @@ class WebDavFileDataSource @Inject constructor(private val api: WebDavFileApi) {
     suspend fun getFileList(directoryUri: String): Result<List<WebDavFile>> =
         api.getFileList(directoryUri)
 
-    suspend fun uploadFile(fileStreamProvider: () -> InputStream, fileUri: String): Result<Unit> =
-        api.uploadFile(fileStreamProvider, fileUri)
+    suspend fun uploadFile(fileStreamProvider: () -> InputStream, fileUri: String, mimeType: String): Result<Unit> =
+        api.uploadFile(fileStreamProvider, fileUri, mimeType)
 
     suspend fun downloadFile(fileUri: String): Result<InputStream> =
         api.downloadFile(fileUri)

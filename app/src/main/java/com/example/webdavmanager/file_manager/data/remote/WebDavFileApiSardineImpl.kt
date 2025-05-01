@@ -33,7 +33,8 @@ class WebDavFileApiSardineImpl @Inject constructor(
 
     override suspend fun uploadFile(
         fileStreamProvider: () -> InputStream,
-        fileUri: String
+        fileUri: String,
+        mimeType: String
     ): Result<Unit> = runCatching {
         val inputStreamProvider = object : InputStreamProvider {
             override fun getInputStream(): InputStream? {
@@ -41,7 +42,7 @@ class WebDavFileApiSardineImpl @Inject constructor(
             }
 
             override fun getContentType(): MediaType? {
-                return "application/octet-stream".toMediaTypeOrNull()
+                return mimeType.toMediaTypeOrNull()
             }
         }
 
