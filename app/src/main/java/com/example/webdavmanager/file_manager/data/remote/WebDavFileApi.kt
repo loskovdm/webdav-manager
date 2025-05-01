@@ -6,41 +6,38 @@ import java.io.InputStream
 
 interface WebDavFileApi {
 
+    suspend fun setServerConnectionInfo(
+        serverConnectionInfo: WebDavConnectionInfo
+    ): Result<Unit>
+
     suspend fun getFileList(
-        serverConnectionInfo: WebDavConnectionInfo,
         directoryUri: String
     ): Result<List<WebDavFile>>
 
     suspend fun uploadFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         fileStreamProvider: () -> InputStream,
         fileUri: String
     ): Result<Unit>
 
     suspend fun downloadFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         fileUri: String
     ): Result<InputStream>
 
     suspend fun moveFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         currentFileUri: String,
         destinationFileUri: String
     ): Result<Unit>
 
     suspend fun copyFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         currentFileUri: String,
         destinationFileUri: String
     ): Result<Unit>
 
     suspend fun deleteFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         fileUri: String
     ): Result<Unit>
 
     suspend fun createDirectory(
-        serverConnectionInfo: WebDavConnectionInfo,
         directoryUri: String,
     ): Result<Unit>
 

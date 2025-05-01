@@ -6,24 +6,27 @@ import java.io.InputStream
 import javax.inject.Inject
 
 class WebDavFileDataSource @Inject constructor(private val api: WebDavFileApi) {
-    suspend fun getFileList(serverConnectionInfo: WebDavConnectionInfo, directoryUri: String): Result<List<WebDavFile>> =
-        api.getFileList(serverConnectionInfo, directoryUri)
+    suspend fun setServerConnectionInfo(serverConnectionInfo: WebDavConnectionInfo): Result<Unit> =
+        api.setServerConnectionInfo(serverConnectionInfo)
 
-    suspend fun uploadFile(serverConnectionInfo: WebDavConnectionInfo, fileStreamProvider: () -> InputStream, fileUri: String): Result<Unit> =
-        api.uploadFile(serverConnectionInfo, fileStreamProvider, fileUri)
+    suspend fun getFileList(directoryUri: String): Result<List<WebDavFile>> =
+        api.getFileList(directoryUri)
 
-    suspend fun downloadFile(serverConnectionInfo: WebDavConnectionInfo, fileUri: String): Result<InputStream> =
-        api.downloadFile(serverConnectionInfo, fileUri)
+    suspend fun uploadFile(fileStreamProvider: () -> InputStream, fileUri: String): Result<Unit> =
+        api.uploadFile(fileStreamProvider, fileUri)
 
-    suspend fun moveFile(serverConnectionInfo: WebDavConnectionInfo, currentFileUri: String, destinationFileUri: String): Result<Unit> =
-        api.moveFile(serverConnectionInfo, currentFileUri, destinationFileUri)
+    suspend fun downloadFile(fileUri: String): Result<InputStream> =
+        api.downloadFile(fileUri)
 
-    suspend fun copyFile(serverConnectionInfo: WebDavConnectionInfo, currentFileUri: String, destinationFileUri: String): Result<Unit> =
-        api.copyFile(serverConnectionInfo, currentFileUri, destinationFileUri)
+    suspend fun moveFile(currentFileUri: String, destinationFileUri: String): Result<Unit> =
+        api.moveFile(currentFileUri, destinationFileUri)
 
-    suspend fun deleteFile(serverConnectionInfo: WebDavConnectionInfo, fileUri: String): Result<Unit> =
-        api.deleteFile(serverConnectionInfo, fileUri)
+    suspend fun copyFile(currentFileUri: String, destinationFileUri: String): Result<Unit> =
+        api.copyFile(currentFileUri, destinationFileUri)
 
-    suspend fun createDirectory(serverConnectionInfo: WebDavConnectionInfo, directoryUri: String): Result<Unit> =
-        api.createDirectory(serverConnectionInfo, directoryUri)
+    suspend fun deleteFile(fileUri: String): Result<Unit> =
+        api.deleteFile(fileUri)
+
+    suspend fun createDirectory(directoryUri: String): Result<Unit> =
+        api.createDirectory(directoryUri)
 }

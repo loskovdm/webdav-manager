@@ -7,67 +7,66 @@ import java.io.InputStream
 import javax.inject.Inject
 
 class WebDavFileRepositoryImpl @Inject constructor(
-    private val webDavFileDataSource: WebDavFileDataSource
+    private val dataSource: WebDavFileDataSource
 ): WebDavFileRepository {
+
+    override suspend fun setServerConnectionInfo(
+        serverConnectionInfo: WebDavConnectionInfo
+    ): Result<Unit> {
+        return dataSource.setServerConnectionInfo(serverConnectionInfo)
+    }
+
     override suspend fun getFileList(
-        serverConnectionInfo: WebDavConnectionInfo,
         directoryPath: String
     ): Result<List<WebDavFile>> {
-        return webDavFileDataSource.getFileList(serverConnectionInfo, directoryPath)
+        return dataSource.getFileList(directoryPath)
     }
 
     override suspend fun uploadFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         fileStreamProvider: () -> InputStream,
         directoryPath: String,
         nameFile: String
     ): Result<Unit> {
-        return webDavFileDataSource.uploadFile(serverConnectionInfo, fileStreamProvider, directoryPath + nameFile)
+        return dataSource.uploadFile(fileStreamProvider, directoryPath + nameFile)
     }
 
     override suspend fun downloadFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         filePath: String
     ): Result<InputStream> {
-        return webDavFileDataSource.downloadFile(serverConnectionInfo, filePath)
+        return dataSource.downloadFile(filePath)
     }
 
     override suspend fun moveFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         filePath: String,
         destinationDirectoryPath: String
     ): Result<Unit> {
         val destinationFilePath = destinationDirectoryPath + filePath.substringAfterLast('/')
-        return webDavFileDataSource.moveFile(serverConnectionInfo, filePath, destinationFilePath)
+        return dataSource.moveFile(filePath, destinationFilePath)
     }
 
     override suspend fun copyFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         filePath: String,
         destinationDirectoryPath: String
     ): Result<Unit> {
         val destinationFilePath = destinationDirectoryPath + filePath.substringAfterLast('/')
-        return webDavFileDataSource.copyFile(serverConnectionInfo, filePath, destinationFilePath)
+        return dataSource.copyFile(filePath, destinationFilePath)
     }
 
     override suspend fun deleteFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         filePath: String
     ): Result<Unit> {
-        return webDavFileDataSource.deleteFile(serverConnectionInfo, filePath)
+        return dataSource.deleteFile(filePath)
     }
 
     override suspend fun createDirectory(
-        serverConnectionInfo: WebDavConnectionInfo,
         destinationDirectoryPath: String,
         name: String
     ): Result<Unit> {
         val directoryPath = destinationDirectoryPath + name
-        return webDavFileDataSource.createDirectory(serverConnectionInfo, directoryPath)
+        return dataSource.createDirectory(directoryPath)
     }
 
     override suspend fun renameFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         filePath: String,
         newName: String
     ): Result<Unit> {
@@ -81,6 +80,7 @@ class WebDavFileRepositoryImpl @Inject constructor(
             fileName = newName
         }
         val newPath = "$directoryPath$fileName"
-        return webDavFileDataSource.moveFile(serverConnectionInfo, filePath, newPath)
+        return dataSource.moveFile(filePath, newPath)
     }
+
 }

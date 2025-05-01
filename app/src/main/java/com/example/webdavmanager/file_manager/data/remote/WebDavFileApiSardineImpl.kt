@@ -13,29 +13,31 @@ import javax.inject.Inject
 class WebDavFileApiSardineImpl @Inject constructor(
     private val sardine: OkHttpSardine
 ) : WebDavFileApi {
-    private var currentServerConnectionInfo: WebDavConnectionInfo? = null
-
     // TODO: Implement your own class for errors
 
+    override suspend fun setServerConnectionInfo(
+        serverConnectionInfo: WebDavConnectionInfo
+    ): Result<Unit> = runCatching {
+        sardine.setCredentials(
+            serverConnectionInfo.user,
+            serverConnectionInfo.password
+        )
+    }
+
     override suspend fun getFileList(
-        serverConnectionInfo: WebDavConnectionInfo,
         directoryUri: String
     ): Result<List<WebDavFile>> = runCatching {
-        ensureCorrectCredentials(serverConnectionInfo)
         val resources = sardine.list(directoryUri)
         resources.map { it.toWebDavFile() }
     }
 
     override suspend fun uploadFile(
-        serverConnectionInfo: WebDavConnectionInfo,
-        fileStreamProvier: () -> InputStream,
+        fileStreamProvider: () -> InputStream,
         fileUri: String
     ): Result<Unit> = runCatching {
-        ensureCorrectCredentials(serverConnectionInfo)
-
         val inputStreamProvider = object : InputStreamProvider {
             override fun getInputStream(): InputStream? {
-                return fileStreamProvier()
+                return fileStreamProvider()
             }
 
             override fun getContentType(): MediaType? {
@@ -47,55 +49,34 @@ class WebDavFileApiSardineImpl @Inject constructor(
     }
 
     override suspend fun downloadFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         fileUri: String
     ): Result<InputStream> = runCatching {
-        ensureCorrectCredentials(serverConnectionInfo)
         sardine.get(fileUri)
     }
 
     override suspend fun moveFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         currentFileUri: String,
         destinationFileUri: String
     ): Result<Unit> = runCatching {
-        ensureCorrectCredentials(serverConnectionInfo)
         sardine.move(currentFileUri, destinationFileUri)
     }
 
     override suspend fun copyFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         currentFileUri: String,
         destinationFileUri: String
     ): Result<Unit> = runCatching {
-        ensureCorrectCredentials(serverConnectionInfo)
         sardine.copy(currentFileUri, destinationFileUri)
     }
 
     override suspend fun deleteFile(
-        serverConnectionInfo: WebDavConnectionInfo,
         fileUri: String
     ): Result<Unit> = runCatching {
-        ensureCorrectCredentials(serverConnectionInfo)
         sardine.delete(fileUri)
     }
 
     override suspend fun createDirectory(
-        serverConnectionInfo: WebDavConnectionInfo,
         directoryUri: String,
     ): Result<Unit> = runCatching {
-        ensureCorrectCredentials(serverConnectionInfo)
         sardine.createDirectory(directoryUri)
-    }
-
-    private fun ensureCorrectCredentials(serverConnectionInfo: WebDavConnectionInfo) {
-        if (serverConnectionInfo != currentServerConnectionInfo) {
-            setCredentials(serverConnectionInfo)
-        }
-    }
-
-    private fun setCredentials(serverConnectionInfo: WebDavConnectionInfo) {
-        sardine.setCredentials(serverConnectionInfo.user, serverConnectionInfo.password)
-        currentServerConnectionInfo = serverConnectionInfo
     }
 }
