@@ -43,7 +43,7 @@ class ServerConfigViewModel @Inject constructor(
                 val config = if (serverId == 0) {
                     ServerConfig(0, "", "", "", "")
                 } else {
-                    repository.getServerConfigById(serverId)
+                    repository.getServerById(serverId)
                         ?.toServerConfig() ?: ServerConfig(0, "", "", "", "")
                 }
 
@@ -79,9 +79,9 @@ class ServerConfigViewModel @Inject constructor(
                     )
 
                     if (currentConfig.id == 0) {
-                        repository.insertServerConfig(currentConfig.toServerEntity())
+                        repository.insertServer(currentConfig.toServerEntity())
                     } else {
-                        repository.updateServerConfig(currentConfig.toServerEntity())
+                        repository.updateServer(currentConfig.toServerEntity())
                     }
 
                     _state.value = _state.value.copy(isSaved = true)

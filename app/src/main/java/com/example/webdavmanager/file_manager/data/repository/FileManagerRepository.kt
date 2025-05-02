@@ -1,0 +1,58 @@
+package com.example.webdavmanager.file_manager.data.repository
+
+import android.net.Uri
+import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
+import com.example.webdavmanager.file_manager.data.model.WebDavFile
+import java.io.InputStream
+
+interface FileManagerRepository {
+
+    suspend fun setServerConnectionInfo(
+        serverConnectionInfo: WebDavConnectionInfo
+    ): Result<Unit>
+
+    suspend fun getRemoteFileList(
+        directoryUri: String
+    ): Result<List<WebDavFile>>
+
+    suspend fun uploadFile(
+        remoteDirectoryUri: String,
+        localFileUri: Uri
+    ): Result<Unit>
+
+    suspend fun downloadFile(
+        remoteFile: WebDavFile,
+        localDirectoryUri: Uri
+    ): Result<Unit>
+
+    suspend fun moveFile(
+        remoteFileUri: String,
+        remoteDestinationDirectoryUri: String
+    ): Result<Unit>
+
+    suspend fun copyFile(
+        remoteFileUri: String,
+        remoteDestinationDirectoryUri: String
+    ): Result<Unit>
+
+    suspend fun deleteFile(
+        remoteFileUri: String
+    ): Result<Unit>
+
+    suspend fun createDirectory(
+        remoteDestinationDirectoryUri: String,
+        name: String
+    ): Result<Unit>
+
+    suspend fun renameFile(
+        remoteFileUri: String,
+        newName: String
+    ): Result<Unit>
+
+    suspend fun cacheFile(
+        remoteFile: WebDavFile
+    ): Result<Uri>
+
+    suspend fun clearCache(): Result<Unit>
+
+}

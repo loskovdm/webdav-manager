@@ -68,4 +68,7 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.sardine.android)
+    implementation(libs.androidx.documentfile)
+
 }

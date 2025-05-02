@@ -4,25 +4,27 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/xml/file_paths.xml">
+        <config>
+          <theme>@style/Theme.WebdavManager</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add data models for file management: FileItem, FileType, and ServerConnectionInfo">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerState.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/model/FileItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/model/FileType.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/model/ServerConnectionInfo.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/util/FileTypeUtils.kt" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add FileManagerRepository and its implementation for file management operations">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/FileManagerRepositoryModule.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/AndroidFileModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/AndroidFileModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/WebDavModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/WebDavModule.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,18 +60,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Interface" />
+        <option value="Kotlin Object" />
         <option value="Kotlin File" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Interface" />
+        <option value="resourceFile" />
         <option value="Kotlin Class" />
-        <option value="Kotlin Object" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="feature/file_manager_ui" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,7 +92,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -117,19 +120,19 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/file__manager__ui&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/file-manager-data-layer&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="com.example.webdavmanager.file_manager.data.model" />
       <recent name="com.example.webdavmanager.server_list" />
       <recent name="com.example.webdavmanager.server_list.model" />
       <recent name="com.example.webdavmanager.server_config" />
       <recent name="com.example.webdavmanager.server_config.ui" />
-      <recent name="com.example.webdavmanager.navigation" />
     </key>
   </component>
   <component name="RunManager">
@@ -214,230 +217,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Add ServerListViewModel&#10;&#10;- Implement loadServers method to fetch server data&#10;- Implement deleteServer method to remove servers&#10;- Handle loading, empty, success and error states">
-      <option name="closed" value="true" />
-      <created>1743337167165</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1743337167165</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Implement DI with Hilt&#10;&#10;- Add ServerListUseCaseModule to provide use cases&#10;- Configure ViewModel with @HiltViewModel annotation">
-      <option name="closed" value="true" />
-      <created>1743353314148</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1743353314148</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Add Hilt ViewModel dependencies for DI support&#10;&#10;- Added hilt-navigation-compose dependency for hiltViewModel() functionality&#10;- Enables dependency injection in ViewModels with @HiltViewModel annotation">
-      <option name="closed" value="true" />
-      <created>1743355803753</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1743355803753</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Add reusable UI components for loading and error states&#10;&#10;- Create LoadingContent for displaying loading indicators&#10;- Create ErrorContent for displaying error messages">
-      <option name="closed" value="true" />
-      <created>1743357654936</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1743357654936</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Add UI components for server list and empty server list&#10;&#10;- Create ServerList to display a list of servers&#10;- Create ServerListEmpty to display an empty list of servers">
-      <option name="closed" value="true" />
-      <created>1743357870055</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1743357870055</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Add ServerListScreen component&#10;&#10;- Create main UI container for server list feature&#10;- Implement state handling with LoadingContent, ServerListEmpty, ServerList and ErrorContent">
-      <option name="closed" value="true" />
-      <created>1743358015596</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1743358015596</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Move theme components to core module&#10;&#10;- Relocate Color, Theme, and Typography definitions to core.ui.theme">
-      <option name="closed" value="true" />
-      <created>1743358302230</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1743358302230</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Rename DI models to modules for correct terminology">
-      <option name="closed" value="true" />
-      <created>1743358625369</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1743358625369</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Add default Modifier parameter to ServerItem component">
-      <option name="closed" value="true" />
-      <created>1743478813544</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1743478813544</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Add ServerListTopAppBar component&#10;&#10;- Create TopAppBar with app name and add server button&#10;- Implement Material3 theming with primary/onPrimary colors&#10;- Use ExperimentalMaterial3Api annotation as required by Material3">
-      <option name="closed" value="true" />
-      <created>1743479920607</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1743479920607</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Remove the add server button from top app bar">
-      <option name="closed" value="true" />
-      <created>1743494771813</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1743494771813</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Add FloatingActionButton for server creation">
-      <option name="closed" value="true" />
-      <created>1743494883300</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1743494883300</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Add consistent 16dp corner radius to server cards&#10;&#10;- Set explicit RoundedCornerShape(16dp) for server cards&#10;- Matches corner radius used in FloatingActionButton">
-      <option name="closed" value="true" />
-      <created>1743495025057</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1743495025057</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Implement ServerList component&#10;&#10;- Created ServerList component with Scaffold layout pattern&#10;- Integrated ServerListTopAppBar and ServerListFloatingActionButton&#10;- Implemented scrollable server list using LazyColumn&#10;- Added proper padding and layout structure">
-      <option name="closed" value="true" />
-      <created>1743495170464</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1743495170464</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Add Material Icons Extended dependency">
-      <option name="closed" value="true" />
-      <created>1743498658404</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1743498658404</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Implement empty state UI for ServerList component&#10;&#10;- Add ServerListEmpty composable with a Scaffold layout&#10;- Include an icon and descriptive text for no servers state&#10;- Update strings.xml with titles and descriptions for empty state">
-      <option name="closed" value="true" />
-      <created>1743498785226</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1743498785226</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Implement loading indicator for LoadingContent component">
-      <option name="closed" value="true" />
-      <created>1743499577191</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1743499577191</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Implement error UI for ErrorContent component">
-      <option name="closed" value="true" />
-      <created>1743500355320</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1743500355320</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Rename Server class to ServerEntity and update references in DAO and repository">
-      <option name="closed" value="true" />
-      <created>1743509314079</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1743509314079</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Update queries in ServerDao to reflect ServerEntity renaming">
-      <option name="closed" value="true" />
-      <created>1743509393032</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1743509393032</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Add ServerConfig data class">
-      <option name="closed" value="true" />
-      <created>1743510807457</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1743510807457</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Add ServerConfigRepository interface for server configuration management">
-      <option name="closed" value="true" />
-      <created>1743510832348</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1743510832348</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Add ServerMapper for converting between ServerEntity, ServerConfig, and ServerItem">
-      <option name="closed" value="true" />
-      <created>1743577986701</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1743577986701</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Improve repository method naming and add mappers&#10;&#10;- Rename repository methods for clarity (getServer -&gt; getServerConfigById, &#10;  getServers -&gt; getServerItemList, etc.)&#10;- Add mappers to repository implementations for clear separation between&#10;  domain models and database entities&#10;- Update use cases to work with renamed repository methods">
-      <option name="closed" value="true" />
-      <created>1743578425621</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1743578425621</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Add binding for ServerConfigRepository in ServerRepositoryModule">
-      <option name="closed" value="true" />
-      <created>1743579160704</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1743579160704</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Update getServerConfigById to return nullable ServerConfig">
-      <option name="closed" value="true" />
-      <created>1743580037586</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1743580037586</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Rename GetServersUseCase to GetServerListUseCase and update references">
-      <option name="closed" value="true" />
-      <created>1743580169720</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1743580169720</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Add ServerConfigState sealed interface for UI state management">
-      <option name="closed" value="true" />
-      <created>1743614714850</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1743614714850</updated>
     </task>
     <task id="LOCAL-00043" summary="Add ServerConfigViewModel for managing server configuration UI state">
       <option name="closed" value="true" />
@@ -607,7 +386,231 @@
       <option name="project" value="LOCAL" />
       <updated>1745251067489</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Refactor server repository methods and update view models for consistency">
+      <option name="closed" value="true" />
+      <created>1745315768443</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1745315768445</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Move WebDavFile to model package">
+      <option name="closed" value="true" />
+      <created>1745336266387</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1745336266387</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Add WebDavConnectionInfo data class for connection details">
+      <option name="closed" value="true" />
+      <created>1745336305811</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1745336305811</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Update import path for WebDavFile in WebDavFileMapper">
+      <option name="closed" value="true" />
+      <created>1745336366811</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1745336366812</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Expand WebDavFileApi interface with file operations">
+      <option name="closed" value="true" />
+      <created>1745336476472</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1745336476472</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Refactor WebDavFileApi interface to use File and InputStream for file operations">
+      <option name="closed" value="true" />
+      <created>1745594537597</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1745594537597</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Refactor WebDavFileApiSardineImpl to use File and InputStream for file operations">
+      <option name="closed" value="true" />
+      <created>1745594561685</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1745594561685</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Add file management methods to WebDavFileDataSource for enhanced file operations">
+      <option name="closed" value="true" />
+      <created>1745594594337</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1745594594337</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Add WebDavFileRepository interface for file management operations">
+      <option name="closed" value="true" />
+      <created>1745594634208</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1745594634209</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Implement WebDavFileRepository with file management operations">
+      <option name="closed" value="true" />
+      <created>1745594653156</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1745594653157</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Migrate to fork of sardine-android with improved InputStream support">
+      <option name="closed" value="true" />
+      <created>1745922346772</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1745922346772</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Refactor WebDavFileApi to use InputStream provider for file uploads">
+      <option name="closed" value="true" />
+      <created>1745922369869</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1745922369869</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Add androidx.documentfile dependency">
+      <option name="closed" value="true" />
+      <created>1746101018778</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1746101018779</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Add contentType property to WebDavFile and update mapper logic">
+      <option name="closed" value="true" />
+      <created>1746103400952</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1746103400953</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Rename Path to Uri in variables and parameters for clarity in implementing work with WebDAV">
+      <option name="closed" value="true" />
+      <created>1746114815033</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1746114815033</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Refactor WebDavFileApi and related implementations to remove serverConnectionInfo parameter from methods, simplifying API usage">
+      <option name="closed" value="true" />
+      <created>1746116476193</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1746116476193</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Add createFile method to AndroidFileDataSource for file creation in DocumentFile">
+      <option name="closed" value="true" />
+      <created>1746116565399</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1746116565399</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Add AndroidFileRepository and AndroidFileRepositoryImpl for file read/write operations">
+      <option name="closed" value="true" />
+      <created>1746116605623</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1746116605623</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Rename Path to Uri in variables and parameters for clarity in implementing work with WebDAV">
+      <option name="closed" value="true" />
+      <created>1746116904803</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1746116904803</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Rename contentType to mimeType in WebDavFile and WebDavFileMapper for improved clarity">
+      <option name="closed" value="true" />
+      <created>1746122875202</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1746122875202</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Add mimeType parameter to uploadFile methods in WebDavFileApi and related implementations for enhanced file upload functionality">
+      <option name="closed" value="true" />
+      <created>1746123383011</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1746123383012</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Add getFileInfo method to AndroidFileRepository for retrieving file metadata">
+      <option name="closed" value="true" />
+      <created>1746161134962</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1746161134962</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Rename nameFile parameter to fileName in uploadFile method for improved clarity">
+      <option name="closed" value="true" />
+      <created>1746161707057</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1746161707057</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Add FileProvider configuration to AndroidManifest and create file_paths.xml for file access">
+      <option name="closed" value="true" />
+      <created>1746179322388</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1746179322389</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Implement activity lifecycle callbacks in WebDavApplication to clear cache on app background">
+      <option name="closed" value="true" />
+      <created>1746180495522</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1746180495522</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Add caching functionality to AndroidFileRepository with cacheFile and clearCache methods">
+      <option name="closed" value="true" />
+      <created>1746183121548</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1746183121548</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Refactor WebDavApplication to use FileManagerRepository instead of AndroidFileRepository">
+      <option name="closed" value="true" />
+      <created>1746183280702</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1746183280702</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Add FileManagerRepository and its implementation for file management operations">
+      <option name="closed" value="true" />
+      <created>1746184520056</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1746184520057</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -621,7 +624,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/server-config-ui" />
+                        <option value="feature/file-manager-data-layer" />
                       </list>
                     </value>
                   </entry>
@@ -635,44 +638,44 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Update getServerConfigById to return nullable ServerConfig" />
-    <MESSAGE value="Rename GetServersUseCase to GetServerListUseCase and update references" />
-    <MESSAGE value="Add ServerConfigState sealed interface for UI state management" />
-    <MESSAGE value="Add ServerConfigViewModel for managing server configuration UI state" />
-    <MESSAGE value="Add UI components for server configuration management" />
-    <MESSAGE value="Refactor ServerConfigState to a data class for improved state management" />
-    <MESSAGE value="Refactor ServerConfigViewModel to improve state management and add configuration update methods" />
-    <MESSAGE value="Refactor Server Configuration Function Components" />
-    <MESSAGE value="Enhance layout of server configuration forms by adding padding and full size support" />
-    <MESSAGE value="Remove unused imports in ServerConfigScreen for cleaner code" />
-    <MESSAGE value="Move ErrorDialog to core components&#10;&#10;- Extracted ErrorDialog from server config to core.ui.component package&#10;- Updated references in ServerConfigScreen to use the new component path&#10;- Improves reusability across different screens" />
-    <MESSAGE value="Move ErrorDialog to core components&#10;&#10;- Extracted ErrorDialog from server config to core.ui.component package&#10;- Updated references in ServerConfigScreen to use the new component path&#10;- Rename argument to onCloseErrorMessage&#10;- Improves reusability across different screens" />
-    <MESSAGE value="Add Kotlin serialization and navigation dependencies" />
-    <MESSAGE value="Add password visibility toggle to ServerConfigForm" />
-    <MESSAGE value="Add validation for input fields in ServerConfigForm" />
-    <MESSAGE value="Update ConfirmationDialog to improve exit confirmation messaging and styling" />
-    <MESSAGE value="Add back navigation confirmation to ServerConfigTopAppBar" />
-    <MESSAGE value="Refactor ServerConfigForm and related components to unify input validation and improve navigation handling" />
-    <MESSAGE value="Update ErrorDialog styling and improve dismiss behavior" />
-    <MESSAGE value="Refactor input validation method in ServerConfigViewModel for clarity" />
-    <MESSAGE value="improve string resource naming conventions for better maintainability" />
-    <MESSAGE value="Rename package for UiText to improve consistency in utility structure" />
-    <MESSAGE value="Remove domain layer from server configuration feature" />
-    <MESSAGE value="Remove domain layer from server list feature" />
-    <MESSAGE value="Add data models for file management: FileItem, FileType, and ServerConnectionInfo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add data models for file management: FileItem, FileType, and ServerConnectionInfo" />
+    <MESSAGE value="Add WebDavConnectionInfo data class for connection details" />
+    <MESSAGE value="Update import path for WebDavFile in WebDavFileMapper" />
+    <MESSAGE value="Expand WebDavFileApi interface with file operations" />
+    <MESSAGE value="Refactor WebDavFileApi interface to use File and InputStream for file operations" />
+    <MESSAGE value="Refactor WebDavFileApiSardineImpl to use File and InputStream for file operations" />
+    <MESSAGE value="Add file management methods to WebDavFileDataSource for enhanced file operations" />
+    <MESSAGE value="Add WebDavFileRepository interface for file management operations" />
+    <MESSAGE value="Implement WebDavFileRepository with file management operations" />
+    <MESSAGE value="Migrate to fork of sardine-android with improved InputStream support" />
+    <MESSAGE value="Refactor WebDavFileApi to use InputStream provider for file uploads" />
+    <MESSAGE value="Add androidx.documentfile dependency" />
+    <MESSAGE value="Add contentType property to WebDavFile and update mapper logic" />
+    <MESSAGE value="Refactor WebDavFileApi and related implementations to remove serverConnectionInfo parameter from methods, simplifying API usage" />
+    <MESSAGE value="Add createFile method to AndroidFileDataSource for file creation in DocumentFile" />
+    <MESSAGE value="Add AndroidFileRepository and AndroidFileRepositoryImpl for file read/write operations" />
+    <MESSAGE value="Rename Path to Uri in variables and parameters for clarity in implementing work with WebDAV" />
+    <MESSAGE value="Rename contentType to mimeType in WebDavFile and WebDavFileMapper for improved clarity" />
+    <MESSAGE value="Add mimeType parameter to uploadFile methods in WebDavFileApi and related implementations for enhanced file upload functionality" />
+    <MESSAGE value="Add getFileInfo method to AndroidFileRepository for retrieving file metadata" />
+    <MESSAGE value="Rename nameFile parameter to fileName in uploadFile method for improved clarity" />
+    <MESSAGE value="Add FileProvider configuration to AndroidManifest and create file_paths.xml for file access" />
+    <MESSAGE value="Implement activity lifecycle callbacks in WebDavApplication to clear cache on app background" />
+    <MESSAGE value="Add caching functionality to AndroidFileRepository with cacheFile and clearCache methods" />
+    <MESSAGE value="Refactor WebDavApplication to use FileManagerRepository instead of AndroidFileRepository" />
+    <MESSAGE value="Add FileManagerRepository and its implementation for file management operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add FileManagerRepository and its implementation for file management operations" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.webdavmanager">
           <value>
-            <CheckInfo lastCheckTimestamp="1744179679790" />
+            <CheckInfo lastCheckTimestamp="1746178947425" />
           </value>
         </entry>
         <entry key="com.example.webdavmanager.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1744179679788" />
+            <CheckInfo lastCheckTimestamp="1746178947430" />
           </value>
         </entry>
       </map>
