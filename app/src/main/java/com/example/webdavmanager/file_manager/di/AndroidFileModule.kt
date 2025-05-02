@@ -1,6 +1,9 @@
 package com.example.webdavmanager.file_manager.di
 
 import android.content.Context
+import com.example.webdavmanager.file_manager.data.repository.AndroidFileRepository
+import com.example.webdavmanager.file_manager.data.repository.AndroidFileRepositoryImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,8 +13,18 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class AndroidFileModule {
-    @Provides
+abstract class AndroidFileModule {
+
+    @Binds
     @Singleton
-    fun provideContext(@ApplicationContext context: Context): Context = context
+    abstract fun bindAndroidFileRepository(
+        androidFileRepositoryImpl: AndroidFileRepositoryImpl
+    ): AndroidFileRepository
+
+    companion object{
+        @Provides
+        @Singleton
+        fun provideContext(@ApplicationContext context: Context): Context = context
+    }
+
 }
