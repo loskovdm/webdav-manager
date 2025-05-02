@@ -3,8 +3,10 @@ package com.example.webdavmanager.file_manager.data.repository
 import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
+import androidx.core.content.FileProvider
 import com.example.webdavmanager.file_manager.data.local.AndroidFileDataSource
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.File
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -12,6 +14,7 @@ class AndroidFileRepositoryImpl @Inject constructor(
     private val dataSource: AndroidFileDataSource,
     @ApplicationContext private val context: Context
 ) : AndroidFileRepository {
+
     override suspend fun readFile(uri: Uri): Result<InputStream> {
         return dataSource.readFile(uri)
     }
@@ -52,4 +55,39 @@ class AndroidFileRepositoryImpl @Inject constructor(
             Result.failure(e)
         }
     }
+
+    override suspend fun cacheFile(
+        fileName: String,
+        mimeType: String,
+        fileStream: InputStream
+    ): Result<Uri>  {
+        try {
+            val cacheDir = context.cacheDir
+            val file = File(cacheDir, fileName)
+
+            file.outputStream().use { outputStream ->
+                fileStream.copyTo(outputStream)
+            }
+
+            val uri = FileProvider.getUriForFile(
+                context,
+                "${context.packageName}.fileprovider",
+                file
+            )
+
+            return Result.success(uri)
+        } catch (e: Exception) {
+            return Result.failure(e)
+        }
+    }
+
+    override suspend fun clearCache(): Result<Unit> {
+        try {
+            context.cacheDir.listFiles()?.forEach { it.delete() }
+            return Result.success(Unit)
+        } catch (e: Exception) {
+            return Result.failure(e)
+        }
+    }
+
 }
