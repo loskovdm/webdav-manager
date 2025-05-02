@@ -3,7 +3,7 @@ package com.example.webdavmanager
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import com.example.webdavmanager.file_manager.data.repository.AndroidFileRepository
+import com.example.webdavmanager.file_manager.data.repository.FileManagerRepository
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltAndroidApp
 class WebDavApplication : Application() {
     @Inject
-    lateinit var androidFileRepository: AndroidFileRepository
+    lateinit var fileManagerRepository: FileManagerRepository
 
     private var activeActivities = 0
 
@@ -28,7 +28,7 @@ class WebDavApplication : Application() {
                 activeActivities--
                 if (activeActivities == 0) {
                     CoroutineScope(Dispatchers.IO).launch {
-                        androidFileRepository.clearCache()
+                        fileManagerRepository.clearCache()
                     }
                 }
             }
