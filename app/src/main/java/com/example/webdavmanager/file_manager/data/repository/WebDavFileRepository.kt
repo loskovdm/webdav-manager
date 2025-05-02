@@ -16,7 +16,7 @@ interface WebDavFileRepository {
     suspend fun uploadFile(
         fileStreamProvider: () -> InputStream,
         directoryUri: String,
-        nameFile: String,
+        fileName: String,
         mimeType: String
     ): Result<Unit>
 
