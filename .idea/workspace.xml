@@ -16,16 +16,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Disable backup options in AndroidManifest.xml for improved data security">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Implement application theme">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/util/FileTypeUtils.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Color.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Theme.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Type.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileItem.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,14 +294,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Update ConfirmationDialog to improve exit confirmation messaging and styling">
-      <option name="closed" value="true" />
-      <created>1744106091641</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1744106091642</updated>
     </task>
     <task id="LOCAL-00055" summary="Add back navigation confirmation to ServerConfigTopAppBar">
       <option name="closed" value="true" />
@@ -693,7 +679,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746808460901</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="Implement application theme">
+      <option name="closed" value="true" />
+      <created>1746808777809</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1746808777809</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -721,7 +715,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Add contentType property to WebDavFile and update mapper logic" />
     <MESSAGE value="Refactor WebDavFileApi and related implementations to remove serverConnectionInfo parameter from methods, simplifying API usage" />
     <MESSAGE value="Add createFile method to AndroidFileDataSource for file creation in DocumentFile" />
     <MESSAGE value="Add AndroidFileRepository and AndroidFileRepositoryImpl for file read/write operations" />
@@ -746,7 +739,8 @@
     <MESSAGE value="Refactor renameFile method to improve URI encoding for file renaming" />
     <MESSAGE value="Update data extraction rules and add file manager navigation" />
     <MESSAGE value="Disable backup options in AndroidManifest.xml for improved data security" />
-    <option name="LAST_COMMIT_MESSAGE" value="Disable backup options in AndroidManifest.xml for improved data security" />
+    <MESSAGE value="Implement application theme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement application theme" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

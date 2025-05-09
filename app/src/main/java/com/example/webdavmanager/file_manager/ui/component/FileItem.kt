@@ -3,13 +3,13 @@ package com.example.webdavmanager.file_manager.ui.component
 import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.DriveFileMove
@@ -42,17 +42,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 import com.example.webdavmanager.file_manager.ui.model.FileItem
 import com.example.webdavmanager.file_manager.ui.util.formatAsFileSize
+import com.example.webdavmanager.file_manager.ui.util.getFileIcon
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FileItem(
+    modifier: Modifier = Modifier,
     file: FileItem,
     isSelectionModeActive: Boolean = false,
     isSelected: Boolean = false,
@@ -65,8 +66,7 @@ fun FileItem(
     onMoveClick: () -> Unit,
     onRenameClick: () -> Unit,
     onDeleteClick: () -> Unit,
-    onInfoClick: () -> Unit,
-    modifier: Modifier = Modifier
+    onInfoClick: () -> Unit
 ) {
     var showMenu by remember { mutableStateOf(false) }
 
@@ -97,13 +97,12 @@ fun FileItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = if (file.isDirectory)
-                    Icons.Default.Folder
-                else
-                    Icons.AutoMirrored.Default.InsertDriveFile,
+                imageVector = getFileIcon(file),
                 contentDescription = null,
-                modifier.padding(end = 16.dp),
-                tint = MaterialTheme.colorScheme.primary
+                modifier = Modifier
+                    .size(52.dp)  // Increase this value to make icons larger
+                    .padding(end = 16.dp),
+                tint = MaterialTheme.colorScheme.primary,
             )
             Column(
                 modifier = Modifier.weight(1f)
@@ -295,7 +294,7 @@ fun FileItem(
 fun PreviewFileItem() {
     WebdavManagerTheme {
         FileItem(
-            FileItem(
+            file = FileItem(
                 name = "Test",
                 isDirectory = false,
                 mimeType = null,
