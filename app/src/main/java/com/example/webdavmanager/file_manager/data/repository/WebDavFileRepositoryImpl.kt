@@ -4,6 +4,8 @@ import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
 import com.example.webdavmanager.file_manager.data.model.WebDavFile
 import com.example.webdavmanager.file_manager.data.remote.WebDavFileDataSource
 import java.io.InputStream
+import java.net.URI
+import java.net.URLEncoder
 import javax.inject.Inject
 
 class WebDavFileRepositoryImpl @Inject constructor(
@@ -70,18 +72,31 @@ class WebDavFileRepositoryImpl @Inject constructor(
     override suspend fun renameFile(
         fileUri: String,
         newName: String
-    ): Result<Unit> {
-        val directoryUri: String
-        val fileName: String
-        if (fileUri.endsWith('/')) {
-            directoryUri = fileUri.dropLast(1).substringBeforeLast('/') + "/"
-            fileName = "$newName/"
-        } else {
-            directoryUri = fileUri.substringBeforeLast('/') + "/"
-            fileName = newName
+    ): Result<Unit> = runCatching {
+        val protocolAndHost = fileUri.substringBefore("://") + "://" +
+                fileUri.substringAfter("://").substringBefore("/")
+        val rawPath = fileUri.substringAfter(protocolAndHost)
+
+        val parentPath = rawPath.trimEnd('/').substringBeforeLast("/")
+
+        fun encodeSegment(segment: String) =
+            URLEncoder
+                .encode(segment, "UTF-8")
+                .replace("+", "%20")
+
+        val encodedParent = parentPath
+            .split("/")
+            .joinToString("/") { encodeSegment(it) }
+        val encodedNewName = encodeSegment(newName)
+
+        val newUrl = buildString {
+            append(protocolAndHost)
+            append(encodedParent)
+            append("/")
+            append(encodedNewName)
         }
-        val newUri = "$directoryUri$fileName"
-        return dataSource.moveFile(fileUri, newUri)
+
+        dataSource.moveFile(fileUri, newUrl)
     }
 
 }
