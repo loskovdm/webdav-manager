@@ -1,6 +1,7 @@
 package com.example.webdavmanager.file_manager.data.repository
 
 import android.net.Uri
+import android.util.Log
 import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
 import com.example.webdavmanager.file_manager.data.model.WebDavFile
 import kotlinx.coroutines.runBlocking
@@ -20,7 +21,8 @@ class FileManagerRepositoryImpl @Inject constructor(
 
     override suspend fun uploadFile(
         remoteDirectoryUri: String,
-        localFileUri: Uri
+        localFileUri: Uri,
+        progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)?
     ): Result<Unit> {
         val fileInfo = androidFileRepository.getFileInfo(localFileUri)
         return fileInfo.fold(
@@ -30,7 +32,7 @@ class FileManagerRepositoryImpl @Inject constructor(
 
                 val fileStreamProvider = {
                     runBlocking {
-                        androidFileRepository.readFile(localFileUri).getOrThrow()
+                        androidFileRepository.readFile(localFileUri, progressCallback).getOrThrow()
                     }
                 }
 
@@ -47,14 +49,26 @@ class FileManagerRepositoryImpl @Inject constructor(
 
     override suspend fun downloadFile(
         remoteFile: WebDavFile,
-        localDirectoryUri: Uri
+        localDirectoryUri: Uri,
+        progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)?
     ): Result<Unit> {
+        val fileSize = remoteFile.size?.toLong() ?: -1L
+        Log.d("loadTest", "WebDav file size: ${remoteFile.size}, converted: $fileSize")
+
         val fileStream = webDavFileRepository.downloadFile(remoteFile.uri)
-        return androidFileRepository.writeFile(
-            directoryUri = localDirectoryUri,
-            fileName = remoteFile.name,
-            mimeType = remoteFile.mimeType ?: "application/octet-stream",
-            fileStream = fileStream.getOrThrow()
+        return fileStream.fold(
+            onSuccess = { stream ->
+                Log.d("loadTest", "Got stream, writing file with size: $fileSize")
+                androidFileRepository.writeFile(
+                    directoryUri = localDirectoryUri,
+                    fileName = remoteFile.name,
+                    mimeType = remoteFile.mimeType ?: "application/octet-stream",
+                    fileStream = stream,
+                    progressCallback = progressCallback,
+                    fileSize = fileSize
+                )
+            },
+            onFailure = { Result.failure(it) }
         )
     }
 
@@ -90,17 +104,23 @@ class FileManagerRepositoryImpl @Inject constructor(
         return webDavFileRepository.renameFile(remoteFileUri, newName)
     }
 
-    override suspend fun cacheFile(remoteFile: WebDavFile): Result<Uri> {
+    override suspend fun cacheFile(remoteFile: WebDavFile, progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)?): Result<Uri> {
         val fileStream = webDavFileRepository.downloadFile(remoteFile.uri)
         return androidFileRepository.cacheFile(
             fileName = remoteFile.name,
             mimeType = remoteFile.mimeType ?: "application/octet-stream",
-            fileStream = fileStream.getOrThrow()
+            fileSize = remoteFile.size?.toLong() ?: -1L,
+            fileStream = fileStream.getOrThrow(),
+            progressCallback = progressCallback
         )
     }
 
     override suspend fun clearCache(): Result<Unit> {
         return androidFileRepository.clearCache()
+    }
+
+    override suspend fun getLocalFileInfo(localFileUri: Uri): Result<Map<String, String?>> {
+        return androidFileRepository.getFileInfo(localFileUri)
     }
 
 }

@@ -3,7 +3,6 @@ package com.example.webdavmanager.file_manager.data.repository
 import android.net.Uri
 import com.example.webdavmanager.file_manager.data.model.WebDavConnectionInfo
 import com.example.webdavmanager.file_manager.data.model.WebDavFile
-import java.io.InputStream
 
 interface FileManagerRepository {
 
@@ -17,12 +16,14 @@ interface FileManagerRepository {
 
     suspend fun uploadFile(
         remoteDirectoryUri: String,
-        localFileUri: Uri
+        localFileUri: Uri,
+        progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)? = null
     ): Result<Unit>
 
     suspend fun downloadFile(
         remoteFile: WebDavFile,
-        localDirectoryUri: Uri
+        localDirectoryUri: Uri,
+        progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)? = null
     ): Result<Unit>
 
     suspend fun moveFile(
@@ -50,9 +51,12 @@ interface FileManagerRepository {
     ): Result<Unit>
 
     suspend fun cacheFile(
-        remoteFile: WebDavFile
+        remoteFile: WebDavFile,
+        progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)? = null
     ): Result<Uri>
 
     suspend fun clearCache(): Result<Unit>
+
+    suspend fun getLocalFileInfo(localFileUri: Uri): Result<Map<String, String?>>
 
 }
