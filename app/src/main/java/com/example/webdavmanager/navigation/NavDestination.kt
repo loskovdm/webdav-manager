@@ -8,4 +8,7 @@ sealed interface NavDestination {
 
     @Serializable
     data class ServerConfigDestination(val serverId: Int): NavDestination
+
+    @Serializable
+    data class FileManagerDestination(val serverId: Int): NavDestination
 }

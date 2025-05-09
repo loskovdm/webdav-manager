@@ -16,8 +16,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add FileManagerRepository and its implementation for file management operations">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/model/FileItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/model/FileItem.kt" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Update data extraction rules and add file manager navigation">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/util/ServerConnectionInfoMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/navigation/NavDestination.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/navigation/NavDestination.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/navigation/WebDavNavHost.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/navigation/WebDavNavHost.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ServerConfigViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ServerConfigViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ServerListScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ServerListScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/component/ServerList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/component/ServerList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +40,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Dmitry Loskov\.android\avd\Pixel_6_API_34.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=9TZLCUBA69WWAMYH)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -54,10 +67,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Object" />
-        <option value="Kotlin File" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
         <option value="resourceFile" />
+        <option value="Kotlin File" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -101,24 +114,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "feature/file__manager__ui",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager",
-    "settings.editor.selected.configurable": "http.proxy"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;Compose Preview.PreviewFileList.executor&quot;: &quot;Run&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/file__manager__ui&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
       <recent name="com.example.webdavmanager.file_manager.data.model" />
@@ -128,7 +142,7 @@
       <recent name="com.example.webdavmanager.server_config.ui" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Webdav_Manager.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
@@ -201,6 +215,84 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PreviewFileList" type="ComposePreviewRunConfiguration" singleton="false" temporary="true">
+      <module name="Webdav_Manager.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="--es composable com.example.webdavmanager.file_manager.ui.component.FileListKt.PreviewFileList" />
+      <option name="MODE" value="specific_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="RESTORE_FRESH_INSTALL_ONLY" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
+      <option name="ACTIVITY_CLASS" value="androidx.compose.ui.tooling.PreviewActivity" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="true" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <compose-preview-run-configuration composable-fqn="com.example.webdavmanager.file_manager.ui.component.FileListKt.PreviewFileList" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Compose Preview.PreviewFileList" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -210,78 +302,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Add ServerConfigViewModel for managing server configuration UI state">
-      <option name="closed" value="true" />
-      <created>1743614759042</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1743614759042</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Add UI components for server configuration management">
-      <option name="closed" value="true" />
-      <created>1743615004035</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1743615004035</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Refactor ServerConfigState to a data class for improved state management">
-      <option name="closed" value="true" />
-      <created>1743686548472</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1743686548472</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Refactor ServerConfigViewModel to improve state management and add configuration update methods">
-      <option name="closed" value="true" />
-      <created>1743692785033</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1743692785033</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Refactor Server Configuration Function Components">
-      <option name="closed" value="true" />
-      <created>1743693197852</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1743693197852</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Enhance layout of server configuration forms by adding padding and full size support">
-      <option name="closed" value="true" />
-      <created>1743702759600</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1743702759600</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Remove unused imports in ServerConfigScreen for cleaner code">
-      <option name="closed" value="true" />
-      <created>1743702814379</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1743702814379</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Move ErrorDialog to core components&#10;&#10;- Extracted ErrorDialog from server config to core.ui.component package&#10;- Updated references in ServerConfigScreen to use the new component path&#10;- Rename argument to onCloseErrorMessage&#10;- Improves reusability across different screens">
-      <option name="closed" value="true" />
-      <created>1743704926178</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1743704926178</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Add Kotlin serialization and navigation dependencies">
-      <option name="closed" value="true" />
-      <created>1743744063441</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1743744063441</updated>
     </task>
     <task id="LOCAL-00052" summary="Add password visibility toggle to ServerConfigForm">
       <option name="closed" value="true" />
@@ -603,7 +623,79 @@
       <option name="project" value="LOCAL" />
       <updated>1746184520057</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Update FileItem data class to use uri and mimeType, and add isDirectory property">
+      <option name="closed" value="true" />
+      <created>1746191250905</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1746191250905</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Remove FileType enum and FileTypeUtil">
+      <option name="closed" value="true" />
+      <created>1746191412826</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1746191412826</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Add INTERNET permission to AndroidManifest.xml">
+      <option name="closed" value="true" />
+      <created>1746522837002</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1746522837003</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Refactor WebDavFileApiSardineImpl to use coroutines for network operations and improve error handling">
+      <option name="closed" value="true" />
+      <created>1746790575623</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1746790575623</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Add storage permissions to AndroidManifest.xml and update file_paths.xml">
+      <option name="closed" value="true" />
+      <created>1746790606577</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1746790606577</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Enhance file handling in AndroidFileDataSource and AndroidFileRepository with progress tracking and improved file creation methods">
+      <option name="closed" value="true" />
+      <created>1746790996386</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1746790996386</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Add FileItemMapper to convert between WebDavFile and FileItem models">
+      <option name="closed" value="true" />
+      <created>1746791059061</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1746791059061</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Add file management components">
+      <option name="closed" value="true" />
+      <created>1746791191700</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1746791191700</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Refactor renameFile method to improve URI encoding for file renaming">
+      <option name="closed" value="true" />
+      <created>1746791215342</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1746791215342</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -631,16 +723,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Add WebDavConnectionInfo data class for connection details" />
-    <MESSAGE value="Update import path for WebDavFile in WebDavFileMapper" />
-    <MESSAGE value="Expand WebDavFileApi interface with file operations" />
-    <MESSAGE value="Refactor WebDavFileApi interface to use File and InputStream for file operations" />
-    <MESSAGE value="Refactor WebDavFileApiSardineImpl to use File and InputStream for file operations" />
-    <MESSAGE value="Add file management methods to WebDavFileDataSource for enhanced file operations" />
-    <MESSAGE value="Add WebDavFileRepository interface for file management operations" />
-    <MESSAGE value="Implement WebDavFileRepository with file management operations" />
-    <MESSAGE value="Migrate to fork of sardine-android with improved InputStream support" />
-    <MESSAGE value="Refactor WebDavFileApi to use InputStream provider for file uploads" />
     <MESSAGE value="Add androidx.documentfile dependency" />
     <MESSAGE value="Add contentType property to WebDavFile and update mapper logic" />
     <MESSAGE value="Refactor WebDavFileApi and related implementations to remove serverConnectionInfo parameter from methods, simplifying API usage" />
@@ -656,19 +738,29 @@
     <MESSAGE value="Add caching functionality to AndroidFileRepository with cacheFile and clearCache methods" />
     <MESSAGE value="Refactor WebDavApplication to use FileManagerRepository instead of AndroidFileRepository" />
     <MESSAGE value="Add FileManagerRepository and its implementation for file management operations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add FileManagerRepository and its implementation for file management operations" />
+    <MESSAGE value="Update FileItem data class to use uri and mimeType, and add isDirectory property" />
+    <MESSAGE value="Remove FileType enum and FileTypeUtil" />
+    <MESSAGE value="Add INTERNET permission to AndroidManifest.xml" />
+    <MESSAGE value="Refactor WebDavFileApiSardineImpl to use coroutines for network operations and improve error handling" />
+    <MESSAGE value="Add storage permissions to AndroidManifest.xml and update file_paths.xml" />
+    <MESSAGE value="Enhance file handling in AndroidFileDataSource and AndroidFileRepository with progress tracking and improved file creation methods" />
+    <MESSAGE value="Add FileItemMapper to convert between WebDavFile and FileItem models" />
+    <MESSAGE value="Add file management components" />
+    <MESSAGE value="Refactor renameFile method to improve URI encoding for file renaming" />
+    <MESSAGE value="Update data extraction rules and add file manager navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update data extraction rules and add file manager navigation" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.webdavmanager">
           <value>
-            <CheckInfo lastCheckTimestamp="1746178947425" />
+            <CheckInfo lastCheckTimestamp="1746790596915" />
           </value>
         </entry>
         <entry key="com.example.webdavmanager.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1746178947430" />
+            <CheckInfo lastCheckTimestamp="1746790596917" />
           </value>
         </entry>
       </map>

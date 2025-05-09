@@ -8,6 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.webdavmanager.file_manager.ui.FileManagerScreen
+import com.example.webdavmanager.navigation.NavDestination.FileManagerDestination
 import com.example.webdavmanager.navigation.NavDestination.ServerConfigDestination
 import com.example.webdavmanager.navigation.NavDestination.ServerListDestination
 import com.example.webdavmanager.server_config.ServerConfigScreen
@@ -29,6 +31,9 @@ fun WebDavNavHost(
     ) {
         composable<ServerListDestination> {
             ServerListScreen(
+                onNavigateToServerFileManager = { serverId ->
+                    navController.navigate(route = FileManagerDestination(serverId = serverId))
+                },
                 onNavigateToServerConfig = { serverId ->
                     navController.navigate(route = ServerConfigDestination(serverId = serverId))
                 }
@@ -46,6 +51,11 @@ fun WebDavNavHost(
                         }
                     }
                 }
+            )
+        }
+        composable<FileManagerDestination> {
+            FileManagerScreen(
+                onNavigateBack = { navController.popBackStack() }
             )
         }
     }

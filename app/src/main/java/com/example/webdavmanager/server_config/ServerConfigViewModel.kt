@@ -122,7 +122,7 @@ class ServerConfigViewModel @Inject constructor(
         return when {
             value.length > 100 ->
                 UiText.StringResource(R.string.error_too_long).asString(context)
-            value.contains(Regex("[\\u0000-\\u001F<>\"'`$;|&/\\\\:*?]")) ->
+            value.contains(Regex("[\\u0000-\\u001F<>\"'`$|*]")) ->
                 UiText.StringResource(R.string.error_invalid_chars).asString(context)
             else -> null
         }

@@ -16,7 +16,7 @@ fun ServerList(
     servers: List<ServerItem>,
     onDeleteServer: (Int) -> Unit,
     onNavigateToServerConfig: (Int) -> Unit,
-//    onNavigateToServerFileManager: (Int) -> Unit, todo: Implement navigation
+    onNavigateToServerFileManager: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -25,7 +25,7 @@ fun ServerList(
         items(servers) { server ->
             ServerItem(
                 server = server,
-                onServerClick = {  }, // TODO: Implement navigation
+                onServerClick = { onNavigateToServerFileManager(server.id) },
                 onDeleteClick = { onDeleteServer(server.id) },
                 onEditClick = { serverId ->
                     onNavigateToServerConfig(serverId)
@@ -47,6 +47,7 @@ fun PreviewServerList() {
                 ServerItem(id = 3, name = "Cloud Storage", user = "clouduser")
             ),
             onDeleteServer = {},
+            onNavigateToServerFileManager = {},
             onNavigateToServerConfig = {}
         )
     }
