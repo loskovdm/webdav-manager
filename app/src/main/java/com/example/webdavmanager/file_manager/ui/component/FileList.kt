@@ -5,6 +5,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
@@ -25,13 +29,21 @@ fun FileList(
     onInfoFile: (file: FileItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val sortedFiles = files.sortedWith(compareByDescending { it.isDirectory })
+    var selectedLargeFile by remember { mutableStateOf<FileItem?>(null) }
     LazyColumn(
         modifier = modifier.fillMaxSize()
     ) {
-        items(files) { file ->
+        items(sortedFiles) { file ->
             FileItem(
                 file = file,
-                onFileClick = { onOpenFile(file) },
+                onFileClick = {
+                    if (!file.isDirectory && file.size != null && file.size > 10 * 1024 * 1024) {
+                        selectedLargeFile = file
+                    } else {
+                        onOpenFile(file)
+                    }
+                },
                 onFileLongClick = {
                     setSelectionModeActive()
                     onSelectFile(file.uri)
@@ -49,6 +61,27 @@ fun FileList(
                 onInfoClick = { onInfoFile(file) }
             )
         }
+    }
+
+    selectedLargeFile?.let {
+        LargeFileWarningDialog(
+            file = selectedLargeFile!!,
+            onDismiss = {
+                selectedLargeFile = null
+            },
+            onOpenAnyway = {
+                onOpenFile(selectedLargeFile!!)
+                selectedLargeFile = null
+            },
+            onSaveInDownloads = {
+                onSaveInDownloads(selectedLargeFile!!)
+                selectedLargeFile = null
+            },
+            onSaveInCustomDirectory = {
+                onSaveInCustomDirectory(selectedLargeFile!!)
+                selectedLargeFile = null
+            }
+        )
     }
 }
 
