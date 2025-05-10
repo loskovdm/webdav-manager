@@ -1,6 +1,9 @@
 package com.example.webdavmanager.file_manager.ui.component
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -19,16 +22,23 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TriStateCheckbox
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.style.TextOverflow
@@ -40,6 +50,7 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FileManagerTopAppBar(
+    modifier: Modifier = Modifier,
     directoryName: String,
     isSelectionModeActive: Boolean,
     closeSelectionModeActive: () -> Unit,
@@ -50,13 +61,79 @@ fun FileManagerTopAppBar(
     onNavigateBack: () -> Unit,
     onUploadFileClick: () -> Unit,
     onCreateFolderClick: () -> Unit,
-    modifier: Modifier = Modifier
+    onSearchClick: () -> Unit,
+    onCloseSearch: () -> Unit,
+    isShowSearchBar: Boolean = false,
+    currentSearchQuery: String = "",
+    onSearchQueryChange: (String) -> Unit
 ) {
     var showAddFileMenu by remember { mutableStateOf(false) }
+    val focusRequester = remember { FocusRequester() }
 //    var showSortMenu by remember { mutableStateOf(false) }
-//    var showSearchMenu by remember { mutableStateOf(false) }
 
-    if (!isSelectionModeActive) {
+    if (isShowSearchBar) {
+        // Replace SearchBar with TopAppBar containing TextField
+        TopAppBar(
+            modifier = modifier,
+            title = {
+                TextField(
+                    value = currentSearchQuery,
+                    onValueChange = onSearchQueryChange,
+                    placeholder = {
+                        Text(
+                            "Search files...",
+                            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f),
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    },
+                    textStyle = MaterialTheme.typography.bodyLarge,
+                    singleLine = true,
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = MaterialTheme.colorScheme.primary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.primary,
+                        focusedTextColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onPrimary,
+                        focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
+                        unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
+                        cursorColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .focusRequester(focusRequester)
+                )
+            },
+            navigationIcon = {
+                IconButton(onClick = onCloseSearch) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onPrimary
+                    )
+                }
+            },
+            actions = {
+                if (currentSearchQuery.isNotEmpty()) {
+                    IconButton(onClick = { onSearchQueryChange("") }) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "Clear search",
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
+                }
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary,
+                titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+                actionIconContentColor = MaterialTheme.colorScheme.onPrimary
+            )
+        )
+
+        LaunchedEffect(Unit) {
+            focusRequester.requestFocus()
+        }
+    } else if (!isSelectionModeActive) {
         TopAppBar(
             modifier = modifier,
             title = {
@@ -87,7 +164,7 @@ fun FileManagerTopAppBar(
                     )
                 }
                 IconButton(
-                    onClick = {  }
+                    onClick = { onSearchClick() }
                 ) {
                     Icon(
                         imageVector = Icons.Default.Search,
@@ -188,26 +265,6 @@ fun FileManagerTopAppBar(
                     )
                 )
             }
-        )
-    }
-
-
-}
-
-@Preview
-@Composable
-fun PreviewFileManagerTopAppBar() {
-    WebdavManagerTheme {
-        FileManagerTopAppBar(
-            directoryName = "Test directory",
-            onNavigateBack = {},
-            onUploadFileClick = {},
-            onCreateFolderClick = {},
-            isSelectionModeActive = false,
-            parentCheckBoxIsSelected = false,
-            onParentCheckBoxSelect = {},
-            closeSelectionModeActive = {},
-            onDeleteCheckedFile = {}
         )
     }
 }

@@ -5,8 +5,12 @@ import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.runtime.getValue
@@ -25,6 +29,7 @@ import com.example.webdavmanager.file_manager.ui.component.FileNameInputDialog
 import com.example.webdavmanager.file_manager.ui.component.ProgressDialog
 import com.example.webdavmanager.file_manager.ui.model.FileItem
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FileManagerScreen(
     viewModel: FileManagerViewModel = hiltViewModel(),
@@ -57,12 +62,28 @@ fun FileManagerScreen(
     BackHandler {
         if (state.isSelectionModeActive) {
             viewModel.setSelectionModeActive()
+            viewModel.clearSelection()
+        }
+        else if (state.isShowSearchBar) {
+            viewModel.setIsSearchBar()
+            viewModel.setSearchQuery("")
         }
         else if (viewModel.canNavigateUp()) {
             viewModel.navigateUp()
         } else {
             onNavigateBack()
         }
+    }
+
+    val displayedFiles = if (state.searchQuery.isNotEmpty()) {
+        state.fileList.filter { file ->
+            file.name.contains(state.searchQuery, ignoreCase = true) ||
+                    isSubsequence(state.searchQuery.lowercase(), file.name.lowercase()) ||
+                    levenshteinDistance(state.searchQuery.lowercase(), file.name.lowercase()) <=
+                    maxOf(2, state.searchQuery.length / 3)
+        }
+    } else {
+        state.fileList
     }
 
     Scaffold(
@@ -82,8 +103,19 @@ fun FileManagerScreen(
                 numberSelectedFiles = viewModel.getNumberSelectedFiles(),
                 parentCheckBoxIsSelected = viewModel.getParentCheckBoxIsSelected(),
                 onParentCheckBoxSelect = { viewModel.parentCheckBoxSelect() },
-                closeSelectionModeActive = { viewModel.setSelectionModeActive() },
-                onDeleteCheckedFile = { viewModel.deleteCheckedFile() }
+                closeSelectionModeActive = {
+                    viewModel.setSelectionModeActive()
+                    viewModel.clearSelection()
+                },
+                onDeleteCheckedFile = { viewModel.deleteCheckedFile() },
+                isShowSearchBar = state.isShowSearchBar,
+                onSearchClick = { viewModel.setIsSearchBar() },
+                onCloseSearch = {
+                    viewModel.setIsSearchBar()
+                    viewModel.setSearchQuery("")
+                },
+                currentSearchQuery = state.searchQuery,
+                onSearchQueryChange = viewModel::setSearchQuery
             )
         }
     ) { paddingValues ->
@@ -91,7 +123,7 @@ fun FileManagerScreen(
             LoadingContent()
         } else {
             FileList(
-                files = state.fileList,
+                files = displayedFiles,
                 onOpenFile = viewModel::openFile,
                 onSaveInDownloads = { file ->
                     viewModel.downloadFileToDownloads(file)
@@ -185,4 +217,40 @@ sealed class DialogState {
     data class RenameFile(val file: FileItem) : DialogState()
     data object CreateFolder : DialogState()
     data object None : DialogState()
+}
+
+private fun isSubsequence(query: String, text: String): Boolean {
+    var j = 0
+    for (i in query.indices) {
+        val c = query[i]
+        while (j < text.length && text[j] != c) {
+            j++
+        }
+        if (j >= text.length) {
+            return false
+        }
+        j++
+    }
+    return true
+}
+
+private fun levenshteinDistance(s1: String, s2: String): Int {
+    val m = s1.length
+    val n = s2.length
+    val dp = Array(m + 1) { IntArray(n + 1) }
+
+    for (i in 0..m) dp[i][0] = i
+    for (j in 0..n) dp[0][j] = j
+
+    for (i in 1..m) {
+        for (j in 1..n) {
+            dp[i][j] = if (s1[i-1] == s2[j-1]) {
+                dp[i-1][j-1]
+            } else {
+                minOf(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
+            }
+        }
+    }
+
+    return dp[m][n]
 }

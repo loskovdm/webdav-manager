@@ -18,7 +18,10 @@ data class FileManagerState(
     val operationFileName: String? = null,
 
     val isSelectionModeActive: Boolean = false,
-    val selectedFiles: Set<String> = emptySet()
+    val selectedFiles: Set<String> = emptySet(),
+
+    val isShowSearchBar: Boolean = false,
+    val searchQuery: String = ""
 )
 
 enum class OperationType {

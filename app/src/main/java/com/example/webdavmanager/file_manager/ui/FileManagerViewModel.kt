@@ -108,6 +108,14 @@ class FileManagerViewModel @Inject constructor(
     fun openFile(file: FileItem) {
         Log.d("loadTest", _state.toString())
 
+        if (_state.value.isSelectionModeActive) {
+            setSelectionModeActive()
+        }
+        else if (_state.value.isShowSearchBar) {
+            setIsSearchBar()
+            setSearchQuery("")
+        }
+
         if (file.isDirectory) {
             val newDirectory = file.uri
             directoryStack.add(newDirectory)
@@ -453,6 +461,15 @@ class FileManagerViewModel @Inject constructor(
 
     fun hideFileInfo() {
         _state.update { it.copy(fileInfoToShow = null) }
+    }
+
+    fun setIsSearchBar() {
+        val currentSearchBarState = _state.value.isShowSearchBar
+        _state.update { it.copy(isShowSearchBar = !currentSearchBarState) }
+    }
+
+    fun setSearchQuery(query: String) {
+        _state.update { it.copy(searchQuery = query) }
     }
 
 }
