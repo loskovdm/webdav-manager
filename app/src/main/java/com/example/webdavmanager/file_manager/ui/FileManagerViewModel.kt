@@ -5,13 +5,13 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
-import androidx.compose.ui.state.ToggleableState
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.example.webdavmanager.core.data.repository.ServerRepository
 import com.example.webdavmanager.file_manager.data.repository.FileManagerRepository
+import com.example.webdavmanager.file_manager.ui.component.SortOrder
 import com.example.webdavmanager.file_manager.ui.model.FileItem
 import com.example.webdavmanager.file_manager.ui.model.ServerConnectionInfo
 import com.example.webdavmanager.file_manager.ui.util.toFileItem
@@ -72,7 +72,7 @@ class FileManagerViewModel @Inject constructor(
                 .fold(
                     onSuccess = { files ->
                         val fileList = files.map { it.toFileItem() }
-                        _state.update { it.copy(fileList = fileList) }
+                        _state.update { it.copy(fileList = sortFileList(fileList)) }
 
                         val directoryName = directoryUri.let {
                             val trimmedPath = it.trimEnd('/')
@@ -470,6 +470,22 @@ class FileManagerViewModel @Inject constructor(
 
     fun setSearchQuery(query: String) {
         _state.update { it.copy(searchQuery = query) }
+    }
+
+    fun setSortOrder(order: SortOrder) {
+        _state.update { it.copy(sortOrder = order) }
+        loadFileList(directoryStack.last())
+    }
+
+    fun sortFileList(files: List<FileItem>): List<FileItem> {
+        return when (_state.value.sortOrder) {
+            SortOrder.NAME_ASC -> files.sortedBy { it.name.lowercase() }
+            SortOrder.NAME_DESC -> files.sortedByDescending { it.name.lowercase() }
+            SortOrder.SIZE_ASC -> files.sortedBy { it.size }
+            SortOrder.SIZE_DESC -> files.sortedByDescending { it.size }
+            SortOrder.DATE_ASC -> files.sortedBy { it.modifiedDate }
+            SortOrder.DATE_DESC -> files.sortedByDescending { it.modifiedDate }
+        }
     }
 
 }

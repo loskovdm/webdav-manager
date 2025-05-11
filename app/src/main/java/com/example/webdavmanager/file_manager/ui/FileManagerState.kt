@@ -1,6 +1,7 @@
 package com.example.webdavmanager.file_manager.ui
 
 import android.net.Uri
+import com.example.webdavmanager.file_manager.ui.component.SortOrder
 import com.example.webdavmanager.file_manager.ui.model.FileItem
 
 data class FileManagerState(
@@ -21,7 +22,9 @@ data class FileManagerState(
     val selectedFiles: Set<String> = emptySet(),
 
     val isShowSearchBar: Boolean = false,
-    val searchQuery: String = ""
+    val searchQuery: String = "",
+
+    val sortOrder: SortOrder = SortOrder.NAME_ASC
 )
 
 enum class OperationType {

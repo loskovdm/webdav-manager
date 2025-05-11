@@ -31,7 +31,6 @@ fun getFileIcon(file: FileItem): ImageVector {
                 mimeType.contains("document") -> Icons.Default.Description
         mimeType.contains("presentation") -> Icons.Default.Slideshow
 
-        // If MIME type is not available or not recognized, check file extension
         else -> getIconByExtension(file.name)
     }
 }

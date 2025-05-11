@@ -1,7 +1,6 @@
 package com.example.webdavmanager.file_manager.ui.component
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,6 +12,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.CreateNewFolder
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
@@ -22,14 +23,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TriStateCheckbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -40,36 +38,39 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.webdavmanager.R
-import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FileManagerTopAppBar(
     modifier: Modifier = Modifier,
     directoryName: String,
+    onNavigateBack: () -> Unit,
+
+    onUploadFileClick: () -> Unit,
+    onCreateFolderClick: () -> Unit,
+
     isSelectionModeActive: Boolean,
     closeSelectionModeActive: () -> Unit,
     numberSelectedFiles: Int? = null,
     parentCheckBoxIsSelected: Boolean,
     onParentCheckBoxSelect: () -> Unit,
     onDeleteCheckedFile: () -> Unit,
-    onNavigateBack: () -> Unit,
-    onUploadFileClick: () -> Unit,
-    onCreateFolderClick: () -> Unit,
+
     onSearchClick: () -> Unit,
     onCloseSearch: () -> Unit,
     isShowSearchBar: Boolean = false,
     currentSearchQuery: String = "",
-    onSearchQueryChange: (String) -> Unit
+    onSearchQueryChange: (String) -> Unit,
+
+    currentSortOrder: SortOrder = SortOrder.NAME_ASC,
+    onSortOptionSelect: (SortOrder) -> Unit
 ) {
     var showAddFileMenu by remember { mutableStateOf(false) }
     val focusRequester = remember { FocusRequester() }
-//    var showSortMenu by remember { mutableStateOf(false) }
+    var showSortMenu by remember { mutableStateOf(false) }
 
     if (isShowSearchBar) {
         // Replace SearchBar with TopAppBar containing TextField
@@ -156,20 +157,85 @@ fun FileManagerTopAppBar(
             },
             actions = {
                 IconButton(
-                    onClick = {  }
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Default.Sort,
-                        contentDescription = "Sort"
-                    )
-                }
-                IconButton(
                     onClick = { onSearchClick() }
                 ) {
                     Icon(
                         imageVector = Icons.Default.Search,
                         contentDescription = "Search"
                     )
+                }
+                Box {
+                    IconButton(
+                        onClick = { showSortMenu = true }
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Default.Sort,
+                            contentDescription = "Sort"
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = showSortMenu,
+                        onDismissRequest = { showSortMenu = false },
+                        shape = RoundedCornerShape(16.dp)
+                    ) {
+                        DropdownMenuItem(
+                            text = { Text("Name") },
+                            trailingIcon = {
+                                if (currentSortOrder == SortOrder.NAME_ASC || currentSortOrder == SortOrder.NAME_DESC) {
+                                    Icon(
+                                        imageVector = if (currentSortOrder == SortOrder.NAME_ASC)
+                                            Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                                        contentDescription = "Sort by name"
+                                    )
+                                }
+                            },
+                            onClick = {
+                                onSortOptionSelect(
+                                    if (currentSortOrder == SortOrder.NAME_ASC)
+                                        SortOrder.NAME_DESC else SortOrder.NAME_ASC
+                                )
+                                showSortMenu = false
+                            }
+                        )
+                        DropdownMenuItem(
+                            text = { Text("Size") },
+                            trailingIcon = {
+                                if (currentSortOrder == SortOrder.SIZE_ASC || currentSortOrder == SortOrder.SIZE_DESC) {
+                                    Icon(
+                                        imageVector = if (currentSortOrder == SortOrder.SIZE_ASC)
+                                            Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                                        contentDescription = "Sort by size"
+                                    )
+                                }
+                            },
+                            onClick = {
+                                onSortOptionSelect(
+                                    if (currentSortOrder == SortOrder.SIZE_ASC)
+                                        SortOrder.SIZE_DESC else SortOrder.SIZE_ASC
+                                )
+                                showSortMenu = false
+                            }
+                        )
+                        DropdownMenuItem(
+                            text = { Text("Date") },
+                            trailingIcon = {
+                                if (currentSortOrder == SortOrder.DATE_ASC || currentSortOrder == SortOrder.DATE_DESC) {
+                                    Icon(
+                                        imageVector = if (currentSortOrder == SortOrder.DATE_DESC)
+                                            Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                                        contentDescription = "Sort by date"
+                                    )
+                                }
+                            },
+                            onClick = {
+                                onSortOptionSelect(
+                                    if (currentSortOrder == SortOrder.DATE_DESC)
+                                        SortOrder.DATE_ASC else SortOrder.DATE_DESC
+                                )
+                                showSortMenu = false
+                            }
+                        )
+                    }
                 }
                 Box {
                     IconButton(
@@ -267,4 +333,10 @@ fun FileManagerTopAppBar(
             }
         )
     }
+}
+
+enum class SortOrder {
+    NAME_ASC, NAME_DESC,
+    SIZE_ASC, SIZE_DESC,
+    DATE_ASC, DATE_DESC
 }

@@ -5,12 +5,9 @@ import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.runtime.getValue
@@ -115,7 +112,9 @@ fun FileManagerScreen(
                     viewModel.setSearchQuery("")
                 },
                 currentSearchQuery = state.searchQuery,
-                onSearchQueryChange = viewModel::setSearchQuery
+                onSearchQueryChange = viewModel::setSearchQuery,
+                currentSortOrder = state.sortOrder,
+                onSortOptionSelect = { order -> viewModel.setSortOrder(order) }
             )
         }
     ) { paddingValues ->
