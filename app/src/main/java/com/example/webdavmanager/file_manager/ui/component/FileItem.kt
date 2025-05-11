@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.DriveFileMove
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.DriveFileRenameOutline
@@ -63,7 +62,7 @@ fun FileItem(
     onSaveInDownloadClick: () -> Unit,
     onSaveInCustomDirectoryClick: () -> Unit,
     onCopyClick: () -> Unit,
-    onMoveClick: () -> Unit,
+//    onMoveClick: () -> Unit,
     onRenameClick: () -> Unit,
     onDeleteClick: () -> Unit,
     onInfoClick: () -> Unit
@@ -220,24 +219,24 @@ fun FileItem(
                                     showMenu = false
                                 }
                             )
-                            DropdownMenuItem(
-                                leadingIcon = {
-                                    Icon(
-                                        imageVector = Icons.AutoMirrored.Default.DriveFileMove,
-                                        contentDescription = null
-                                    )
-                                },
-                                text = {
-                                    Text(
-                                        text = "Move in ...",
-                                        style = MaterialTheme.typography.labelLarge
-                                    )
-                                },
-                                onClick = {
-                                    onMoveClick()
-                                    showMenu = false
-                                }
-                            )
+//                            DropdownMenuItem(
+//                                leadingIcon = {
+//                                    Icon(
+//                                        imageVector = Icons.AutoMirrored.Default.DriveFileMove,
+//                                        contentDescription = null
+//                                    )
+//                                },
+//                                text = {
+//                                    Text(
+//                                        text = "Move in ...",
+//                                        style = MaterialTheme.typography.labelLarge
+//                                    )
+//                                },
+//                                onClick = {
+//                                    onMoveClick()
+//                                    showMenu = false
+//                                }
+//                            )
                         }
 
                         DropdownMenuItem(
@@ -319,7 +318,7 @@ fun PreviewFileItem() {
             onSaveInDownloadClick = {},
             onSaveInCustomDirectoryClick = {},
             onCopyClick = {},
-            onMoveClick = {},
+//            onMoveClick = {},
             onRenameClick = {},
             onDeleteClick = {},
             isSelected = false,

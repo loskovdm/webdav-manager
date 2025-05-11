@@ -488,4 +488,40 @@ class FileManagerViewModel @Inject constructor(
         }
     }
 
+    fun copyFile(file: FileItem) {
+        _state.update { it.copy(copiedFile = file) }
+    }
+
+    fun pasteFile() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val file = _state.value.copiedFile ?: return@launch
+            val currentDirectoryUri = directoryStack.last()
+
+            val fileName = file.name
+
+            val fileAlreadyExists = _state.value.fileList.any { it.name == fileName }
+
+            if (fileAlreadyExists) {
+                _state.update {
+                    it.copy(
+                        errorMessage = "A file with name '$fileName' already exists in this directory",
+                        copiedFile = null
+                    )
+                }
+                return@launch
+            }
+
+            fileManagerRepository.copyFile(file.uri, currentDirectoryUri).fold(
+                onSuccess = {
+                    loadFileList(currentDirectoryUri)
+                    _state.update { it.copy(copiedFile = null) }
+                },
+                onFailure = { throwable ->
+                    _state.update {
+                        it.copy(errorMessage = throwable.toString())
+                    }
+                }
+            )
+        }
+    }
 }

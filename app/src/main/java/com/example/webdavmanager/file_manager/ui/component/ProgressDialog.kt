@@ -34,6 +34,7 @@ fun ProgressDialog(
                     OperationType.DOWNLOAD -> "Downloading"
                     OperationType.OPEN -> "Open"
                     OperationType.DELETE -> "Delete"
+                    OperationType.COPY -> "Copy"
                 }
             )
         },

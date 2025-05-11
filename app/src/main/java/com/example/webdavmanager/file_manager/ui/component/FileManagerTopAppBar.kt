@@ -2,7 +2,6 @@ package com.example.webdavmanager.file_manager.ui.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -10,6 +9,7 @@ import androidx.compose.material.icons.automirrored.filled.NoteAdd
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.filled.CreateNewFolder
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -66,7 +66,10 @@ fun FileManagerTopAppBar(
     onSearchQueryChange: (String) -> Unit,
 
     currentSortOrder: SortOrder = SortOrder.NAME_ASC,
-    onSortOptionSelect: (SortOrder) -> Unit
+    onSortOptionSelect: (SortOrder) -> Unit,
+
+    isShowPasteMenu: Boolean = false,
+    onPasteClick: () -> Unit
 ) {
     var showAddFileMenu by remember { mutableStateOf(false) }
     val focusRequester = remember { FocusRequester() }
@@ -251,6 +254,21 @@ fun FileManagerTopAppBar(
                         onDismissRequest = { showAddFileMenu = false },
                         shape = RoundedCornerShape(16.dp)
                     ) {
+                        if (isShowPasteMenu) {
+                            DropdownMenuItem(
+                                leadingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Default.ContentPaste,
+                                        contentDescription = "Paste file"
+                                    )
+                                },
+                                text = { Text("Paste file") },
+                                onClick = {
+                                    onPasteClick()
+                                    showAddFileMenu = false
+                                }
+                            )
+                        }
                         DropdownMenuItem(
                             leadingIcon = {
                                 Icon(

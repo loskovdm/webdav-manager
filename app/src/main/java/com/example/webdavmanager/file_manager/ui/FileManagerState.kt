@@ -24,9 +24,11 @@ data class FileManagerState(
     val isShowSearchBar: Boolean = false,
     val searchQuery: String = "",
 
-    val sortOrder: SortOrder = SortOrder.NAME_ASC
+    val sortOrder: SortOrder = SortOrder.NAME_ASC,
+
+    val copiedFile: FileItem? = null
 )
 
 enum class OperationType {
-    UPLOAD, DOWNLOAD, OPEN, DELETE
+    UPLOAD, DOWNLOAD, OPEN, DELETE, COPY
 }

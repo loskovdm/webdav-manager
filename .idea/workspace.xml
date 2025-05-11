@@ -16,8 +16,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add modified date display to FileItem component">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Implement sorting functionality in FileManagerScreen with UI updates and state management">
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
@@ -26,7 +25,9 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerState.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileList.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileManagerTopAppBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileManagerTopAppBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/ProgressDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/ProgressDialog.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +67,8 @@
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
         <option value="resourceFile" />
-        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -301,14 +302,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00059" summary="improve string resource naming conventions for better maintainability">
-      <option name="closed" value="true" />
-      <created>1744180923057</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1744180923057</updated>
     </task>
     <task id="LOCAL-00060" summary="Rename package for UiText to improve consistency in utility structure">
       <option name="closed" value="true" />
@@ -694,7 +687,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746964152044</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="Implement sorting functionality in FileManagerScreen with UI updates and state management">
+      <option name="closed" value="true" />
+      <created>1746978560646</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1746978560646</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -722,7 +723,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Rename contentType to mimeType in WebDavFile and WebDavFileMapper for improved clarity" />
     <MESSAGE value="Add mimeType parameter to uploadFile methods in WebDavFileApi and related implementations for enhanced file upload functionality" />
     <MESSAGE value="Add getFileInfo method to AndroidFileRepository for retrieving file metadata" />
     <MESSAGE value="Rename nameFile parameter to fileName in uploadFile method for improved clarity" />
@@ -747,7 +747,8 @@
     <MESSAGE value="Add LargeFileWarningDialog to handle large file warnings and improve file opening logic" />
     <MESSAGE value="Implement search functionality in FileManagerScreen with query handling and UI updates" />
     <MESSAGE value="Add modified date display to FileItem component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add modified date display to FileItem component" />
+    <MESSAGE value="Implement sorting functionality in FileManagerScreen with UI updates and state management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement sorting functionality in FileManagerScreen with UI updates and state management" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

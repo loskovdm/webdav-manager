@@ -114,7 +114,9 @@ fun FileManagerScreen(
                 currentSearchQuery = state.searchQuery,
                 onSearchQueryChange = viewModel::setSearchQuery,
                 currentSortOrder = state.sortOrder,
-                onSortOptionSelect = { order -> viewModel.setSortOrder(order) }
+                onSortOptionSelect = { order -> viewModel.setSortOrder(order) },
+                isShowPasteMenu = state.copiedFile != null,
+                onPasteClick = { viewModel.pasteFile() }
             )
         }
     ) { paddingValues ->
@@ -143,7 +145,8 @@ fun FileManagerScreen(
                 },
                 setSelectionModeActive = { viewModel.setSelectionModeActive() },
                 onInfoFile = { file -> viewModel.showFileInfo(file) },
-                modifier = Modifier.padding(paddingValues)
+                modifier = Modifier.padding(paddingValues),
+                onCopyFile = { file -> viewModel.copyFile(file) }
             )
         }
 

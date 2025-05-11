@@ -27,6 +27,7 @@ fun FileList(
     onRenameFile: (file: FileItem) -> Unit,
     onDeleteFile: (fileUri: String) -> Unit,
     onInfoFile: (file: FileItem) -> Unit,
+    onCopyFile: (file: FileItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val sortedFiles = files.sortedWith(compareByDescending { it.isDirectory })
@@ -51,8 +52,8 @@ fun FileList(
                 },
                 onSaveInDownloadClick = { onSaveInDownloads(file) },
                 onSaveInCustomDirectoryClick = { onSaveInCustomDirectory(file) },
-                onCopyClick = {},
-                onMoveClick = {},
+                onCopyClick = { onCopyFile(file) },
+//                onMoveClick = {},
                 onRenameClick = { onRenameFile(file) },
                 onDeleteClick = { onDeleteFile(file.uri) },
                 onFileSelect = { onSelectFile(file.uri) },
@@ -128,7 +129,8 @@ fun PreviewFileList() {
             onCheckFileSelection = { false },
             isSelectionModeActive = false,
             setSelectionModeActive = {},
-            onInfoFile = {}
+            onInfoFile = {},
+            onCopyFile = {}
         )
     }
 }
