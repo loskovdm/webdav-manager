@@ -47,6 +47,8 @@ import com.example.webdavmanager.core.ui.theme.WebdavManagerTheme
 import com.example.webdavmanager.file_manager.ui.model.FileItem
 import com.example.webdavmanager.file_manager.ui.util.formatAsFileSize
 import com.example.webdavmanager.file_manager.ui.util.getFileIcon
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -112,13 +114,25 @@ fun FileItem(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                if (!file.isDirectory) {
-                    Text(
-                        text = file.size?.formatAsFileSize().toString(),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1
-                    )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    file.modifiedDate?.let { date ->
+                        Text(
+                            text = "${SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(date)}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1
+                        )
+                    }
+                    if (!file.isDirectory) {
+                        Text(
+                            text = file.size?.formatAsFileSize().toString(),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1
+                        )
+                    }
                 }
             }
 
