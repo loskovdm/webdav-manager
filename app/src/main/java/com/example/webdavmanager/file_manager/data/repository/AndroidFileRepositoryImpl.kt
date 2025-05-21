@@ -10,7 +10,7 @@ import android.provider.OpenableColumns
 import android.util.Log
 import androidx.core.content.FileProvider
 import com.example.webdavmanager.file_manager.data.local.AndroidFileDataSource
-import com.example.webdavmanager.file_manager.ui.util.ProgressInputStream
+import com.example.webdavmanager.file_manager.data.util.ProgressInputStream
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.InputStream

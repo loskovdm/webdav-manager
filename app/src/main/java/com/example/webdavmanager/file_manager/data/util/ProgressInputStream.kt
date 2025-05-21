@@ -1,4 +1,4 @@
-package com.example.webdavmanager.file_manager.ui.util
+package com.example.webdavmanager.file_manager.data.util
 
 import java.io.InputStream
 
