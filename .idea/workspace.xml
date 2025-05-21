@@ -16,7 +16,89 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add copy and paste functionality to FileManager with UI updates and state management" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Move ProgressInputStream from ui to data layer">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/util/ServerListMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/webdavmanager/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/io/github/webdavmanager/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/WebDavApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/WebDavApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/data/local/ServerDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/data/local/ServerDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/data/local/ServerDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/data/local/ServerDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/data/local/ServerEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/data/local/ServerEntity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/data/repository/ServerRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/data/repository/ServerRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/data/security/PasswordEncryptor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/data/security/PasswordEncryptor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/di/DatabaseModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/di/DatabaseModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/di/SecurityModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/di/SecurityModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/di/ServerRepositoryModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/di/ServerRepositoryModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/component/ErrorDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/ui/component/ErrorDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/component/LoadingContent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/ui/component/LoadingContent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/ui/theme/Theme.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/core/ui/theme/Type.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/core/ui/theme/Type.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/local/AndroidFileDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/local/AndroidFileDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/mapper/WebDavFileMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/mapper/WebDavFileMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/model/WebDavConnectionInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/model/WebDavConnectionInfo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/model/WebDavFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/model/WebDavFile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/remote/WebDavFileApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileApiSardineImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/remote/WebDavFileApiSardineImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/remote/WebDavFileDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/remote/WebDavFileDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/repository/AndroidFileRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/repository/AndroidFileRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/repository/AndroidFileRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/repository/AndroidFileRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/repository/FileManagerRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/repository/FileManagerRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/repository/FileManagerRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/repository/FileManagerRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/repository/WebDavFileRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/repository/WebDavFileRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/repository/WebDavFileRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/repository/WebDavFileRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/data/util/ProgressInputStream.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/data/util/ProgressInputStream.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/AndroidFileModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/di/AndroidFileModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/FileManagerRepositoryModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/di/FileManagerRepositoryModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/di/WebDavModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/di/WebDavModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/FileManagerScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/FileManagerState.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/FileManagerViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/FileManagerViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileInfoDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/component/FileInfoDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/component/FileItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/component/FileList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileManagerTopAppBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/component/FileManagerTopAppBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/FileNameInputDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/component/FileNameInputDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/LargeFileWarningDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/component/LargeFileWarningDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/component/ProgressDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/component/ProgressDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/model/FileItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/model/FileItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/model/ServerConnectionInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/model/ServerConnectionInfo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/util/FileItemMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/util/FileItemMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/util/FileSizeExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/util/FileSizeExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/util/FileTypeUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/util/FileTypeUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/file_manager/ui/util/ServerConnectionInfoMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/file_manager/ui/util/ServerConnectionInfoMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/navigation/NavDestination.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/navigation/NavDestination.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/navigation/WebDavNavHost.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/navigation/WebDavNavHost.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ServerConfigScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/ServerConfigScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ServerConfigState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/ServerConfigState.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/ServerConfigViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/ServerConfigViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/component/ConfirmationDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/component/ConfirmationDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/component/ServerConfigForm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/component/ServerConfigForm.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/component/ServerConfigTopAppBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/component/ServerConfigTopAppBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/model/ServerConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/model/ServerConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/util/ServerConfigMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/util/ServerConfigMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_config/util/UiText.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_config/util/UiText.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ServerListScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/ServerListScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ServerListState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/ServerListState.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/ServerListViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/ServerListViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/component/ServerItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/component/ServerItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/component/ServerList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/component/ServerList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/component/ServerListEmpty.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/component/ServerListEmpty.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/component/ServerListFloatingActionButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/component/ServerListFloatingActionButton.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/component/ServerListTopAppBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/component/ServerListTopAppBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/model/ServerItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/loskovdm/webdavmanager/server_list/model/ServerItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/webdavmanager/server_list/util/ServerListMapper.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/webdavmanager/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/io/github/webdavmanager/ExampleUnitTest.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,25 +210,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "Compose Preview.PreviewFileList.executor": "Run",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "feature/file__manager__ui",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager",
-    "settings.editor.selected.configurable": "experimental"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;Compose Preview.PreviewFileList.executor&quot;: &quot;Run&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;modularization&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dmitry Loskov/AndroidStudioProjects/WebdavManager&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;
   }
-}]]></component>
+}</component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Properties" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Dmitry Loskov\AndroidStudioProjects\WebdavManager\app\src\main\java\com\example\webdavmanager\core\ui\" />
@@ -778,6 +867,16 @@
         <entry key="com.example.webdavmanager.test">
           <value>
             <CheckInfo lastCheckTimestamp="1746790596917" />
+          </value>
+        </entry>
+        <entry key="io.github.loskovdm.webdavmanager">
+          <value>
+            <CheckInfo lastCheckTimestamp="1747820781169" />
+          </value>
+        </entry>
+        <entry key="io.github.loskovdm.webdavmanager.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1747820781168" />
           </value>
         </entry>
       </map>

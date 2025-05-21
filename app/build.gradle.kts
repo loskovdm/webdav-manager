@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.webdavmanager"
+    namespace = "io.github.loskovdm.webdavmanager"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.webdavmanager"
+        applicationId = "io.github.loskovdm.webdavmanager"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
