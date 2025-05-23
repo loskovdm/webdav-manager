@@ -22,3 +22,13 @@ dependencyResolutionManagement {
 
 rootProject.name = "Webdav Manager"
 include(":app")
+include(":feature:serverlist")
+include(":feature:serverconfig")
+include(":feature:filemanager")
+include(":core:ui")
+include(":core:database")
+include(":core:security")
+include(":core:data")
+include(":core:storage:webdav")
+include(":core:storage:android")
+include(":core:model")

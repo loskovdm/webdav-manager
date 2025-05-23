@@ -3,8 +3,8 @@ package io.github.loskovdm.webdavmanager
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import io.github.loskovdm.webdavmanager.file_manager.data.repository.FileManagerRepository
 import dagger.hilt.android.HiltAndroidApp
+import io.github.loskovdm.webdavmanager.util.CacheManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltAndroidApp
 class WebDavApplication : Application() {
     @Inject
-    lateinit var fileManagerRepository: FileManagerRepository
+    lateinit var cacheManager: CacheManager
 
     private var activeActivities = 0
 
@@ -28,7 +28,7 @@ class WebDavApplication : Application() {
                 activeActivities--
                 if (activeActivities == 0) {
                     CoroutineScope(Dispatchers.IO).launch {
-                        fileManagerRepository.clearCache()
+                        cacheManager.clearCache()
                     }
                 }
             }

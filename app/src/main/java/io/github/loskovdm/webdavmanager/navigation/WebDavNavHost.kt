@@ -8,12 +8,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import io.github.loskovdm.webdavmanager.file_manager.ui.FileManagerScreen
+import androidx.navigation.toRoute
+import io.github.loskovdm.webdavmanager.feature.filemanager.FileManagerScreen
 import io.github.loskovdm.webdavmanager.navigation.NavDestination.FileManagerDestination
 import io.github.loskovdm.webdavmanager.navigation.NavDestination.ServerConfigDestination
 import io.github.loskovdm.webdavmanager.navigation.NavDestination.ServerListDestination
-import io.github.loskovdm.webdavmanager.server_config.ServerConfigScreen
-import io.github.loskovdm.webdavmanager.server_list.ServerListScreen
+import io.github.loskovdm.webdavmanager.feature.serverconfig.ServerConfigScreen
+import io.github.loskovdm.webdavmanager.feature.serverlist.ServerListScreen
 
 @Composable
 fun WebDavNavHost(
@@ -40,7 +41,9 @@ fun WebDavNavHost(
             )
         }
         composable<ServerConfigDestination> {
+            val serverId = it.toRoute<ServerConfigDestination>().serverId
             ServerConfigScreen(
+                serverId = serverId,
                 onNavigateBack = {
                     navController.popBackStack()
                 },
@@ -54,7 +57,9 @@ fun WebDavNavHost(
             )
         }
         composable<FileManagerDestination> {
+            val serverId = it.toRoute<FileManagerDestination>().serverId
             FileManagerScreen(
+                serverId = serverId,
                 onNavigateBack = { navController.popBackStack() }
             )
         }
