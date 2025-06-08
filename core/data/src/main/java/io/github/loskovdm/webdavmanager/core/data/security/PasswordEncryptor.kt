@@ -9,7 +9,7 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
-class PasswordEncryptor {
+internal class PasswordEncryptor {
     companion object {
         private const val KEY_ALIAS = "password_encryption_key"
         private const val ANDROID_KEYSTORE = "AndroidKeyStore"

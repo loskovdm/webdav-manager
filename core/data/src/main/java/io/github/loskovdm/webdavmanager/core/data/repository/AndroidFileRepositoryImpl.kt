@@ -1,16 +1,13 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
-import android.content.Context
 import android.net.Uri
 import io.github.loskovdm.webdavmanager.core.storage.android.AndroidFileDataSource
 import io.github.loskovdm.webdavmanager.core.storage.android.util.ProgressInputStream
-import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.InputStream
 import javax.inject.Inject
 
-class AndroidFileRepositoryImpl @Inject constructor(
-    private val dataSource: AndroidFileDataSource,
-    @ApplicationContext private val context: Context
+internal class AndroidFileRepositoryImpl @Inject constructor(
+    private val dataSource: AndroidFileDataSource
 ) : AndroidFileRepository {
 
     override suspend fun readFile(
@@ -47,7 +44,7 @@ class AndroidFileRepositoryImpl @Inject constructor(
         } else {
             try {
                 fileStream.available().toLong().takeIf { it > 0 } ?: -1L
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 -1L
             }
         }

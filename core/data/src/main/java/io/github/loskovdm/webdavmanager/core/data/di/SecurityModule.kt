@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object SecurityModule {
+internal object SecurityModule {
 
     @Provides
     @Singleton

@@ -7,7 +7,7 @@ import io.github.loskovdm.webdavmanager.core.data.model.asServerEntity
 import io.github.loskovdm.webdavmanager.core.data.security.PasswordEncryptor
 import javax.inject.Inject
 
-class ServerRepositoryImpl @Inject constructor(
+internal class ServerRepositoryImpl @Inject constructor(
     private val serverDao: ServerDao,
     private val encryptor: PasswordEncryptor
 ) : ServerRepository {

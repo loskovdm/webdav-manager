@@ -13,7 +13,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.io.InputStream
 import javax.inject.Inject
 
-class WebDavFileApiSardineImpl @Inject constructor(
+internal class WebDavFileApiSardineImpl @Inject constructor(
     private val sardine: OkHttpSardine
 ) : WebDavFileApi {
     // TODO: Implement your own class for errors (maybe)

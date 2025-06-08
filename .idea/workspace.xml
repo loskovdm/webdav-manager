@@ -22,56 +22,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Remove model and security models">
-      <change afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/di/SecurityModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/security/PasswordEncryptor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/FileManagerRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/FileManagerRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/di/DataModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/di/DataModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/di/SecurityModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/di/SecurityModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/AndroidFileRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/AndroidFileRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/AndroidFileRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/AndroidFileRepositoryImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/FileManagerRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/FileManagerRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepositoryImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/WebDavFileRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/WebDavFileRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/WebDavFileRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/WebDavFileRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/database/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/core/database/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/database/src/main/java/io/github/loskovdm/webdavmanager/core/database/ServerEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/database/src/main/java/io/github/loskovdm/webdavmanager/core/database/ServerEntity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/consumer-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/src/androidTest/java/io/github/loskovdm/webdavmanager/core/model/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/src/main/java/io/github/loskovdm/webdavmanager/core/model/FileModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/model/File.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/src/main/java/io/github/loskovdm/webdavmanager/core/model/ServerModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/model/Server.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/src/test/java/io/github/loskovdm/webdavmanager/core/model/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/consumer-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/src/androidTest/java/io/github/loskovdm/webdavmanager/core/security/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/src/main/java/io/github/loskovdm/webdavmanager/core/security/PasswordEncryptor.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/src/main/java/io/github/loskovdm/webdavmanager/core/security/di/SecurityModule.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security/src/test/java/io/github/loskovdm/webdavmanager/core/security/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/storage/webdav/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/core/storage/webdav/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/model/WebDavConnectionInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/model/WebDavConnectionInfo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/model/WebDavFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/model/WebDavFile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/filemanager/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/feature/filemanager/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/FileManagerViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/FileManagerViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/model/FileItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/model/FileItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/model/ServerConnectionInfo.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/serverconfig/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/feature/serverconfig/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/serverconfig/src/main/java/io/github/loskovdm/webdavmanager/feature/serverconfig/model/ServerConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/serverconfig/src/main/java/io/github/loskovdm/webdavmanager/feature/serverconfig/model/ServerConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/serverlist/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/feature/serverlist/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/serverlist/src/main/java/io/github/loskovdm/webdavmanager/feature/serverlist/ServerListViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/serverlist/src/main/java/io/github/loskovdm/webdavmanager/feature/serverlist/ServerListViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/serverlist/src/main/java/io/github/loskovdm/webdavmanager/feature/serverlist/model/ServerItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/serverlist/src/main/java/io/github/loskovdm/webdavmanager/feature/serverlist/model/ServerItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/security/PasswordEncryptor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/security/PasswordEncryptor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/database/src/main/java/io/github/loskovdm/webdavmanager/core/database/ServerDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/database/src/main/java/io/github/loskovdm/webdavmanager/core/database/ServerDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/database/src/main/java/io/github/loskovdm/webdavmanager/core/database/di/DatabaseModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/database/src/main/java/io/github/loskovdm/webdavmanager/core/database/di/DatabaseModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/storage/android/src/main/java/io/github/loskovdm/webdavmanager/core/storage/android/di/AndroidFileModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/storage/android/src/main/java/io/github/loskovdm/webdavmanager/core/storage/android/di/AndroidFileModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/WebDavFileApiSardineImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/WebDavFileApiSardineImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/di/SardineModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/di/SardineModule.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +50,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Dmitry Loskov\.android\avd\Pixel_6_API_34.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=9TZLCUBA69WWAMYH)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -388,14 +357,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Remove domain layer from server list feature">
-      <option name="closed" value="true" />
-      <created>1745250071873</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1745250071873</updated>
     </task>
     <task id="LOCAL-00063" summary="Remove domain layer from server list feature">
       <option name="closed" value="true" />
@@ -781,7 +742,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747822647163</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="Remove model and security models">
+      <option name="closed" value="true" />
+      <created>1749407779604</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1749407779604</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

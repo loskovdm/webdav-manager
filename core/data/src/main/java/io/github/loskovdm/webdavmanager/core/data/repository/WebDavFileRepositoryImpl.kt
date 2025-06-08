@@ -9,7 +9,7 @@ import java.io.InputStream
 import java.net.URLEncoder
 import javax.inject.Inject
 
-class WebDavFileRepositoryImpl @Inject constructor(
+internal class WebDavFileRepositoryImpl @Inject constructor(
     private val dataSource: WebDavFileDataSource
 ): WebDavFileRepository {
 

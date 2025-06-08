@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class SardineModule {
+internal abstract class SardineModule {
 
     companion object {
         @Provides

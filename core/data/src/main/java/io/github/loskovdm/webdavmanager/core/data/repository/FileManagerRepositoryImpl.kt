@@ -7,7 +7,7 @@ import io.github.loskovdm.webdavmanager.core.data.model.Server
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
-class FileManagerRepositoryImpl @Inject constructor(
+internal class FileManagerRepositoryImpl @Inject constructor(
     private val androidFileRepository: AndroidFileRepository,
     private val webDavFileRepository: WebDavFileRepository
 ): FileManagerRepository {

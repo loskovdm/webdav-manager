@@ -4,7 +4,7 @@ import io.github.loskovdm.webdavmanager.core.data.model.File
 import io.github.loskovdm.webdavmanager.core.data.model.Server
 import java.io.InputStream
 
-interface WebDavFileRepository {
+internal interface WebDavFileRepository {
 
     suspend fun setServerConnectionInfo(
         server: Server

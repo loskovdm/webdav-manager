@@ -3,7 +3,7 @@ package io.github.loskovdm.webdavmanager.core.data.repository
 import android.net.Uri
 import java.io.InputStream
 
-interface AndroidFileRepository {
+internal interface AndroidFileRepository {
 
     suspend fun readFile(
         uri: Uri,
