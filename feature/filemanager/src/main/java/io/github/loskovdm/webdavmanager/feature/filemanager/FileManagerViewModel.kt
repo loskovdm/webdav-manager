@@ -12,7 +12,7 @@ import io.github.loskovdm.webdavmanager.core.data.repository.FileManagerReposito
 import io.github.loskovdm.webdavmanager.feature.filemanager.component.SortOrder
 import io.github.loskovdm.webdavmanager.feature.filemanager.model.FileItem
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.loskovdm.webdavmanager.core.model.ServerModel
+import io.github.loskovdm.webdavmanager.core.data.model.Server
 import io.github.loskovdm.webdavmanager.feature.filemanager.model.asExternalModel
 import io.github.loskovdm.webdavmanager.feature.filemanager.model.asFileItem
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +33,7 @@ class FileManagerViewModel @Inject constructor(
 
         viewModelScope.launch(Dispatchers.IO) {
             val server = serverRepository.getServerById(_state.value.serverId)
-                ?: ServerModel(0, "", "", "", "")
+                ?: Server(0, "", "", "", "")
             val serverConnectionInfo = server
 
             val rootUri = serverConnectionInfo.url

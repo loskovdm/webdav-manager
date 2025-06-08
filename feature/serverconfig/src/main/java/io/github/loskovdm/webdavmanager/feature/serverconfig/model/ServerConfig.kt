@@ -1,6 +1,6 @@
 package io.github.loskovdm.webdavmanager.feature.serverconfig.model
 
-import io.github.loskovdm.webdavmanager.core.model.ServerModel
+import io.github.loskovdm.webdavmanager.core.data.model.Server
 
 data class ServerConfig(
     val id: Int = 0,
@@ -10,7 +10,7 @@ data class ServerConfig(
     val password: String
 )
 
-fun ServerModel.asServerConfig() = ServerConfig(
+fun Server.asServerConfig() = ServerConfig(
     id = id,
     name = name,
     url = url,
@@ -18,7 +18,7 @@ fun ServerModel.asServerConfig() = ServerConfig(
     password = password
 )
 
-fun ServerConfig.asExternalModel() = ServerModel(
+fun ServerConfig.asExternalModel() = Server(
     id = id,
     name = name,
     url = url,

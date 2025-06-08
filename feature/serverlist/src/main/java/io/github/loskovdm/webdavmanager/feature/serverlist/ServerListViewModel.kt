@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.github.loskovdm.webdavmanager.core.data.repository.ServerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.loskovdm.webdavmanager.feature.serverlist.model.asServerItem
+import io.github.loskovdm.webdavmanager.feature.serverlist.model.asExternalModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,7 +25,7 @@ class ServerListViewModel @Inject constructor(
     fun loadServerList() {
         viewModelScope.launch {
             try {
-                val serverList = repository.getServerList().map { it.asServerItem() }
+                val serverList = repository.getServerList().map { it.asExternalModel() }
                 _state.value = _state.value.copy(serverList = serverList, isLoaded = true)
             } catch (e: Exception) {
                 _state.value = _state.value.copy(errorMessage = e.message)

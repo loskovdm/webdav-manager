@@ -2,8 +2,8 @@ package io.github.loskovdm.webdavmanager.core.data.repository
 
 import android.net.Uri
 import android.util.Log
-import io.github.loskovdm.webdavmanager.core.model.FileModel
-import io.github.loskovdm.webdavmanager.core.model.ServerModel
+import io.github.loskovdm.webdavmanager.core.data.model.File
+import io.github.loskovdm.webdavmanager.core.data.model.Server
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
@@ -11,11 +11,11 @@ class FileManagerRepositoryImpl @Inject constructor(
     private val androidFileRepository: AndroidFileRepository,
     private val webDavFileRepository: WebDavFileRepository
 ): FileManagerRepository {
-    override suspend fun setServerConnectionInfo(server: ServerModel): Result<Unit> {
+    override suspend fun setServerConnectionInfo(server: Server): Result<Unit> {
         return webDavFileRepository.setServerConnectionInfo(server)
     }
 
-    override suspend fun getRemoteFileList(directoryUri: String): Result<List<FileModel>> {
+    override suspend fun getRemoteFileList(directoryUri: String): Result<List<File>> {
         return webDavFileRepository.getFileList(directoryUri)
     }
 
@@ -48,7 +48,7 @@ class FileManagerRepositoryImpl @Inject constructor(
     }
 
     override suspend fun downloadFile(
-        remoteFile: FileModel,
+        remoteFile: File,
         localDirectoryUri: Uri,
         progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)?
     ): Result<Unit> {
@@ -104,7 +104,7 @@ class FileManagerRepositoryImpl @Inject constructor(
         return webDavFileRepository.renameFile(remoteFileUri, newName)
     }
 
-    override suspend fun cacheFile(remoteFile: FileModel, progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)?): Result<Uri> {
+    override suspend fun cacheFile(remoteFile: File, progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)?): Result<Uri> {
         val fileStream = webDavFileRepository.downloadFile(remoteFile.uri)
         return androidFileRepository.cacheFile(
             fileName = remoteFile.name,

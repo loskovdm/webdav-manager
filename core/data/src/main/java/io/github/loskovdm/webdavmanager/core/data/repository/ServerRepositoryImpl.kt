@@ -1,10 +1,10 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
 import io.github.loskovdm.webdavmanager.core.database.ServerDao
-import io.github.loskovdm.webdavmanager.core.database.asExternalModel
-import io.github.loskovdm.webdavmanager.core.database.asServerEntity
-import io.github.loskovdm.webdavmanager.core.model.ServerModel
-import io.github.loskovdm.webdavmanager.core.security.PasswordEncryptor
+import io.github.loskovdm.webdavmanager.core.data.model.Server
+import io.github.loskovdm.webdavmanager.core.data.model.asExternalModel
+import io.github.loskovdm.webdavmanager.core.data.model.asServerEntity
+import io.github.loskovdm.webdavmanager.core.data.security.PasswordEncryptor
 import javax.inject.Inject
 
 class ServerRepositoryImpl @Inject constructor(
@@ -19,11 +19,11 @@ class ServerRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getServerList(): List<ServerModel> {
+    override suspend fun getServerList(): List<Server> {
         return serverDao.getAll().map { it.asExternalModel() }
     }
 
-    override suspend fun getServerById(id: Int): ServerModel? {
+    override suspend fun getServerById(id: Int): Server? {
         return serverDao.getServerById(id)?.let { serverEntity ->
             serverEntity.copy(
                 password = encryptor.decrypt(serverEntity.password)
@@ -31,13 +31,13 @@ class ServerRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun insertServer(serverConfig: ServerModel) {
+    override suspend fun insertServer(serverConfig: Server) {
         serverDao.insertServer(serverConfig.copy(
             password = encryptor.encrypt(serverConfig.password)
         ).asServerEntity())
     }
 
-    override suspend fun updateServer(serverConfig: ServerModel) {
+    override suspend fun updateServer(serverConfig: Server) {
         serverDao.updateServer(serverConfig.copy(
             password = encryptor.encrypt(serverConfig.password)
         ).asServerEntity())

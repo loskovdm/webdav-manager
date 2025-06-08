@@ -1,7 +1,6 @@
 package io.github.loskovdm.webdavmanager.core.storage.webdav.model
 
 import com.thegrizzlylabs.sardineandroid.DavResource
-import io.github.loskovdm.webdavmanager.core.model.FileModel
 import java.util.Date
 
 data class WebDavFile(
@@ -36,13 +35,3 @@ fun DavResource.asWebDavFile(baseServerUri: String): WebDavFile {
         modifiedDate = this.modified
     )
 }
-
-fun WebDavFile.asExternalModel() = FileModel(
-    name = name,
-    uri = uri,
-    mimeType = mimeType,
-    isDirectory = isDirectory,
-    size = size,
-    creationDate = creationDate,
-    modifiedDate = modifiedDate
-)

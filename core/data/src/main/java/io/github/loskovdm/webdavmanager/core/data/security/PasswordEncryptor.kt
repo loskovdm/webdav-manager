@@ -1,4 +1,4 @@
-package io.github.loskovdm.webdavmanager.core.security
+package io.github.loskovdm.webdavmanager.core.data.security
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties

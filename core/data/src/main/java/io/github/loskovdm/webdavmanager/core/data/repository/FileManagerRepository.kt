@@ -1,18 +1,18 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
 import android.net.Uri
-import io.github.loskovdm.webdavmanager.core.model.FileModel
-import io.github.loskovdm.webdavmanager.core.model.ServerModel
+import io.github.loskovdm.webdavmanager.core.data.model.File
+import io.github.loskovdm.webdavmanager.core.data.model.Server
 
 interface FileManagerRepository {
 
     suspend fun setServerConnectionInfo(
-        server: ServerModel
+        server: Server
     ): Result<Unit>
 
     suspend fun getRemoteFileList(
         directoryUri: String
-    ): Result<List<FileModel>>
+    ): Result<List<File>>
 
     suspend fun uploadFile(
         remoteDirectoryUri: String,
@@ -21,7 +21,7 @@ interface FileManagerRepository {
     ): Result<Unit>
 
     suspend fun downloadFile(
-        remoteFile: FileModel,
+        remoteFile: File,
         localDirectoryUri: Uri,
         progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)? = null
     ): Result<Unit>
@@ -51,7 +51,7 @@ interface FileManagerRepository {
     ): Result<Unit>
 
     suspend fun cacheFile(
-        remoteFile: FileModel,
+        remoteFile: File,
         progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)? = null
     ): Result<Uri>
 

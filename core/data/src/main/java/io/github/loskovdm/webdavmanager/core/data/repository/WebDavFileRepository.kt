@@ -1,18 +1,18 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
-import io.github.loskovdm.webdavmanager.core.model.FileModel
-import io.github.loskovdm.webdavmanager.core.model.ServerModel
+import io.github.loskovdm.webdavmanager.core.data.model.File
+import io.github.loskovdm.webdavmanager.core.data.model.Server
 import java.io.InputStream
 
 interface WebDavFileRepository {
 
     suspend fun setServerConnectionInfo(
-        server: ServerModel
+        server: Server
     ): Result<Unit>
 
     suspend fun getFileList(
         directoryUri: String
-    ): Result<List<FileModel>>
+    ): Result<List<File>>
 
     suspend fun uploadFile(
         fileStreamProvider: () -> InputStream,

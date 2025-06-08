@@ -36,11 +36,9 @@ android {
 
 dependencies {
 
-    implementation(project(":core:security"))
     implementation(project(":core:database"))
     implementation(project(":core:storage:webdav"))
     implementation(project(":core:storage:android"))
-    implementation(project(":core:model"))
 
     implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)
