@@ -1,6 +1,5 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
-import android.util.Log
 import io.github.loskovdm.webdavmanager.core.data.model.FileModel
 import io.github.loskovdm.webdavmanager.core.data.model.NetworkErrorModel
 import io.github.loskovdm.webdavmanager.core.data.model.ServerModel
@@ -47,13 +46,33 @@ internal class WebDavFileRepositoryImpl @Inject constructor(
         nameFile: String,
         mimeType: String
     ): Result<Unit> {
-        return dataSource.uploadFile(fileStreamProvider, directoryUri + nameFile, mimeType)
+        return dataSource.uploadFile(fileStreamProvider, directoryUri + nameFile, mimeType).fold(
+            onSuccess = { Result.success(it) },
+            onFailure = { error ->
+                Result.failure(
+                    when (error) {
+                        is WebDavError -> error.asNetworkErrorModel()
+                        else -> NetworkErrorModel.Unknown(error)
+                    }
+                )
+            }
+        )
     }
 
     override suspend fun downloadFile(
         fileUri: String
     ): Result<InputStream> {
-        return dataSource.downloadFile(fileUri)
+        return dataSource.downloadFile(fileUri).fold(
+            onSuccess = { Result.success(it) },
+            onFailure = { error ->
+                Result.failure(
+                    when (error) {
+                        is WebDavError -> error.asNetworkErrorModel()
+                        else -> NetworkErrorModel.Unknown(error)
+                    }
+                )
+            }
+        )
     }
 
     override suspend fun moveFile(
@@ -61,7 +80,17 @@ internal class WebDavFileRepositoryImpl @Inject constructor(
         destinationDirectoryUri: String
     ): Result<Unit> {
         val destinationFileUri = destinationDirectoryUri + fileUri.substringAfterLast('/')
-        return dataSource.moveFile(fileUri, destinationFileUri)
+        return dataSource.moveFile(fileUri, destinationFileUri).fold(
+            onSuccess = { Result.success(it) },
+            onFailure = { error ->
+                Result.failure(
+                    when (error) {
+                        is WebDavError -> error.asNetworkErrorModel()
+                        else -> NetworkErrorModel.Unknown(error)
+                    }
+                )
+            }
+        )
     }
 
     override suspend fun copyFile(
@@ -69,13 +98,33 @@ internal class WebDavFileRepositoryImpl @Inject constructor(
         destinationDirectoryUri: String
     ): Result<Unit> {
         val destinationFileUri = destinationDirectoryUri + fileUri.substringAfterLast('/')
-        return dataSource.copyFile(fileUri, destinationFileUri)
+        return dataSource.copyFile(fileUri, destinationFileUri).fold(
+            onSuccess = { Result.success(it) },
+            onFailure = { error ->
+                Result.failure(
+                    when (error) {
+                        is WebDavError -> error.asNetworkErrorModel()
+                        else -> NetworkErrorModel.Unknown(error)
+                    }
+                )
+            }
+        )
     }
 
     override suspend fun deleteFile(
         fileUri: String
     ): Result<Unit> {
-        return dataSource.deleteFile(fileUri)
+        return dataSource.deleteFile(fileUri).fold(
+            onSuccess = { Result.success(it) },
+            onFailure = { error ->
+                Result.failure(
+                    when (error) {
+                        is WebDavError -> error.asNetworkErrorModel()
+                        else -> NetworkErrorModel.Unknown(error)
+                    }
+                )
+            }
+        )
     }
 
     override suspend fun createDirectory(
@@ -83,37 +132,61 @@ internal class WebDavFileRepositoryImpl @Inject constructor(
         name: String
     ): Result<Unit> {
         val directoryUri = destinationDirectoryUri + name
-        return dataSource.createDirectory(directoryUri)
+        return dataSource.createDirectory(directoryUri).fold(
+            onSuccess = { Result.success(it) },
+            onFailure = { error ->
+                Result.failure(
+                    when (error) {
+                        is WebDavError -> error.asNetworkErrorModel()
+                        else -> NetworkErrorModel.Unknown(error)
+                    }
+                )
+            }
+        )
     }
 
     override suspend fun renameFile(
         fileUri: String,
         newName: String
-    ): Result<Unit> = runCatching {
-        val protocolAndHost = fileUri.substringBefore("://") + "://" +
-                fileUri.substringAfter("://").substringBefore("/")
-        val rawPath = fileUri.substringAfter(protocolAndHost)
+    ): Result<Unit> {
+        return try {
+            val protocolAndHost = fileUri.substringBefore("://") + "://" +
+                    fileUri.substringAfter("://").substringBefore("/")
+            val rawPath = fileUri.substringAfter(protocolAndHost)
 
-        val parentPath = rawPath.trimEnd('/').substringBeforeLast("/")
+            val parentPath = rawPath.trimEnd('/').substringBeforeLast("/")
 
-        fun encodeSegment(segment: String) =
-            URLEncoder
-                .encode(segment, "UTF-8")
-                .replace("+", "%20")
+            fun encodeSegment(segment: String) =
+                URLEncoder
+                    .encode(segment, "UTF-8")
+                    .replace("+", "%20")
 
-        val encodedParent = parentPath
-            .split("/")
-            .joinToString("/") { encodeSegment(it) }
-        val encodedNewName = encodeSegment(newName)
+            val encodedParent = parentPath
+                .split("/")
+                .joinToString("/") { encodeSegment(it) }
+            val encodedNewName = encodeSegment(newName)
 
-        val newUrl = buildString {
-            append(protocolAndHost)
-            append(encodedParent)
-            append("/")
-            append(encodedNewName)
+            val newUrl = buildString {
+                append(protocolAndHost)
+                append(encodedParent)
+                append("/")
+                append(encodedNewName)
+            }
+
+            dataSource.moveFile(fileUri, newUrl).fold(
+                onSuccess = { Result.success(it) },
+                onFailure = { error ->
+                    Result.failure(
+                        when (error) {
+                            is WebDavError -> error.asNetworkErrorModel()
+                            else -> NetworkErrorModel.Unknown(error)
+                        }
+                    )
+                }
+            )
+        } catch (e: Exception) {
+            Result.failure(NetworkErrorModel.Unknown(e))
         }
-
-        dataSource.moveFile(fileUri, newUrl)
     }
 
 }

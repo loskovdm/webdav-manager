@@ -218,6 +218,10 @@ fun FileManagerScreen(
             }
             DialogState.None -> {}
         }
+
+        if (state.shouldNavigateBack) {
+            onNavigateBack()
+        }
     }
 }
 

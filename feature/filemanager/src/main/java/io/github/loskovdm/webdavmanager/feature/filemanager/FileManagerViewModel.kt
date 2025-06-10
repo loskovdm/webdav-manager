@@ -42,9 +42,9 @@ class FileManagerViewModel @Inject constructor(
             directoryStack.add(rootUri)
 
             fileManagerRepository.setServerConnectionInfo(server)
-                .onFailure { throwable -> handleError(throwable)}
+                .onFailure { throwable -> handleError(throwable) }
 
-            loadFileList(rootUri)
+            loadFileList(rootUri, isInitialLoad = true)
         }
     }
 
@@ -53,10 +53,14 @@ class FileManagerViewModel @Inject constructor(
     private val _state = MutableStateFlow(FileManagerState())
     val state: StateFlow<FileManagerState> = _state
 
-    fun loadFileList(directoryUri: String) {
+    fun loadFileList(directoryUri: String, isInitialLoad: Boolean? = null) {
         viewModelScope.launch(Dispatchers.IO) {
-            _state.update { it.copy(isLoading = true) }
-            Log.d("loadTest", "Run loadFileList")
+            _state.update {
+                it.copy(
+                    isLoading = true,
+                    isInitialLoadFileList = isInitialLoad == true
+                )
+            }
             fileManagerRepository
                 .getRemoteFileList(directoryUri)
                 .fold(
@@ -68,7 +72,12 @@ class FileManagerViewModel @Inject constructor(
                             val trimmedPath = it.trimEnd('/')
                             trimmedPath.substringAfterLast('/')
                         }
-                        _state.update { it.copy(currentDirectoryName = directoryName) }
+                        _state.update {
+                            it.copy(
+                                currentDirectoryName = directoryName,
+                                isInitialLoadFileList = false
+                            )
+                        }
 
                         Log.d("loadTest", "State: ${_state.value.fileList}")
                     },
@@ -326,7 +335,14 @@ class FileManagerViewModel @Inject constructor(
     }
 
     fun clearErrorMessage() {
-        _state.update { it.copy(errorMessage = null) }
+        val wasInitialLoadError = _state.value.isInitialLoadFileList
+        _state.update {
+            it.copy(
+                errorMessage = null,
+                isInitialLoadFileList = false,
+                shouldNavigateBack = wasInitialLoadError
+            )
+        }
     }
 
     fun cancelCurrentOperation() {

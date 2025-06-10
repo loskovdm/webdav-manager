@@ -21,6 +21,18 @@ fun FileNameInputDialog(
     onConfirm: (String) -> Unit
 ) {
     var input by remember { mutableStateOf(initialValue) }
+    // Track invalid characters state
+    var hasInvalidChars by remember { mutableStateOf(false) }
+    // Define invalid characters for file/directory names
+    val invalidChars = listOf('/', '\\', ':', '*', '?', '"', '<', '>', '|', '#', '$')
+
+    // Validate input whenever it changes
+    val validateInput: (String) -> Boolean = { text ->
+        text.any { it in invalidChars }
+    }
+
+    // Check initial value
+    hasInvalidChars = validateInput(input)
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -28,19 +40,32 @@ fun FileNameInputDialog(
         text = {
             OutlinedTextField(
                 value = input,
-                onValueChange = { input = it },
+                onValueChange = {
+                    input = it
+                    hasInvalidChars = validateInput(it)
+                },
                 label = { Text("Name") },
-                singleLine = true
+                singleLine = true,
+                isError = hasInvalidChars,
+                supportingText = {
+                    if (hasInvalidChars) {
+                        Text(
+                            "Invalid characters: / \\ : * ? \" < > |",
+                            color = androidx.compose.ui.graphics.Color.Red
+                        )
+                    }
+                }
             )
         },
         confirmButton = {
             TextButton(
                 onClick = {
-                    if (input.isNotBlank()) {
+                    if (input.isNotBlank() && !hasInvalidChars) {
                         onConfirm(input)
-                        onDismiss
+                        onDismiss()
                     }
-                }
+                },
+                enabled = input.isNotBlank() && !hasInvalidChars
             ) {
                 Text(confirmButtonText)
             }
@@ -51,16 +76,4 @@ fun FileNameInputDialog(
             }
         }
     )
-}
-
-@Preview
-@Composable
-fun PreviewFileNameInputDialog() {
-    WebdavManagerTheme {
-        FileNameInputDialog(
-            title = "Enter the name",
-            onDismiss = {},
-            onConfirm = {}
-        )
-    }
 }

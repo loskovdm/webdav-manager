@@ -6,7 +6,6 @@ import io.github.loskovdm.webdavmanager.core.storage.webdav.model.WebDavFile
 import com.thegrizzlylabs.sardineandroid.InputStreamProvider
 import com.thegrizzlylabs.sardineandroid.impl.OkHttpSardine
 import io.github.loskovdm.webdavmanager.core.storage.webdav.mapper.asWebDavError
-import io.github.loskovdm.webdavmanager.core.storage.webdav.model.WebDavError
 import io.github.loskovdm.webdavmanager.core.storage.webdav.model.asWebDavFile
 import io.github.loskovdm.webdavmanager.core.storage.webdav.util.mapError
 import kotlinx.coroutines.Dispatchers
@@ -71,7 +70,7 @@ internal class WebDavFileApiSardineImpl @Inject constructor(
             }
 
             sardine.put(fileUri, inputStreamProvider)
-        }
+        }.mapError { it.asWebDavError() }
     }
 
     override suspend fun downloadFile(
@@ -79,7 +78,7 @@ internal class WebDavFileApiSardineImpl @Inject constructor(
     ): Result<InputStream> = withContext(Dispatchers.IO) {
         runCatching {
             sardine.get(fileUri)
-        }
+        }.mapError { it.asWebDavError() }
     }
 
     override suspend fun moveFile(
@@ -88,7 +87,7 @@ internal class WebDavFileApiSardineImpl @Inject constructor(
     ): Result<Unit> = withContext(Dispatchers.IO) {
         runCatching {
             sardine.move(currentFileUri, destinationFileUri)
-        }
+        }.mapError { it.asWebDavError() }
     }
 
     override suspend fun copyFile(
@@ -97,7 +96,7 @@ internal class WebDavFileApiSardineImpl @Inject constructor(
     ): Result<Unit> = withContext(Dispatchers.IO) {
         runCatching {
             sardine.copy(currentFileUri, destinationFileUri)
-        }
+        }.mapError { it.asWebDavError() }
     }
 
     override suspend fun deleteFile(
@@ -106,7 +105,7 @@ internal class WebDavFileApiSardineImpl @Inject constructor(
         Log.d("loadTest", "Run delete file. File: $fileUri")
         runCatching {
             sardine.delete(fileUri)
-        }
+        }.mapError { it.asWebDavError() }
     }
 
     override suspend fun createDirectory(
@@ -114,6 +113,6 @@ internal class WebDavFileApiSardineImpl @Inject constructor(
     ): Result<Unit> = withContext(Dispatchers.IO) {
         runCatching {
             sardine.createDirectory(directoryUri)
-        }
+        }.mapError { it.asWebDavError() }
     }
 }

@@ -99,7 +99,7 @@ fun FileItem(
                 imageVector = getFileIcon(file),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(52.dp)  // Increase this value to make icons larger
+                    .size(52.dp)
                     .padding(end = 16.dp),
                 tint = MaterialTheme.colorScheme.primary,
             )
@@ -118,7 +118,7 @@ fun FileItem(
                 ) {
                     file.modifiedDate?.let { date ->
                         Text(
-                            text = "${SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(date)}",
+                            text = "${SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.ENGLISH).format(date)}",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             maxLines = 1

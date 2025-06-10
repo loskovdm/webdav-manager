@@ -28,7 +28,10 @@ data class FileManagerState(
 
     val sortOrder: SortOrder = SortOrder.NAME_ASC,
 
-    val copiedFile: FileItem? = null
+    val copiedFile: FileItem? = null,
+
+    val isInitialLoadFileList: Boolean = false,
+    val shouldNavigateBack: Boolean = false
 )
 
 enum class OperationType {
