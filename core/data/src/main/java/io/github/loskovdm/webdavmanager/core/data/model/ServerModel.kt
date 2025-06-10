@@ -3,7 +3,7 @@ package io.github.loskovdm.webdavmanager.core.data.model
 import io.github.loskovdm.webdavmanager.core.database.ServerEntity
 import io.github.loskovdm.webdavmanager.core.storage.webdav.model.WebDavConnectionInfo
 
-data class Server(
+data class ServerModel(
     val id: Int,
     val name: String,
     val url: String,
@@ -11,14 +11,14 @@ data class Server(
     val password: String
 )
 
-fun Server.asWebDavConnectionInfo() =
+fun ServerModel.asWebDavConnectionInfo() =
     WebDavConnectionInfo(
         url = url,
         user = user,
         password = password
     )
 
-fun Server.asServerEntity() =
+fun ServerModel.asServerEntity() =
     ServerEntity(
         id = id,
         name = name,
@@ -28,7 +28,7 @@ fun Server.asServerEntity() =
     )
 
 fun ServerEntity.asExternalModel() =
-    Server(
+    ServerModel(
         id = id,
         name = name,
         url = url,

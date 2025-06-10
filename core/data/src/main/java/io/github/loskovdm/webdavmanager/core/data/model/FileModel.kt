@@ -3,7 +3,7 @@ package io.github.loskovdm.webdavmanager.core.data.model
 import io.github.loskovdm.webdavmanager.core.storage.webdav.model.WebDavFile
 import java.util.Date
 
-data class File(
+data class FileModel(
     val name: String,
     val uri: String,
     val mimeType: String?,
@@ -14,7 +14,7 @@ data class File(
 )
 
 fun WebDavFile.asExternalModel() =
-    File(
+    FileModel(
         name = name,
         uri = uri,
         mimeType = mimeType,

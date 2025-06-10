@@ -1,10 +1,14 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
-import io.github.loskovdm.webdavmanager.core.data.model.File
-import io.github.loskovdm.webdavmanager.core.data.model.Server
+import android.util.Log
+import io.github.loskovdm.webdavmanager.core.data.model.FileModel
+import io.github.loskovdm.webdavmanager.core.data.model.NetworkErrorModel
+import io.github.loskovdm.webdavmanager.core.data.model.ServerModel
 import io.github.loskovdm.webdavmanager.core.data.model.asExternalModel
+import io.github.loskovdm.webdavmanager.core.data.model.asNetworkErrorModel
 import io.github.loskovdm.webdavmanager.core.data.model.asWebDavConnectionInfo
 import io.github.loskovdm.webdavmanager.core.storage.webdav.WebDavFileDataSource
+import io.github.loskovdm.webdavmanager.core.storage.webdav.model.WebDavError
 import java.io.InputStream
 import java.net.URLEncoder
 import javax.inject.Inject
@@ -14,17 +18,27 @@ internal class WebDavFileRepositoryImpl @Inject constructor(
 ): WebDavFileRepository {
 
     override suspend fun setServerConnectionInfo(
-        server: Server
+        server: ServerModel
     ): Result<Unit> {
         return dataSource.setServerConnectionInfo(server.asWebDavConnectionInfo())
     }
 
     override suspend fun getFileList(
         directoryUri: String
-    ): Result<List<File>> {
-        return dataSource.getFileList(directoryUri).map { webDavFiles ->
-            webDavFiles.map { it.asExternalModel() }
-        }
+    ): Result<List<FileModel>> {
+        return dataSource.getFileList(directoryUri).fold(
+            onSuccess = { webDavFiles ->
+                Result.success(webDavFiles.map { it.asExternalModel() })
+            },
+            onFailure = { error ->
+                Result.failure(
+                    when (error) {
+                        is WebDavError -> error.asNetworkErrorModel()
+                        else -> NetworkErrorModel.Unknown(error)
+                    }
+                )
+            }
+        )
     }
 
     override suspend fun uploadFile(

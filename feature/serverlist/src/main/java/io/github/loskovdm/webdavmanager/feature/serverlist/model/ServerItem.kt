@@ -1,6 +1,6 @@
 package io.github.loskovdm.webdavmanager.feature.serverlist.model
 
-import io.github.loskovdm.webdavmanager.core.data.model.Server
+import io.github.loskovdm.webdavmanager.core.data.model.ServerModel
 
 data class ServerItem(
     val id: Int,
@@ -8,7 +8,7 @@ data class ServerItem(
     val user: String
 )
 
-fun Server.asExternalModel() = ServerItem(
+fun ServerModel.asExternalModel() = ServerItem(
     id = id,
     name = name,
     user = user

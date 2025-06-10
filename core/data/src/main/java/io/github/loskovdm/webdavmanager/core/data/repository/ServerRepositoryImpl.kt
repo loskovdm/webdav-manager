@@ -1,7 +1,7 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
 import io.github.loskovdm.webdavmanager.core.database.ServerDao
-import io.github.loskovdm.webdavmanager.core.data.model.Server
+import io.github.loskovdm.webdavmanager.core.data.model.ServerModel
 import io.github.loskovdm.webdavmanager.core.data.model.asExternalModel
 import io.github.loskovdm.webdavmanager.core.data.model.asServerEntity
 import io.github.loskovdm.webdavmanager.core.data.security.PasswordEncryptor
@@ -19,11 +19,11 @@ internal class ServerRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getServerList(): List<Server> {
+    override suspend fun getServerList(): List<ServerModel> {
         return serverDao.getAll().map { it.asExternalModel() }
     }
 
-    override suspend fun getServerById(id: Int): Server? {
+    override suspend fun getServerById(id: Int): ServerModel? {
         return serverDao.getServerById(id)?.let { serverEntity ->
             serverEntity.copy(
                 password = encryptor.decrypt(serverEntity.password)
@@ -31,13 +31,13 @@ internal class ServerRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun insertServer(serverConfig: Server) {
+    override suspend fun insertServer(serverConfig: ServerModel) {
         serverDao.insertServer(serverConfig.copy(
             password = encryptor.encrypt(serverConfig.password)
         ).asServerEntity())
     }
 
-    override suspend fun updateServer(serverConfig: Server) {
+    override suspend fun updateServer(serverConfig: ServerModel) {
         serverDao.updateServer(serverConfig.copy(
             password = encryptor.encrypt(serverConfig.password)
         ).asServerEntity())

@@ -1,11 +1,11 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
-import io.github.loskovdm.webdavmanager.core.data.model.Server
+import io.github.loskovdm.webdavmanager.core.data.model.ServerModel
 
 interface ServerRepository {
-    suspend fun getServerList(): List<Server>
-    suspend fun getServerById(id: Int): Server?
+    suspend fun getServerList(): List<ServerModel>
+    suspend fun getServerById(id: Int): ServerModel?
     suspend fun deleteServerById(id: Int)
-    suspend fun insertServer(serverConfig: Server)
-    suspend fun updateServer(serverConfig: Server)
+    suspend fun insertServer(serverConfig: ServerModel)
+    suspend fun updateServer(serverConfig: ServerModel)
 }

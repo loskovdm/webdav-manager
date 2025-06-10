@@ -12,7 +12,8 @@ import io.github.loskovdm.webdavmanager.core.data.repository.FileManagerReposito
 import io.github.loskovdm.webdavmanager.feature.filemanager.component.SortOrder
 import io.github.loskovdm.webdavmanager.feature.filemanager.model.FileItem
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.loskovdm.webdavmanager.core.data.model.Server
+import io.github.loskovdm.webdavmanager.core.data.model.NetworkErrorModel
+import io.github.loskovdm.webdavmanager.core.data.model.ServerModel
 import io.github.loskovdm.webdavmanager.feature.filemanager.model.asExternalModel
 import io.github.loskovdm.webdavmanager.feature.filemanager.model.asFileItem
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +34,7 @@ class FileManagerViewModel @Inject constructor(
 
         viewModelScope.launch(Dispatchers.IO) {
             val server = serverRepository.getServerById(_state.value.serverId)
-                ?: Server(0, "", "", "", "")
+                ?: ServerModel(0, "", "", "", "")
             val serverConnectionInfo = server
 
             val rootUri = serverConnectionInfo.url
@@ -41,10 +42,7 @@ class FileManagerViewModel @Inject constructor(
             directoryStack.add(rootUri)
 
             fileManagerRepository.setServerConnectionInfo(server)
-                .onFailure { throwable ->
-                    _state.update { it.copy(errorMessage = throwable.toString()) }
-                    Log.d("loadTest", "Throwable in init: ${throwable.toString()}")
-                }
+                .onFailure { throwable -> handleError(throwable)}
 
             loadFileList(rootUri)
         }
@@ -74,12 +72,7 @@ class FileManagerViewModel @Inject constructor(
 
                         Log.d("loadTest", "State: ${_state.value.fileList}")
                     },
-                    onFailure = { throwable ->
-                        _state.update {
-                            it.copy(errorMessage = throwable.toString())
-                        }
-                        Log.d("loadTest", "Throwable in loadFileList: ${throwable.toString()}")
-                    }
+                    onFailure = { throwable -> handleError(throwable) }
                 )
             _state.update { it.copy(isLoading = false) }
         }
@@ -146,10 +139,10 @@ class FileManagerViewModel @Inject constructor(
                 onFailure = { throwable ->
                     _state.update {
                         it.copy(
-                            errorMessage = throwable.toString(),
                             isOperationInProgress = false
                         )
                     }
+                    handleError(throwable)
                     Log.d("loadTest", "Throwable in openFile (file): ${throwable.toString()}")
                 }
             )
@@ -164,12 +157,7 @@ class FileManagerViewModel @Inject constructor(
                 name = name
             ).fold(
                 onSuccess = { loadFileList(directoryStack.last()) },
-                onFailure = { throwable ->
-                    Log.d("loadTest", "Throwable in renameFile: ${throwable.toString()}")
-                    _state.update {
-                        it.copy(errorMessage = throwable.toString())
-                    }
-                }
+                onFailure = { throwable -> handleError(throwable)}
             )
         }
     }
@@ -210,11 +198,10 @@ class FileManagerViewModel @Inject constructor(
                 onFailure = { throwable ->
                     _state.update {
                         it.copy(
-                            errorMessage = throwable.toString(),
                             isOperationInProgress = false
                         )
                     }
-                    Log.d("loadTest", "Throwable in downloadFileToDownloads: ${throwable.toString()}")
+                    handleError(throwable)
                 }
             )
         }
@@ -252,10 +239,10 @@ class FileManagerViewModel @Inject constructor(
                 onFailure = { throwable ->
                     _state.update {
                         it.copy(
-                            errorMessage = throwable.toString(),
                             isOperationInProgress = false
                         )
                     }
+                    handleError(throwable)
                 }
             )
         }
@@ -297,16 +284,14 @@ class FileManagerViewModel @Inject constructor(
                         onFailure = { throwable ->
                             _state.update {
                                 it.copy(
-                                    errorMessage = throwable.toString(),
                                     isOperationInProgress = false
                                 )
                             }
+                            handleError(throwable)
                         }
                     )
                 },
-                onFailure = { throwable ->
-                    _state.update { it.copy(errorMessage = throwable.toString()) }
-                }
+                onFailure = { throwable -> handleError(throwable) }
             )
         }
     }
@@ -317,12 +302,7 @@ class FileManagerViewModel @Inject constructor(
 
             fileManagerRepository.renameFile(fileUri, newName).fold(
                 onSuccess = { loadFileList(directoryStack.last()) },
-                onFailure = { throwable ->
-                    Log.d("loadTest", "Throwable in renameFile: ${throwable.toString()}")
-                    _state.update {
-                        it.copy(errorMessage = throwable.toString())
-                    }
-                }
+                onFailure = { throwable -> handleError(throwable) }
             )
         }
     }
@@ -331,11 +311,7 @@ class FileManagerViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             fileManagerRepository.deleteFile(fileUri).fold(
                 onSuccess = { loadFileList(directoryStack.last()) },
-                onFailure = { throwable ->
-                    _state.update {
-                        it.copy(errorMessage = throwable.toString())
-                    }
-                }
+                onFailure = { throwable -> handleError(throwable) }
             )
             Log.d("loadTest", directoryStack.toString())
         }
@@ -425,11 +401,7 @@ class FileManagerViewModel @Inject constructor(
                             val process = (deletedCount.toFloat() / selectedFiles.size.toFloat())
                             _state.update { it.copy(operationProgress = process) }
                         },
-                        onFailure = { throwable ->
-                            _state.update {
-                                it.copy(errorMessage = throwable.toString())
-                            }
-                        }
+                        onFailure = { throwable -> handleError(throwable) }
                     )
                 }
 
@@ -508,12 +480,34 @@ class FileManagerViewModel @Inject constructor(
                     loadFileList(currentDirectoryUri)
                     _state.update { it.copy(copiedFile = null) }
                 },
-                onFailure = { throwable ->
-                    _state.update {
-                        it.copy(errorMessage = throwable.toString())
-                    }
-                }
+                onFailure = { throwable -> handleError(throwable) }
             )
         }
+    }
+
+    private fun handleError(throwable: Throwable) {
+        val errorMessage = when (throwable) {
+            is NetworkErrorModel -> {
+                // Handle specific network error types
+                when (throwable) {
+                    NetworkErrorModel.AccessDenied -> "Access denied. You don't have permission to perform this operation."
+                    NetworkErrorModel.AuthenticationFailed -> "Authentication failed. Please check your authorization data."
+                    NetworkErrorModel.ConnectionFailed -> "Connection failed. Check connection settings."
+                    NetworkErrorModel.InvalidUrl -> "Invalid URL. Please check the server address."
+                    NetworkErrorModel.MissingScheme -> "Invalid URL format. Missing protocol (http:// or https://)."
+                    NetworkErrorModel.OperationNotSupported -> "This operation is not supported by the server."
+                    NetworkErrorModel.ResourceNotFound -> "The requested file or folder was not found on the server."
+                    NetworkErrorModel.SecurityError -> "Security error occurred. Check your internet connection and connection settings."
+                    NetworkErrorModel.ServerError -> "Server error occurred. Please check your internet connection and try again."
+                    NetworkErrorModel.Timeout -> "Connection timed out. The server took too long to respond. Please check your internet connection and try again."
+                    is NetworkErrorModel.Unknown -> throwable.message ?: "An unknown error occurred."
+                }
+            }
+            else -> {
+                throwable.toString()
+            }
+        }
+
+        _state.update { it.copy(errorMessage = errorMessage) }
     }
 }

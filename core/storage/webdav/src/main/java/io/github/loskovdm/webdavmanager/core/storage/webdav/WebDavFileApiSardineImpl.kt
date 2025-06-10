@@ -5,7 +5,10 @@ import io.github.loskovdm.webdavmanager.core.storage.webdav.model.WebDavConnecti
 import io.github.loskovdm.webdavmanager.core.storage.webdav.model.WebDavFile
 import com.thegrizzlylabs.sardineandroid.InputStreamProvider
 import com.thegrizzlylabs.sardineandroid.impl.OkHttpSardine
+import io.github.loskovdm.webdavmanager.core.storage.webdav.mapper.asWebDavError
+import io.github.loskovdm.webdavmanager.core.storage.webdav.model.WebDavError
 import io.github.loskovdm.webdavmanager.core.storage.webdav.model.asWebDavFile
+import io.github.loskovdm.webdavmanager.core.storage.webdav.util.mapError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType
@@ -16,7 +19,6 @@ import javax.inject.Inject
 internal class WebDavFileApiSardineImpl @Inject constructor(
     private val sardine: OkHttpSardine
 ) : WebDavFileApi {
-    // TODO: Implement your own class for errors (maybe)
 
     private var serverConnectionInfo = WebDavConnectionInfo("", "", "")
 
@@ -34,6 +36,7 @@ internal class WebDavFileApiSardineImpl @Inject constructor(
         directoryUri: String
     ): Result<List<WebDavFile>> = withContext(Dispatchers.IO) {
         runCatching {
+
             val resources = sardine.list(directoryUri)
             resources
                 .filter { resource ->
@@ -48,7 +51,7 @@ internal class WebDavFileApiSardineImpl @Inject constructor(
                     normalizedResourcePath != normalizedDirectoryPath
                 }
                 .map { it.asWebDavFile(serverConnectionInfo.url) }
-        }
+        }.mapError { it.asWebDavError() }
     }
 
     override suspend fun uploadFile(

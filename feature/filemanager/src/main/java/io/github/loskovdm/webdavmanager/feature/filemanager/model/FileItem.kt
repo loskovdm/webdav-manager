@@ -1,6 +1,6 @@
 package io.github.loskovdm.webdavmanager.feature.filemanager.model
 
-import io.github.loskovdm.webdavmanager.core.data.model.File
+import io.github.loskovdm.webdavmanager.core.data.model.FileModel
 import java.util.Date
 
 data class FileItem(
@@ -13,7 +13,7 @@ data class FileItem(
     val modifiedDate: Date?
 )
 
-fun File.asFileItem() = FileItem(
+fun FileModel.asFileItem() = FileItem(
     name = name,
     uri = uri,
     mimeType = mimeType,
@@ -23,7 +23,7 @@ fun File.asFileItem() = FileItem(
     modifiedDate = modifiedDate
 )
 
-fun FileItem.asExternalModel() = File(
+fun FileItem.asExternalModel() = FileModel(
     name = name,
     uri = uri,
     mimeType = mimeType,
