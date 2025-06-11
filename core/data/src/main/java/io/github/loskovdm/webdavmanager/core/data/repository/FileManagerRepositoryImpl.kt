@@ -1,7 +1,6 @@
 package io.github.loskovdm.webdavmanager.core.data.repository
 
 import android.net.Uri
-import android.util.Log
 import io.github.loskovdm.webdavmanager.core.data.model.FileModel
 import io.github.loskovdm.webdavmanager.core.data.model.ServerModel
 import kotlinx.coroutines.runBlocking
@@ -53,12 +52,10 @@ internal class FileManagerRepositoryImpl @Inject constructor(
         progressCallback: ((bytesUploaded: Long, totalBytes: Long) -> Unit)?
     ): Result<Unit> {
         val fileSize = remoteFile.size?.toLong() ?: -1L
-        Log.d("loadTest", "WebDav file size: ${remoteFile.size}, converted: $fileSize")
 
         val fileStream = webDavFileRepository.downloadFile(remoteFile.uri)
         return fileStream.fold(
             onSuccess = { stream ->
-                Log.d("loadTest", "Got stream, writing file with size: $fileSize")
                 androidFileRepository.writeFile(
                     directoryUri = localDirectoryUri,
                     fileName = remoteFile.name,

@@ -21,32 +21,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Rename data models">
-      <change afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/model/NetworkErrorModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/mapper/SardinErrorMapper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/model/WebDavError.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/util/ResutlExtension.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="e5fca77d-fc28-4466-992a-fc906b3dd2d0" name="Changes" comment="Add error handle">
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/model/File.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/model/FileModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/model/Server.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/model/ServerModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/FileManagerRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/FileManagerRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/FileManagerRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/FileManagerRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/ServerRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/WebDavFileRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/WebDavFileRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/WebDavFileRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/src/main/java/io/github/loskovdm/webdavmanager/core/data/repository/WebDavFileRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/storage/webdav/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/core/storage/webdav/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/WebDavFileApiSardineImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/storage/webdav/src/main/java/io/github/loskovdm/webdavmanager/core/storage/webdav/WebDavFileApiSardineImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/FileManagerViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/FileManagerViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/model/FileItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/filemanager/src/main/java/io/github/loskovdm/webdavmanager/feature/filemanager/model/FileItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/serverconfig/src/main/java/io/github/loskovdm/webdavmanager/feature/serverconfig/model/ServerConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/serverconfig/src/main/java/io/github/loskovdm/webdavmanager/feature/serverconfig/model/ServerConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature/serverlist/src/main/java/io/github/loskovdm/webdavmanager/feature/serverlist/model/ServerItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/feature/serverlist/src/main/java/io/github/loskovdm/webdavmanager/feature/serverlist/model/ServerItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,22 +343,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742831676142</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Remove domain layer from server list feature">
-      <option name="closed" value="true" />
-      <created>1745251067489</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1745251067489</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Refactor server repository methods and update view models for consistency">
-      <option name="closed" value="true" />
-      <created>1745315768443</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1745315768445</updated>
     </task>
     <task id="LOCAL-00065" summary="Move WebDavFile to model package">
       <option name="closed" value="true" />
@@ -756,7 +720,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749407779604</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="Add error handle">
+      <option name="closed" value="true" />
+      <created>1749535707915</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1749535707915</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Add error handle">
+      <option name="closed" value="true" />
+      <created>1749540194195</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1749540194195</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -784,7 +764,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Implement activity lifecycle callbacks in WebDavApplication to clear cache on app background" />
     <MESSAGE value="Add caching functionality to AndroidFileRepository with cacheFile and clearCache methods" />
     <MESSAGE value="Refactor WebDavApplication to use FileManagerRepository instead of AndroidFileRepository" />
     <MESSAGE value="Add FileManagerRepository and its implementation for file management operations" />
@@ -809,7 +788,8 @@
     <MESSAGE value="Refactor package structure to use io.github.loskovdm.webdavmanager namespace" />
     <MESSAGE value="Remove model and security models" />
     <MESSAGE value="Rename data models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename data models" />
+    <MESSAGE value="Add error handle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add error handle" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
