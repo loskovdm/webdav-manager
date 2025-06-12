@@ -81,7 +81,10 @@ class FileManagerViewModel @Inject constructor(
 
                         Log.d("loadTest", "State: ${_state.value.fileList}")
                     },
-                    onFailure = { throwable -> handleError(throwable) }
+                    onFailure = {
+                        throwable -> handleError(throwable)
+                        directoryStack.removeLast()
+                    }
                 )
             _state.update { it.copy(isLoading = false) }
         }
